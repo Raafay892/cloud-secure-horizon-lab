@@ -1,5 +1,8 @@
-import { useLocation } from "react-router-dom";
+
+import { useLocation, Link } from "react-router-dom";
 import { useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import { Shield } from "lucide-react";
 
 const NotFound = () => {
   const location = useLocation();
@@ -12,13 +15,26 @@ const NotFound = () => {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">404</h1>
-        <p className="text-xl text-gray-600 mb-4">Oops! Page not found</p>
-        <a href="/" className="text-blue-500 hover:text-blue-700 underline">
-          Return to Home
-        </a>
+    <div className="min-h-screen flex items-center justify-center bg-csp-gray-light p-4">
+      <div className="text-center max-w-md">
+        <Shield className="h-20 w-20 mx-auto mb-6 text-csp-teal" />
+        <h1 className="text-5xl font-bold mb-4 text-csp-blue-dark">404</h1>
+        <p className="text-xl text-csp-blue mb-2">Page Not Found</p>
+        <p className="text-gray-600 mb-8">
+          The page you're looking for doesn't exist or has been moved.
+        </p>
+        <div className="space-y-4">
+          <Button asChild size="lg" className="w-full">
+            <Link to="/">Return to Homepage</Link>
+          </Button>
+          <p className="text-sm text-muted-foreground">
+            If you believe this is an error, please{" "}
+            <Link to="/contact" className="text-csp-teal hover:underline">
+              contact us
+            </Link>
+            .
+          </p>
+        </div>
       </div>
     </div>
   );

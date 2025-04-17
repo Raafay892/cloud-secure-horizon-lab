@@ -1,0 +1,219 @@
+
+import PageHeader from "@/components/PageHeader";
+import SectionHeader from "@/components/SectionHeader";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
+import { Activity, Briefcase, DownloadCloud, FileCheck, GraduationCap, Target } from "lucide-react";
+
+const teamMembers = [
+  {
+    name: "Dr. Jane Smith",
+    role: "Lab Director",
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&auto=format&fit=crop&q=80",
+    bio: "Dr. Smith leads the CSP Lab with over 15 years of experience in cloud security research. Her work focuses on secure multi-party computation and privacy-preserving analytics.",
+  },
+  {
+    name: "Dr. Michael Johnson",
+    role: "Senior Researcher",
+    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&auto=format&fit=crop&q=80",
+    bio: "Dr. Johnson specializes in secure cloud architecture and threat modeling. He previously worked at leading cloud providers before joining academia.",
+  },
+  {
+    name: "Dr. Lisa Chen",
+    role: "Research Scientist",
+    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&auto=format&fit=crop&q=80",
+    bio: "Dr. Chen's research focuses on privacy-preserving machine learning techniques and differential privacy in cloud environments.",
+  },
+  {
+    name: "Dr. Robert Taylor",
+    role: "Postdoctoral Researcher",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&auto=format&fit=crop&q=80",
+    bio: "Dr. Taylor works on secure cloud storage systems and encrypted search. He earned his PhD from MIT with a focus on applied cryptography.",
+  },
+  {
+    name: "Sarah Williams",
+    role: "PhD Candidate",
+    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&auto=format&fit=crop&q=80",
+    bio: "Sarah's doctoral research explores zero-knowledge proofs for cloud compliance verification. She has published in top security conferences.",
+  },
+  {
+    name: "Kevin Rodriguez",
+    role: "PhD Candidate",
+    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&auto=format&fit=crop&q=80",
+    bio: "Kevin focuses on secure serverless computing and function-as-a-service security models. He previously worked as a security engineer.",
+  },
+];
+
+const AboutPage = () => {
+  return (
+    <div>
+      <PageHeader
+        title="About CSP Lab"
+        subtitle="Meet our team and learn about our mission to advance cloud security and privacy research"
+      />
+
+      {/* Mission and Vision */}
+      <section className="py-12 bg-csp-gray-light">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div>
+              <div className="flex items-center mb-4">
+                <Target className="h-8 w-8 text-csp-teal mr-3" />
+                <h2 className="text-2xl font-bold">Our Mission</h2>
+              </div>
+              <p className="mb-4 text-muted-foreground">
+                The Cloud Security and Privacy Lab is dedicated to advancing the state of the art in cloud security, data privacy, and compliance technologies through innovative research and practical applications.
+              </p>
+              <p className="text-muted-foreground">
+                We work at the intersection of cryptography, systems security, and privacy engineering to develop solutions that address real-world challenges faced by cloud providers, enterprises, and individuals.
+              </p>
+            </div>
+            
+            <div>
+              <div className="flex items-center mb-4">
+                <Activity className="h-8 w-8 text-csp-teal mr-3" />
+                <h2 className="text-2xl font-bold">Our Vision</h2>
+              </div>
+              <p className="mb-4 text-muted-foreground">
+                We envision a future where cloud technologies can be used with complete confidence, where privacy is preserved by design, and where security is seamlessly integrated into every aspect of cloud computing.
+              </p>
+              <p className="text-muted-foreground">
+                Our goal is to bridge the gap between theoretical security models and practical implementations, creating technologies that are both highly secure and usable in real-world scenarios.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Research Objectives */}
+      <section className="py-12">
+        <div className="container mx-auto px-4">
+          <SectionHeader
+            title="Research Objectives"
+            subtitle="Our research is guided by several key objectives that drive our work forward"
+            align="center"
+          />
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+            <Card className="bg-gradient-to-br from-csp-blue-dark to-csp-blue text-white border-0">
+              <CardHeader>
+                <FileCheck className="h-8 w-8 mb-2" />
+                <CardTitle>Advance Security Models</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-white/80">
+                  Develop and refine theoretical security models that address the unique challenges of distributed and cloud computing environments.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-gradient-to-br from-csp-blue-dark to-csp-blue text-white border-0">
+              <CardHeader>
+                <DownloadCloud className="h-8 w-8 mb-2" />
+                <CardTitle>Build Practical Tools</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-white/80">
+                  Create usable security and privacy tools that can be readily deployed in real-world cloud environments by both providers and users.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-gradient-to-br from-csp-blue-dark to-csp-blue text-white border-0">
+              <CardHeader>
+                <GraduationCap className="h-8 w-8 mb-2" />
+                <CardTitle>Educate & Train</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-white/80">
+                  Train the next generation of security and privacy researchers through hands-on research experiences and educational initiatives.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+      
+      {/* Team Members */}
+      <section className="py-12 bg-csp-gray-light">
+        <div className="container mx-auto px-4">
+          <SectionHeader
+            title="Our Team"
+            subtitle="Meet the researchers and faculty working to advance cloud security and privacy"
+            align="center"
+          />
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+            {teamMembers.map((member, index) => (
+              <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                <div className="h-48 overflow-hidden">
+                  <img 
+                    src={member.image} 
+                    alt={member.name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold mb-1">{member.name}</h3>
+                  <p className="text-csp-teal font-medium mb-3">{member.role}</p>
+                  <Separator className="my-3" />
+                  <p className="text-sm text-muted-foreground">{member.bio}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Lab History */}
+      <section className="py-12">
+        <div className="container mx-auto px-4">
+          <SectionHeader
+            title="Our History"
+            subtitle="The journey of CSP Lab from its founding to its current position as a leader in cloud security research"
+          />
+
+          <div className="bg-white p-6 rounded-lg shadow-md mt-8">
+            <div className="flex items-start mb-6">
+              <div className="bg-csp-blue-dark rounded-full p-3 mr-4">
+                <Briefcase className="h-6 w-6 text-white" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold mb-2">2020: Founding</h3>
+                <p className="text-muted-foreground">
+                  The Cloud Security and Privacy Lab was established with an initial focus on secure cloud storage technologies. With funding from the National Science Foundation, the lab began its first research projects.
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-start mb-6">
+              <div className="bg-csp-blue rounded-full p-3 mr-4">
+                <Activity className="h-6 w-6 text-white" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold mb-2">2021: Expansion</h3>
+                <p className="text-muted-foreground">
+                  The lab expanded its research scope to include privacy-preserving computation and secure multiparty analytics. New partnerships with industry leaders in cloud computing were established.
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-start">
+              <div className="bg-csp-teal rounded-full p-3 mr-4">
+                <GraduationCap className="h-6 w-6 text-white" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold mb-2">2022 - Present: Growth</h3>
+                <p className="text-muted-foreground">
+                  Today, CSP Lab is recognized as a leader in cloud security and privacy research. Our publications regularly appear in top security conferences, and our tools are used by researchers and practitioners worldwide.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default AboutPage;

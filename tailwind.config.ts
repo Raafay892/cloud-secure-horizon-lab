@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,20 +60,20 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
         csp: {
-          // CityDefend inspired cyber theme colors
-          'primary': '#1e005a',      // Deep purple
-          'secondary': '#3d006f',    // Medium purple
-          'tertiary': '#4a0082',     // Indigo
-          'accent': '#ff007f',       // Neon pink
-          'accent-subtle': '#d4008a', // Darker pink
-          'cyan': '#00ffff',         // Aqua/cyan
-          'cyan-subtle': '#00cccc',  // Darker cyan
+          'primary': '#1e005a',      // Deep purple (keep original)
+          'secondary': '#3d006f',    // Medium purple (keep original)
+          'tertiary': '#4a0082',     // Indigo (keep original)
+          'accent': '#ff007f',       // Neon pink (keep original)
+          'accent-subtle': '#d4008a', // Darker pink (keep original)
+          'cyan': '#00ffff',         // Aqua/cyan (keep original)
+          'cyan-subtle': '#00cccc',  // Darker cyan (keep original)
+          
+          // Improved text and background colors for better readability
           'gray-dark': '#222222',    // Dark gray
           'gray-medium': '#333333',  // Medium gray
-          'gray-light': '#cccccc',   // Light gray for text
-          'white': '#ffffff',        // Pure white
-          'text-primary': '#ffffff', // Primary text color (white)
-          'text-secondary': '#cccccc', // Secondary text color (light gray)
+          'gray-light': '#8E9196',   // Neutral gray for body text
+          'text-primary': '#ffffff', // Pure white for headings
+          'text-secondary': '#cccccc', // Light gray for subheadings
         }
       },
 			borderRadius: {

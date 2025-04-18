@@ -133,7 +133,7 @@ const PublicationsPage = () => {
       />
 
       {/* Search and Filters */}
-      <section className="py-8 glass-card my-8 mx-4 md:mx-8 lg:mx-auto max-w-7xl">
+      <section className="py-8 glass-card my-8 mx-4 md:mx-8 lg:mx-auto max-w-7xl border border-white/10 shadow-[0_5px_20px_rgba(0,0,0,0.2)]">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row gap-4">
             <div className="relative flex-grow">
@@ -148,7 +148,7 @@ const PublicationsPage = () => {
             
             <div className="flex items-center gap-2">
               <Filter className="h-4 w-4 text-csp-cyan" />
-              <span className="text-sm text-csp-gray-light">Filters:</span>
+              <span className="text-sm text-white/80">Filters:</span>
             </div>
             
             <div className="w-full md:w-48">
@@ -206,7 +206,7 @@ const PublicationsPage = () => {
                       {pub.year}
                     </span>
                   </div>
-                  <div className="text-sm text-csp-gray-light">
+                  <div className="text-sm text-white/70">
                     {pub.authors}
                   </div>
                   <div className="text-csp-cyan font-medium">
@@ -214,7 +214,7 @@ const PublicationsPage = () => {
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-csp-gray-light mb-4">{pub.abstract}</p>
+                  <p className="text-white/80 mb-4">{pub.abstract}</p>
                   <div className="flex flex-wrap gap-2">
                     {pub.tags.map((tag, idx) => (
                       <span
@@ -227,11 +227,11 @@ const PublicationsPage = () => {
                   </div>
                 </CardContent>
                 <CardFooter className="flex justify-end space-x-2">
-                  <Button variant="outline" size="sm" className="text-csp-gray-light border-white/20 hover:bg-white/5 hover:text-csp-cyan">
+                  <Button variant="outline" size="sm" className="text-white/70 border-white/20 hover:bg-white/5 hover:text-csp-cyan">
                     <Share2 className="h-4 w-4 mr-2" />
                     Share
                   </Button>
-                  <Button size="sm" className="bg-csp-accent hover:bg-csp-accent-subtle text-white shadow-[0_0_10px_rgba(255,0,127,0.3)] hover:shadow-[0_0_15px_rgba(255,0,127,0.5)]">
+                  <Button size="sm" className="bg-csp-accent hover:bg-csp-accent-subtle text-white rounded-pill shadow-[0_0_10px_rgba(255,0,127,0.3)] hover:shadow-[0_0_15px_rgba(255,0,127,0.5)]">
                     <FileDown className="h-4 w-4 mr-2" />
                     Download PDF
                   </Button>
@@ -240,8 +240,8 @@ const PublicationsPage = () => {
             ))}
 
             {filteredPublications.length === 0 && (
-              <div className="text-center py-12 glass-card p-8">
-                <p className="text-lg text-csp-gray-light mb-4">
+              <div className="text-center py-12 glass-card p-8 border border-white/10">
+                <p className="text-lg text-white/80 mb-4">
                   No publications found matching your search criteria.
                 </p>
                 <Button
@@ -251,7 +251,7 @@ const PublicationsPage = () => {
                     setFilterYear("all");
                     setFilterType("all");
                   }}
-                  className="border-csp-cyan text-csp-cyan hover:bg-csp-cyan/10 shadow-[0_0_10px_rgba(0,255,255,0.2)] hover:shadow-[0_0_15px_rgba(0,255,255,0.4)]"
+                  className="border-csp-cyan text-csp-cyan hover:bg-csp-cyan/10 rounded-pill shadow-[0_0_10px_rgba(0,255,255,0.2)] hover:shadow-[0_0_15px_rgba(0,255,255,0.4)]"
                 >
                   Clear Filters
                 </Button>
@@ -262,7 +262,7 @@ const PublicationsPage = () => {
       </section>
 
       {/* Citation Information */}
-      <section className="py-12 glass-card mx-4 md:mx-8 lg:mx-auto max-w-7xl my-8">
+      <section className="py-12 glass-card mx-4 md:mx-8 lg:mx-auto max-w-7xl my-8 border border-white/10 shadow-[0_5px_20px_rgba(0,0,0,0.2)]">
         <div className="container mx-auto px-4">
           <SectionHeader
             title="Citing Our Work"
@@ -272,7 +272,7 @@ const PublicationsPage = () => {
 
           <Card className="mt-8 bg-black/40 border border-white/10">
             <CardContent className="pt-6">
-              <p className="mb-4 text-csp-gray-light">
+              <p className="mb-4 text-white/80">
                 If you use our research in your work, please cite the appropriate papers. For general references to the lab, you may use the following format:
               </p>
               
@@ -280,7 +280,7 @@ const PublicationsPage = () => {
                 Cloud Security and Privacy Lab. (Year). Title of work. University Name. URL.
               </div>
               
-              <p className="text-csp-gray-light">
+              <p className="text-white/80">
                 For specific questions about citations or to request additional information, please <a href="/contact" className="text-csp-accent hover:underline">contact us</a>.
               </p>
             </CardContent>

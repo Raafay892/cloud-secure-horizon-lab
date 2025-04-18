@@ -13,7 +13,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({
   className = "",
 }) => {
   return (
-    <div className={`relative py-16 md:py-20 ${className}`}>
+    <div className={`relative py-16 md:py-24 ${className}`}>
       {/* Background with gradient */}
       <div className="absolute inset-0 bg-gradient-to-r from-csp-primary to-csp-secondary">
         {/* Cyber grid pattern overlay */}
@@ -26,22 +26,22 @@ const PageHeader: React.FC<PageHeaderProps> = ({
         ></div>
         
         {/* Hexagon shapes */}
-        <div className="absolute top-1/4 left-1/4 w-32 h-32 opacity-10">
+        <div className="absolute top-1/4 left-1/4 w-32 h-32 opacity-10 animate-float" style={{ animationDelay: '0s' }}>
           <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-            <path d="M50 0L93.3 25V75L50 100L6.7 75V25L50 0Z" stroke="rgba(255,255,255,0.5)" strokeWidth="1" fill="none" />
+            <path d="M50 0L93.3 25V75L50 100L6.7 75V25L50 0Z" stroke="rgba(255,255,255,0.5)" strokeWidth="1" fill="rgba(255,0,127,0.1)" />
           </svg>
         </div>
-        <div className="absolute bottom-1/4 right-1/4 w-40 h-40 opacity-5">
+        <div className="absolute bottom-1/4 right-1/4 w-40 h-40 opacity-5 animate-float" style={{ animationDelay: '1.5s' }}>
           <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-            <path d="M50 0L93.3 25V75L50 100L6.7 75V25L50 0Z" stroke="rgba(255,255,255,0.5)" strokeWidth="1" fill="none" />
+            <path d="M50 0L93.3 25V75L50 100L6.7 75V25L50 0Z" stroke="rgba(255,255,255,0.5)" strokeWidth="1" fill="rgba(0,255,255,0.1)" />
           </svg>
         </div>
       </div>
       
       <div className="container mx-auto px-4 text-center relative z-10">
-        <h1 className="text-3xl md:text-4xl font-bold mb-4 font-montserrat tracking-tight text-white">{title}</h1>
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 font-montserrat tracking-tight text-white">{title}</h1>
         {subtitle && (
-          <p className="text-lg md:text-xl text-csp-gray-light max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto">
             {subtitle}
           </p>
         )}

@@ -25,10 +25,10 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
     >
       <h2 className="text-2xl md:text-3xl font-bold mb-3 relative inline-block font-montserrat">
         {title}
-        <span className="absolute -bottom-1 left-0 w-12 h-1 bg-csp-accent shadow-[0_0_10px_rgba(255,0,127,0.7)]"></span>
+        <span className="absolute -bottom-1 left-0 w-14 h-1 bg-gradient-to-r from-csp-accent to-csp-accent/70 shadow-[0_0_10px_rgba(255,0,127,0.7)]"></span>
       </h2>
       {subtitle && (
-        <p className="text-csp-gray-light mt-4 max-w-3xl text-lg"
+        <p className="text-white/80 mt-4 max-w-3xl text-lg"
            style={{ marginLeft: align === "center" ? "auto" : "", marginRight: align === "center" ? "auto" : "" }}>
           {subtitle}
         </p>

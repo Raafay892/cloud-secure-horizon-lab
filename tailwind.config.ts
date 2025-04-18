@@ -1,25 +1,17 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
-	darkMode: ["class"],
-	content: [
+  darkMode: ["class"],
+  content: [
 		"./pages/**/*.{ts,tsx}",
 		"./components/**/*.{ts,tsx}",
 		"./app/**/*.{ts,tsx}",
 		"./src/**/*.{ts,tsx}",
 	],
-	prefix: "",
-	theme: {
-		container: {
-			center: true,
-			padding: '2rem',
-			screens: {
-				'2xl': '1400px'
-			}
-		},
-		extend: {
-			colors: {
+  prefix: "",
+  theme: {
+    extend: {
+      colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
@@ -63,14 +55,14 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				csp: {
-					'blue-dark': '#1A365D',
-					'blue': '#2E5EAA',
-					'teal': '#00A6A6',
-					'gray-dark': '#4A4A4A',
-					'gray-light': '#F5F7FA',
-				}
-			},
+        csp: {
+          'blue-dark': '#1A365D',     // Deep navy blue
+          'blue': '#2E5EAA',          // Slightly lighter navy
+          'teal': '#00A6A6',
+          'gray-dark': '#4A4A4A',     // Dark charcoal gray
+          'gray-light': '#F5F7FA',
+        }
+      },
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
@@ -120,7 +112,7 @@ export default {
 				'fade-in': 'fade-in 0.5s ease-out',
 				'fade-out': 'fade-out 0.5s ease-out'
 			}
-		}
-	},
-	plugins: [require("tailwindcss-animate")],
+    }
+  },
+  plugins: [require("tailwindcss-animate")],
 } satisfies Config;

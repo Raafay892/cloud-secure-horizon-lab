@@ -1,5 +1,5 @@
 
-import React from "react";
+import { cn } from "@/lib/utils";
 
 interface SectionHeaderProps {
   title: string;
@@ -12,19 +12,24 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
   title,
   subtitle,
   align = "left",
-  className = "",
+  className,
 }) => {
-  const alignClass = {
-    left: "text-left",
-    center: "text-center mx-auto",
-    right: "text-right ml-auto",
-  };
-
   return (
-    <div className={`mb-8 ${alignClass[align]} ${className}`}>
-      <h2 className="text-2xl md:text-3xl font-bold mb-3">{title}</h2>
+    <div
+      className={cn(
+        "mb-10",
+        align === "center" && "text-center",
+        align === "right" && "text-right",
+        className
+      )}
+    >
+      <h2 className="text-2xl md:text-3xl font-bold mb-3 relative inline-block">
+        {title}
+        <span className="absolute -bottom-1 left-0 w-12 h-1 bg-csp-accent"></span>
+      </h2>
       {subtitle && (
-        <p className="text-base md:text-lg text-muted-foreground max-w-3xl">
+        <p className="text-muted-foreground mt-4 max-w-3xl text-lg"
+           style={{ marginLeft: align === "center" ? "auto" : "", marginRight: align === "center" ? "auto" : "" }}>
           {subtitle}
         </p>
       )}

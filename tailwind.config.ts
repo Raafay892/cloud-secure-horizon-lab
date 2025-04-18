@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -11,6 +12,10 @@ export default {
   prefix: "",
   theme: {
     extend: {
+      fontFamily: {
+        montserrat: ['Montserrat', 'sans-serif'],
+        roboto: ['Roboto', 'sans-serif'],
+      },
       colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -56,11 +61,17 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
         csp: {
-          'blue-dark': '#1A365D',     // Deep navy blue
-          'blue': '#2E5EAA',          // Slightly lighter navy
-          'teal': '#00A6A6',
-          'gray-dark': '#4A4A4A',     // Dark charcoal gray
-          'gray-light': '#F5F7FA',
+          // CityDefend inspired colors
+          'primary': '#0D1B2A',      // Deep navy blue (main)
+          'secondary': '#1B263B',    // Slightly lighter navy
+          'tertiary': '#415A77',     // Medium blue
+          'accent': '#33C3F0',       // Bright blue accent
+          'accent-subtle': '#0FA0CE', // Darker blue accent
+          'gray-dark': '#222222',    // Dark gray
+          'gray-medium': '#333333',  // Medium gray
+          'gray-light': '#F5F7FA',   // Light gray/almost white
+          'text-primary': '#222222', // Primary text color
+          'text-secondary': '#888888', // Secondary text color
         }
       },
 			borderRadius: {

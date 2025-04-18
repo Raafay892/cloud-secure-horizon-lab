@@ -61,23 +61,27 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
         csp: {
-          // CityDefend inspired colors
-          'primary': '#0D1B2A',      // Deep navy blue (main)
-          'secondary': '#1B263B',    // Slightly lighter navy
-          'tertiary': '#415A77',     // Medium blue
-          'accent': '#33C3F0',       // Bright blue accent
-          'accent-subtle': '#0FA0CE', // Darker blue accent
+          // CityDefend inspired cyber theme colors
+          'primary': '#1e005a',      // Deep purple
+          'secondary': '#3d006f',    // Medium purple
+          'tertiary': '#4a0082',     // Indigo
+          'accent': '#ff007f',       // Neon pink
+          'accent-subtle': '#d4008a', // Darker pink
+          'cyan': '#00ffff',         // Aqua/cyan
+          'cyan-subtle': '#00cccc',  // Darker cyan
           'gray-dark': '#222222',    // Dark gray
           'gray-medium': '#333333',  // Medium gray
-          'gray-light': '#F5F7FA',   // Light gray/almost white
-          'text-primary': '#222222', // Primary text color
-          'text-secondary': '#888888', // Secondary text color
+          'gray-light': '#cccccc',   // Light gray for text
+          'white': '#ffffff',        // Pure white
+          'text-primary': '#ffffff', // Primary text color (white)
+          'text-secondary': '#cccccc', // Secondary text color (light gray)
         }
       },
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
-				sm: 'calc(var(--radius) - 4px)'
+				sm: 'calc(var(--radius) - 4px)',
+        'pill': '9999px',
 			},
 			keyframes: {
 				'accordion-down': {
@@ -115,13 +119,31 @@ export default {
 						opacity: '0',
 						transform: 'translateY(10px)'
 					}
-				}
+				},
+        'glow': {
+          '0%, 100%': {
+            boxShadow: '0 0 5px 2px rgba(0, 255, 255, 0.3), 0 0 10px rgba(0, 255, 255, 0.2)'
+          },
+          '50%': {
+            boxShadow: '0 0 10px 3px rgba(0, 255, 255, 0.5), 0 0 15px rgba(0, 255, 255, 0.3)'
+          }
+        },
+        'float': {
+          '0%, 100%': {
+            transform: 'translateY(0px)'
+          },
+          '50%': {
+            transform: 'translateY(-10px)'
+          }
+        }
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-in': 'fade-in 0.5s ease-out',
-				'fade-out': 'fade-out 0.5s ease-out'
+				'fade-out': 'fade-out 0.5s ease-out',
+        'glow': 'glow 3s ease-in-out infinite',
+        'float': 'float 6s ease-in-out infinite'
 			}
     }
   },

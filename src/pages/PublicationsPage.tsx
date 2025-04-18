@@ -133,33 +133,33 @@ const PublicationsPage = () => {
       />
 
       {/* Search and Filters */}
-      <section className="py-8 bg-csp-gray-light">
+      <section className="py-8 glass-card my-8 mx-4 md:mx-8 lg:mx-auto max-w-7xl">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row gap-4">
             <div className="relative flex-grow">
-              <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+              <Search className="absolute left-3 top-3 h-4 w-4 text-csp-accent" />
               <Input
                 placeholder="Search publications by title, author, or keywords..."
-                className="pl-9"
+                className="pl-9 bg-black/30 border-csp-accent/30 text-white placeholder:text-white/50 focus:border-csp-accent focus:ring-csp-accent/30"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
             </div>
             
             <div className="flex items-center gap-2">
-              <Filter className="h-4 w-4 text-muted-foreground" />
-              <span className="text-sm">Filters:</span>
+              <Filter className="h-4 w-4 text-csp-cyan" />
+              <span className="text-sm text-csp-gray-light">Filters:</span>
             </div>
             
             <div className="w-full md:w-48">
               <Select value={filterYear} onValueChange={setFilterYear}>
-                <SelectTrigger>
+                <SelectTrigger className="bg-black/30 border-csp-accent/30 text-white">
                   <SelectValue placeholder="Select Year" />
                 </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">All Years</SelectItem>
+                <SelectContent className="bg-csp-secondary border-csp-accent/30 text-white">
+                  <SelectItem value="all" className="focus:bg-csp-accent/20">All Years</SelectItem>
                   {years.map(year => (
-                    <SelectItem key={year} value={year.toString()}>
+                    <SelectItem key={year} value={year.toString()} className="focus:bg-csp-accent/20">
                       {year}
                     </SelectItem>
                   ))}
@@ -169,13 +169,13 @@ const PublicationsPage = () => {
             
             <div className="w-full md:w-48">
               <Select value={filterType} onValueChange={setFilterType}>
-                <SelectTrigger>
+                <SelectTrigger className="bg-black/30 border-csp-accent/30 text-white">
                   <SelectValue placeholder="Select Type" />
                 </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">All Types</SelectItem>
+                <SelectContent className="bg-csp-secondary border-csp-accent/30 text-white">
+                  <SelectItem value="all" className="focus:bg-csp-accent/20">All Types</SelectItem>
                   {types.map(type => (
-                    <SelectItem key={type} value={type}>
+                    <SelectItem key={type} value={type} className="focus:bg-csp-accent/20">
                       {type.charAt(0).toUpperCase() + type.slice(1)}
                     </SelectItem>
                   ))}
@@ -196,30 +196,30 @@ const PublicationsPage = () => {
 
           <div className="mt-8 space-y-6">
             {filteredPublications.map((pub) => (
-              <Card key={pub.id} className="hover:shadow-md transition-shadow">
+              <Card key={pub.id} className="bg-black/30 backdrop-blur-sm border border-white/10 hover:border-csp-accent/30 transition-all duration-300 hover:shadow-[0_5px_15px_rgba(255,0,127,0.2)]">
                 <CardHeader>
                   <div className="flex justify-between items-start">
-                    <CardTitle className="text-xl font-bold text-csp-blue-dark">
+                    <CardTitle className="text-xl font-bold text-white">
                       {pub.title}
                     </CardTitle>
-                    <span className="bg-csp-gray-light px-3 py-1 rounded-full text-sm font-medium">
+                    <span className="bg-csp-accent/20 text-csp-accent px-3 py-1 rounded-pill text-sm font-medium border border-csp-accent/30">
                       {pub.year}
                     </span>
                   </div>
-                  <div className="text-sm text-muted-foreground">
+                  <div className="text-sm text-csp-gray-light">
                     {pub.authors}
                   </div>
-                  <div className="text-csp-teal font-medium">
+                  <div className="text-csp-cyan font-medium">
                     {pub.conference || pub.journal}
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground mb-4">{pub.abstract}</p>
+                  <p className="text-csp-gray-light mb-4">{pub.abstract}</p>
                   <div className="flex flex-wrap gap-2">
                     {pub.tags.map((tag, idx) => (
                       <span
                         key={idx}
-                        className="bg-csp-blue/10 text-csp-blue px-2 py-1 rounded-full text-xs"
+                        className="bg-csp-cyan/10 text-csp-cyan px-2 py-1 rounded-pill text-xs border border-csp-cyan/30"
                       >
                         {tag}
                       </span>
@@ -227,11 +227,11 @@ const PublicationsPage = () => {
                   </div>
                 </CardContent>
                 <CardFooter className="flex justify-end space-x-2">
-                  <Button variant="outline" size="sm">
+                  <Button variant="outline" size="sm" className="text-csp-gray-light border-white/20 hover:bg-white/5 hover:text-csp-cyan">
                     <Share2 className="h-4 w-4 mr-2" />
                     Share
                   </Button>
-                  <Button size="sm" className="bg-csp-blue hover:bg-csp-blue-dark">
+                  <Button size="sm" className="bg-csp-accent hover:bg-csp-accent-subtle text-white shadow-[0_0_10px_rgba(255,0,127,0.3)] hover:shadow-[0_0_15px_rgba(255,0,127,0.5)]">
                     <FileDown className="h-4 w-4 mr-2" />
                     Download PDF
                   </Button>
@@ -240,8 +240,8 @@ const PublicationsPage = () => {
             ))}
 
             {filteredPublications.length === 0 && (
-              <div className="text-center py-12">
-                <p className="text-lg text-muted-foreground">
+              <div className="text-center py-12 glass-card p-8">
+                <p className="text-lg text-csp-gray-light mb-4">
                   No publications found matching your search criteria.
                 </p>
                 <Button
@@ -251,7 +251,7 @@ const PublicationsPage = () => {
                     setFilterYear("all");
                     setFilterType("all");
                   }}
-                  className="mt-4"
+                  className="border-csp-cyan text-csp-cyan hover:bg-csp-cyan/10 shadow-[0_0_10px_rgba(0,255,255,0.2)] hover:shadow-[0_0_15px_rgba(0,255,255,0.4)]"
                 >
                   Clear Filters
                 </Button>
@@ -262,7 +262,7 @@ const PublicationsPage = () => {
       </section>
 
       {/* Citation Information */}
-      <section className="py-12 bg-csp-gray-light">
+      <section className="py-12 glass-card mx-4 md:mx-8 lg:mx-auto max-w-7xl my-8">
         <div className="container mx-auto px-4">
           <SectionHeader
             title="Citing Our Work"
@@ -270,18 +270,18 @@ const PublicationsPage = () => {
             align="center"
           />
 
-          <Card className="mt-8">
+          <Card className="mt-8 bg-black/40 border border-white/10">
             <CardContent className="pt-6">
-              <p className="mb-4">
+              <p className="mb-4 text-csp-gray-light">
                 If you use our research in your work, please cite the appropriate papers. For general references to the lab, you may use the following format:
               </p>
               
-              <div className="bg-muted p-4 rounded-md mb-4 font-mono text-sm">
+              <div className="bg-black/30 p-4 rounded-md mb-4 font-mono text-sm text-csp-cyan border border-csp-cyan/20">
                 Cloud Security and Privacy Lab. (Year). Title of work. University Name. URL.
               </div>
               
-              <p>
-                For specific questions about citations or to request additional information, please <a href="/contact" className="text-csp-teal hover:underline">contact us</a>.
+              <p className="text-csp-gray-light">
+                For specific questions about citations or to request additional information, please <a href="/contact" className="text-csp-accent hover:underline">contact us</a>.
               </p>
             </CardContent>
           </Card>

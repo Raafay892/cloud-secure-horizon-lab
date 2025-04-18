@@ -22,14 +22,14 @@ const Navbar = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-csp-primary border-b border-gray-800">
+    <header className="sticky top-0 z-50 w-full bg-black/30 backdrop-blur-md border-b border-white/10">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <NavLink to="/" className="flex items-center space-x-2">
               <div className="flex items-center text-white">
-                <Shield className="h-6 w-6 text-csp-accent mr-2" />
-                <Lock className="h-5 w-5 text-white mr-2" />
+                <Shield className="h-6 w-6 text-csp-accent animate-glow mr-2" />
+                <Lock className="h-5 w-5 text-csp-cyan mr-2" />
                 <span className="text-xl font-bold font-montserrat tracking-tight">CSP Lab</span>
               </div>
             </NavLink>
@@ -44,8 +44,8 @@ const Navbar = () => {
                 className={({ isActive }) =>
                   `font-medium transition-colors text-sm font-montserrat uppercase tracking-wide ${
                     isActive
-                      ? "text-csp-accent border-b-2 border-csp-accent pb-1"
-                      : "text-gray-300 hover:text-white"
+                      ? "text-csp-accent border-b border-csp-accent"
+                      : "text-csp-gray-light hover:text-csp-accent"
                   }`
                 }
               >
@@ -56,7 +56,7 @@ const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <div className="md:hidden">
-            <Button variant="ghost" size="icon" className="text-white hover:bg-csp-secondary" onClick={toggleMenu}>
+            <Button variant="ghost" size="icon" className="text-white hover:bg-white/10" onClick={toggleMenu}>
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </Button>
           </div>
@@ -64,7 +64,7 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden pt-2 pb-4 animate-fade-in bg-csp-primary">
+          <div className="md:hidden pt-2 pb-4 animate-fade-in bg-black/40 backdrop-blur-md rounded-b-md">
             <nav className="flex flex-col space-y-2">
               {navItems.map((item) => (
                 <NavLink
@@ -73,8 +73,8 @@ const Navbar = () => {
                   className={({ isActive }) =>
                     `font-medium px-3 py-2 rounded-md font-montserrat uppercase tracking-wide text-sm ${
                       isActive
-                        ? "bg-csp-secondary text-csp-accent"
-                        : "text-gray-300 hover:bg-csp-secondary/70 hover:text-white"
+                        ? "bg-csp-primary/50 text-csp-accent border-l-2 border-csp-accent"
+                        : "text-csp-gray-light hover:bg-black/20 hover:text-csp-accent"
                     }`
                   }
                   onClick={() => setIsMenuOpen(false)}

@@ -23,12 +23,12 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
         className
       )}
     >
-      <h2 className="text-2xl md:text-3xl font-bold mb-3 relative inline-block">
+      <h2 className="text-2xl md:text-3xl font-bold mb-3 relative inline-block font-montserrat">
         {title}
-        <span className="absolute -bottom-1 left-0 w-12 h-1 bg-csp-accent"></span>
+        <span className="absolute -bottom-1 left-0 w-12 h-1 bg-csp-accent shadow-[0_0_10px_rgba(255,0,127,0.7)]"></span>
       </h2>
       {subtitle && (
-        <p className="text-muted-foreground mt-4 max-w-3xl text-lg"
+        <p className="text-csp-gray-light mt-4 max-w-3xl text-lg"
            style={{ marginLeft: align === "center" ? "auto" : "", marginRight: align === "center" ? "auto" : "" }}>
           {subtitle}
         </p>

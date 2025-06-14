@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
@@ -34,26 +33,26 @@ const HeroSection: React.FC<HeroSectionProps> = ({
             backgroundPosition: 'center'
           }}
         ></div>
-        <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-csp-primary/90 to-csp-secondary/80"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-feminine-primary/80 via-feminine-primary/90 to-feminine-secondary/80"></div>
         
-        {/* Cyber grid pattern */}
+        {/* Feminine grid pattern */}
         <div 
           className="absolute inset-0 opacity-10"
           style={{
-            backgroundImage: 'linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 0, 127, 0.1) 1px, transparent 1px)',
+            backgroundImage: 'linear-gradient(rgba(155, 77, 202, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 105, 180, 0.1) 1px, transparent 1px)',
             backgroundSize: '30px 30px'
           }}
         ></div>
         
-        {/* Animated hexagons */}
+        {/* Animated shapes */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute w-40 h-40 top-1/4 left-1/4 animate-float" style={{ animationDelay: '0s' }}>
             <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full opacity-10">
               <path d="M50 0L93.3 25V75L50 100L6.7 75V25L50 0Z" fill="url(#paint0_linear)" />
               <defs>
                 <linearGradient id="paint0_linear" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
-                  <stop stopColor="#FF007F" />
-                  <stop offset="1" stopColor="#00FFFF" />
+                  <stop stopColor="#FF69B4" />
+                  <stop offset="1" stopColor="#9B4DCA" />
                 </linearGradient>
               </defs>
             </svg>
@@ -63,8 +62,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({
               <path d="M50 0L93.3 25V75L50 100L6.7 75V25L50 0Z" fill="url(#paint0_linear)" />
               <defs>
                 <linearGradient id="paint0_linear" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
-                  <stop stopColor="#00FFFF" />
-                  <stop offset="1" stopColor="#FF007F" />
+                  <stop stopColor="#9B4DCA" />
+                  <stop offset="1" stopColor="#FF69B4" />
                 </linearGradient>
               </defs>
             </svg>
@@ -75,13 +74,13 @@ const HeroSection: React.FC<HeroSectionProps> = ({
       {/* Content */}
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-3xl">
-          <div className="inline-block px-3 py-1 mb-6 border border-csp-cyan/30 bg-csp-cyan/5 rounded-pill text-csp-cyan text-sm font-medium tracking-wide backdrop-blur-sm">
+          <div className="inline-block px-3 py-1 mb-6 border-2 border-feminine-primary bg-white/90 text-feminine-primary rounded-pill text-sm font-medium tracking-wide backdrop-blur-sm shadow-sm">
             CLOUD SECURITY & PRIVACY RESEARCH
           </div>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight font-montserrat tracking-tight">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight font-montserrat tracking-tight text-feminine-text-light">
             {title}
           </h1>
-          <p className="text-xl md:text-2xl mb-8 text-csp-gray-light leading-relaxed">
+          <p className="text-xl md:text-2xl mb-8 text-feminine-text-light/80 leading-relaxed">
             {subtitle}
           </p>
           <div className="flex flex-wrap gap-4">
@@ -89,7 +88,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
               <Button 
                 asChild 
                 size="lg" 
-                className="bg-csp-accent hover:bg-csp-accent-subtle text-white font-medium rounded-pill px-6 py-3 flex items-center shadow-[0_0_15px_rgba(255,0,127,0.4)] hover:shadow-[0_0_20px_rgba(255,0,127,0.6)] transition-all duration-300"
+                className="bg-feminine-primary hover:bg-feminine-primary-dark text-feminine-text-light"
               >
                 <Link to={primaryButtonLink}>
                   {primaryButtonText}
@@ -102,9 +101,11 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                 asChild 
                 variant="outline" 
                 size="lg" 
-                className="text-csp-cyan border-csp-cyan/50 hover:bg-csp-cyan/10 rounded-pill px-6 py-3 shadow-[0_0_10px_rgba(0,255,255,0.2)] hover:shadow-[0_0_15px_rgba(0,255,255,0.4)] transition-all duration-300"
+                className="group border-2 border-feminine-primary bg-white text-feminine-primary font-bold shadow-none hover:bg-white hover:text-feminine-primary hover:border-feminine-primary focus:outline-none focus:ring-2 focus:ring-feminine-primary focus:ring-offset-2 pointer-events-auto opacity-100"
+                tabIndex={0}
+                type="button"
               >
-                <Link to={secondaryButtonLink}>{secondaryButtonText}</Link>
+                <Link to={secondaryButtonLink} className="!text-feminine-primary !opacity-100 group-hover:!text-feminine-primary pointer-events-auto">{secondaryButtonText}</Link>
               </Button>
             )}
           </div>
@@ -117,8 +118,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({
           <path d="M0,0V60H1440V0C1082.31,40 360,40 0,0Z" fill="url(#paint1_linear)" />
           <defs>
             <linearGradient id="paint1_linear" x1="0" y1="0" x2="1440" y2="0" gradientUnits="userSpaceOnUse">
-              <stop stopColor="#1e005a" />
-              <stop offset="1" stopColor="#3d006f" />
+              <stop stopColor="#9B4DCA" />
+              <stop offset="1" stopColor="#7B2CBF" />
             </linearGradient>
           </defs>
         </svg>

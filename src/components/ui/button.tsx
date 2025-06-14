@@ -1,4 +1,3 @@
-
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
@@ -10,17 +9,17 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90",
+        default: "bg-feminine-primary text-feminine-text-light hover:bg-feminine-primary-dark",
         destructive:
-          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+          "bg-feminine-accent text-feminine-text-light hover:bg-feminine-accent-dark",
         outline:
-          "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
+          "border border-feminine-primary/30 bg-feminine-background-alt hover:bg-feminine-primary/10 hover:text-feminine-primary",
         secondary:
-          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
-        accent: "bg-csp-accent text-white hover:bg-csp-accent-subtle shadow-[0_0_10px_rgba(255,0,127,0.3)] hover:shadow-[0_0_15px_rgba(255,0,127,0.5)]",
-        cyan: "bg-csp-cyan text-csp-primary hover:bg-csp-cyan-subtle shadow-[0_0_10px_rgba(0,255,255,0.3)] hover:shadow-[0_0_15px_rgba(0,255,255,0.5)]",
+          "bg-feminine-secondary text-feminine-text-light hover:bg-feminine-secondary-dark",
+        ghost: "hover:bg-feminine-primary/10 hover:text-feminine-primary",
+        link: "text-feminine-primary underline-offset-4 hover:underline",
+        feminine: "bg-feminine-primary text-feminine-text-light hover:bg-feminine-primary-dark shadow-[0_0_10px_rgba(155,77,202,0.3)] hover:shadow-[0_0_15px_rgba(155,77,202,0.5)]",
+        soft: "bg-feminine-secondary text-feminine-text-light hover:bg-feminine-secondary-dark shadow-[0_0_10px_rgba(255,105,180,0.3)] hover:shadow-[0_0_15px_rgba(255,105,180,0.5)]",
       },
       size: {
         default: "h-10 px-4 py-2",

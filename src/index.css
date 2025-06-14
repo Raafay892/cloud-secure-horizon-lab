@@ -6,83 +6,83 @@
 
 @layer base {
   :root {
-    --background: 272 100% 5%;
-    --foreground: 0 0% 98%;
+    --background: 0 0% 100%;
+    --foreground: 0 0% 29%;
 
-    --card: 265 100% 10%;
-    --card-foreground: 0 0% 98%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 29%;
 
-    --popover: 265 100% 10%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 29%;
 
-    --primary: 273 100% 18%;
-    --primary-foreground: 0 0% 98%;
+    --primary: 280 65% 58%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 270 100% 22%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 330 100% 71%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 270 50% 15%;
-    --muted-foreground: 0 0% 80%;
+    --muted: 330 30% 95%;
+    --muted-foreground: 0 0% 40%;
 
-    --accent: 328 100% 50%;
+    --accent: 330 100% 71%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 90% 50%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 270 50% 20%;
-    --input: 270 50% 20%;
-    --ring: 328 100% 50%;
+    --border: 280 30% 90%;
+    --input: 280 30% 90%;
+    --ring: 330 100% 71%;
 
     --radius: 0.5rem;
 
-    --sidebar-background: 265 100% 10%;
-    --sidebar-foreground: 0 0% 98%;
-    --sidebar-primary: 328 100% 50%;
+    --sidebar-background: 280 65% 58%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 330 100% 71%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 270 50% 15%;
-    --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-border: 270 50% 20%;
-    --sidebar-ring: 328 100% 50%;
+    --sidebar-accent: 280 30% 90%;
+    --sidebar-accent-foreground: 0 0% 29%;
+    --sidebar-border: 280 30% 90%;
+    --sidebar-ring: 330 100% 71%;
   }
 
   .dark {
-    --background: 272 100% 5%;
+    --background: 280 65% 15%;
     --foreground: 0 0% 98%;
 
-    --card: 265 100% 10%;
+    --card: 280 65% 20%;
     --card-foreground: 0 0% 98%;
 
-    --popover: 265 100% 10%;
+    --popover: 280 65% 20%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 273 100% 18%;
-    --primary-foreground: 0 0% 98%;
+    --primary: 280 65% 58%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 270 100% 22%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 330 100% 71%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 270 50% 15%;
+    --muted: 280 30% 25%;
     --muted-foreground: 0 0% 80%;
 
-    --accent: 328 100% 50%;
+    --accent: 330 100% 71%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 90% 50%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 270 50% 20%;
-    --input: 270 50% 20%;
-    --ring: 328 100% 50%;
+    --border: 280 30% 30%;
+    --input: 280 30% 30%;
+    --ring: 330 100% 71%;
     
-    --sidebar-background: 265 100% 10%;
+    --sidebar-background: 280 65% 20%;
     --sidebar-foreground: 0 0% 98%;
-    --sidebar-primary: 328 100% 50%;
+    --sidebar-primary: 330 100% 71%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 270 50% 15%;
+    --sidebar-accent: 280 30% 25%;
     --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-border: 270 50% 20%;
-    --sidebar-ring: 328 100% 50%;
+    --sidebar-border: 280 30% 30%;
+    --sidebar-ring: 330 100% 71%;
   }
 }
 
@@ -92,15 +92,15 @@
   }
 
   body {
-    @apply bg-gradient-to-r from-csp-primary to-csp-secondary text-csp-text-secondary font-roboto;
-    background-image: radial-gradient(hsla(300, 100%, 50%, 0.1) 1px, transparent 1px), 
-                      radial-gradient(hsla(180, 100%, 50%, 0.1) 1px, transparent 1px);
+    @apply bg-feminine-background text-feminine-text-primary font-roboto;
+    background-image: radial-gradient(hsla(280, 65%, 58%, 0.1) 1px, transparent 1px), 
+                      radial-gradient(hsla(330, 100%, 71%, 0.1) 1px, transparent 1px);
     background-size: 50px 50px;
     background-position: 0 0, 25px 25px;
     position: relative;
   }
 
-  /* Floating hexagon shapes */
+  /* Floating shapes */
   body::before {
     content: '';
     position: fixed;
@@ -108,34 +108,34 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 33.33l28.87 16.67v33.33L50 100l-28.87-16.67V50L50 33.33z' fill='%23ffffff' fill-opacity='0.03'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 33.33l28.87 16.67v33.33L50 100l-28.87-16.67V50L50 33.33z' fill='%239B4DCA' fill-opacity='0.03'/%3E%3C/svg%3E");
     background-size: 150px 150px;
     pointer-events: none;
     z-index: 0;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-montserrat font-bold text-csp-text-primary;
+    @apply font-montserrat font-bold text-feminine-text-primary;
   }
   
-  /* CityDefend-inspired button styles */
-  .btn-citydefend {
-    @apply bg-csp-accent text-white py-2 px-5 font-montserrat font-medium rounded-pill hover:bg-csp-accent-subtle transition-all duration-300 shadow-[0_0_10px_rgba(255,0,127,0.4)] hover:shadow-[0_0_15px_rgba(255,0,127,0.6)];
+  /* Feminine button styles */
+  .btn-feminine {
+    @apply bg-feminine-secondary text-feminine-text-light py-2 px-5 font-montserrat font-medium rounded-pill hover:bg-feminine-secondary-dark transition-all duration-300 shadow-[0_0_10px_rgba(255,105,180,0.4)] hover:shadow-[0_0_15px_rgba(255,105,180,0.6)];
   }
   
-  /* Card styles inspired by CityDefend */
-  .card-citydefend {
-    @apply bg-card rounded-md border border-csp-tertiary/30 shadow-[0_5px_15px_rgba(0,0,0,0.3)] backdrop-blur-sm;
+  /* Card styles */
+  .card-feminine {
+    @apply bg-feminine-background-alt rounded-md border border-feminine-primary/30 shadow-[0_5px_15px_rgba(155,77,202,0.2)] backdrop-blur-sm;
   }
 
-  /* Neon text */
-  .neon-text {
-    @apply text-csp-accent drop-shadow-[0_0_5px_rgba(255,0,127,0.7)];
+  /* Accent text */
+  .accent-text {
+    @apply text-feminine-secondary drop-shadow-[0_0_5px_rgba(255,105,180,0.7)];
   }
 
-  /* Cyan text */
-  .cyan-text {
-    @apply text-csp-cyan drop-shadow-[0_0_5px_rgba(0,255,255,0.7)];
+  /* Primary text */
+  .primary-text {
+    @apply text-feminine-primary drop-shadow-[0_0_5px_rgba(155,77,202,0.7)];
   }
 }
 
@@ -148,8 +148,8 @@
     font-family: 'Roboto', sans-serif;
   }
   
-  /* CityDefend-inspired layout utilities */
-  .container-citydefend {
+  /* Layout utilities */
+  .container-feminine {
     @apply px-4 mx-auto max-w-7xl relative z-10;
   }
   
@@ -157,13 +157,13 @@
     @apply py-12 md:py-16 lg:py-20;
   }
   
-  /* Animated link underline effect from CityDefend */
+  /* Animated link underline effect */
   .link-underline {
     @apply relative inline-block;
   }
   
   .link-underline:after {
-    @apply content-[''] absolute w-full scale-x-0 h-0.5 bottom-0 left-0 bg-csp-accent origin-bottom-right transition-transform duration-300;
+    @apply content-[''] absolute w-full scale-x-0 h-0.5 bottom-0 left-0 bg-feminine-secondary origin-bottom-right transition-transform duration-300;
   }
   
   .link-underline:hover:after {
@@ -172,35 +172,35 @@
 
   /* Glowing border */
   .glow-border {
-    @apply border border-csp-cyan/50 shadow-[0_0_10px_rgba(0,255,255,0.3)];
+    @apply border border-feminine-primary/50 shadow-[0_0_10px_rgba(155,77,202,0.3)];
   }
 
-  /* Neon button */
-  .neon-btn {
-    @apply bg-transparent text-csp-accent border border-csp-accent rounded-pill px-6 py-2 transition-all duration-300 shadow-[0_0_10px_rgba(255,0,127,0.3)] hover:shadow-[0_0_15px_rgba(255,0,127,0.5)] hover:bg-csp-accent/10;
+  /* Accent button */
+  .accent-btn {
+    @apply bg-transparent text-feminine-secondary border border-feminine-secondary rounded-pill px-6 py-2 transition-all duration-300 shadow-[0_0_10px_rgba(255,105,180,0.3)] hover:shadow-[0_0_15px_rgba(255,105,180,0.5)] hover:bg-feminine-secondary/10;
   }
 
-  /* Cyan button */
-  .cyan-btn {
-    @apply bg-transparent text-csp-cyan border border-csp-cyan rounded-pill px-6 py-2 transition-all duration-300 shadow-[0_0_10px_rgba(0,255,255,0.3)] hover:shadow-[0_0_15px_rgba(0,255,255,0.5)] hover:bg-csp-cyan/10;
+  /* Primary button */
+  .primary-btn {
+    @apply bg-transparent text-feminine-primary border border-feminine-primary rounded-pill px-6 py-2 transition-all duration-300 shadow-[0_0_10px_rgba(155,77,202,0.3)] hover:shadow-[0_0_15px_rgba(155,77,202,0.5)] hover:bg-feminine-primary/10;
   }
 
   /* Glass card effect */
   .glass-card {
-    @apply bg-black/20 backdrop-blur-md border border-white/10 rounded-lg;
+    @apply bg-feminine-background-alt/80 backdrop-blur-md border border-feminine-primary/10 rounded-lg;
   }
 
-  /* Improve text utility classes */
+  /* Text utility classes */
   .text-primary {
-    @apply text-csp-text-primary;
+    @apply text-feminine-text-primary;
   }
 
   .text-secondary {
-    @apply text-csp-text-secondary;
+    @apply text-feminine-text-secondary;
   }
 
   .text-muted {
-    @apply text-csp-gray-light;
+    @apply text-feminine-text-secondary/70;
   }
 }
 

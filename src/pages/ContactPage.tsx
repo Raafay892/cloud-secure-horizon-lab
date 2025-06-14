@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import PageHeader from "@/components/PageHeader";
 import { Button } from "@/components/ui/button";
@@ -82,7 +81,7 @@ const ContactPage = () => {
       />
 
       {/* Contact Information */}
-      <section className="py-12 bg-csp-gray-light">
+      <section className="py-12 bg-feminine-background-alt">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -91,7 +90,7 @@ const ContactPage = () => {
                 
                 <div className="space-y-6">
                   <div className="flex items-start">
-                    <MapPin className="h-6 w-6 text-csp-teal mr-4 mt-0.5" />
+                    <MapPin className="h-6 w-6 text-feminine-primary mr-4 mt-0.5" />
                     <div>
                       <h3 className="font-semibold text-lg">Address</h3>
                       <p className="text-muted-foreground">
@@ -104,11 +103,11 @@ const ContactPage = () => {
                   </div>
                   
                   <div className="flex items-start">
-                    <Mail className="h-6 w-6 text-csp-teal mr-4 mt-0.5" />
+                    <Mail className="h-6 w-6 text-feminine-primary mr-4 mt-0.5" />
                     <div>
                       <h3 className="font-semibold text-lg">Email</h3>
                       <p className="text-muted-foreground">
-                        <a href="mailto:contact@csplab.org" className="hover:text-csp-teal transition-colors">
+                        <a href="mailto:contact@csplab.org" className="hover:text-feminine-primary transition-colors">
                           contact@csplab.org
                         </a>
                       </p>
@@ -116,11 +115,11 @@ const ContactPage = () => {
                   </div>
                   
                   <div className="flex items-start">
-                    <Phone className="h-6 w-6 text-csp-teal mr-4 mt-0.5" />
+                    <Phone className="h-6 w-6 text-feminine-primary mr-4 mt-0.5" />
                     <div>
                       <h3 className="font-semibold text-lg">Phone</h3>
                       <p className="text-muted-foreground">
-                        <a href="tel:+15551234567" className="hover:text-csp-teal transition-colors">
+                        <a href="tel:+15551234567" className="hover:text-feminine-primary transition-colors">
                           +1 (555) 123-4567
                         </a>
                       </p>
@@ -128,7 +127,7 @@ const ContactPage = () => {
                   </div>
                   
                   <div className="flex items-start">
-                    <Clock className="h-6 w-6 text-csp-teal mr-4 mt-0.5" />
+                    <Clock className="h-6 w-6 text-feminine-primary mr-4 mt-0.5" />
                     <div>
                       <h3 className="font-semibold text-lg">Hours</h3>
                       <p className="text-muted-foreground">
@@ -180,13 +179,13 @@ const ContactPage = () => {
                   <div className="space-y-3">
                     <div className="flex items-center text-sm">
                       <Mail className="h-4 w-4 text-muted-foreground mr-2" />
-                      <a href={`mailto:${person.email}`} className="text-csp-teal hover:underline">
+                      <a href={`mailto:${person.email}`} className="text-feminine-primary hover:underline">
                         {person.email}
                       </a>
                     </div>
                     <div className="flex items-center text-sm">
                       <Phone className="h-4 w-4 text-muted-foreground mr-2" />
-                      <a href={`tel:${person.phone.replace(/\D/g, '')}`} className="text-csp-teal hover:underline">
+                      <a href={`tel:${person.phone.replace(/\D/g, '')}`} className="text-feminine-primary hover:underline">
                         {person.phone}
                       </a>
                     </div>
@@ -210,12 +209,12 @@ const ContactPage = () => {
       </section>
 
       {/* Contact Form */}
-      <section className="py-12 bg-gradient-to-r from-csp-blue-dark to-csp-blue text-white">
+      <section className="py-12 bg-gradient-to-r from-feminine-primary to-feminine-primary-dark text-feminine-text-light">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-8">
               <h2 className="text-2xl font-bold mb-2">Send Us a Message</h2>
-              <p className="text-white/80">
+              <p className="text-feminine-text-light/80">
                 Have a question or want to collaborate? Fill out the form below and we'll get back to you.
               </p>
             </div>
@@ -290,7 +289,7 @@ const ContactPage = () => {
                   <Separator />
                   
                   <div className="flex justify-end">
-                    <Button type="submit" size="lg" className="bg-csp-teal hover:bg-csp-teal/90">
+                    <Button type="submit" size="lg" className="bg-feminine-secondary hover:bg-feminine-secondary-dark">
                       Send Message
                     </Button>
                   </div>
@@ -306,7 +305,7 @@ const ContactPage = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-8">
-              <Building className="h-12 w-12 mx-auto mb-4 text-csp-teal" />
+              <Building className="h-12 w-12 mx-auto mb-4 text-feminine-primary" />
               <h2 className="text-2xl font-bold mb-2">Lab Visits</h2>
               <p className="text-muted-foreground">
                 Interested in visiting our lab facilities? We welcome visitors from academia, industry, and government.

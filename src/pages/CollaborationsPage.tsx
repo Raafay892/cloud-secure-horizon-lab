@@ -1,4 +1,3 @@
-
 import PageHeader from "@/components/PageHeader";
 import SectionHeader from "@/components/SectionHeader";
 import { Button } from "@/components/ui/button";
@@ -47,7 +46,7 @@ const partners = [
 const collaborationTypes = [
   {
     title: "Research Partnerships",
-    icon: <Laptop className="h-10 w-10 text-csp-teal" />,
+    icon: <Laptop className="h-10 w-10 text-feminine-primary" />,
     description: "Collaborate with our team on cutting-edge research projects in cloud security and privacy.",
     benefits: [
       "Access to specialized expertise in cloud security and privacy",
@@ -58,7 +57,7 @@ const collaborationTypes = [
   },
   {
     title: "Industry Collaborations",
-    icon: <Landmark className="h-10 w-10 text-csp-teal" />,
+    icon: <Landmark className="h-10 w-10 text-feminine-primary" />,
     description: "Partner with us to solve real-world security and privacy challenges in cloud environments.",
     benefits: [
       "Solutions to specific technical challenges in your organization",
@@ -69,7 +68,7 @@ const collaborationTypes = [
   },
   {
     title: "Academic Partnerships",
-    icon: <School className="h-10 w-10 text-csp-teal" />,
+    icon: <School className="h-10 w-10 text-feminine-primary" />,
     description: "Join forces with other academic institutions for collaborative research initiatives.",
     benefits: [
       "Joint grant applications and research funding opportunities",
@@ -80,7 +79,7 @@ const collaborationTypes = [
   },
   {
     title: "Community Projects",
-    icon: <Users className="h-10 w-10 text-csp-teal" />,
+    icon: <Users className="h-10 w-10 text-feminine-primary" />,
     description: "Participate in open-source and community-driven initiatives advancing cloud security.",
     benefits: [
       "Contribute to open-source security tools and frameworks",
@@ -100,31 +99,31 @@ const CollaborationsPage = () => {
       />
 
       {/* Collaboration Overview */}
-      <section className="py-12 bg-csp-gray-light">
+      <section className="py-12 bg-feminine-background-alt">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
-            <Handshake className="h-16 w-16 mx-auto mb-6 text-csp-teal" />
+            <Handshake className="h-16 w-16 mx-auto mb-6 text-feminine-primary" />
             <h2 className="text-3xl font-bold mb-4">Why Collaborate With Us?</h2>
             <p className="text-lg text-muted-foreground mb-8">
               The Cloud Security and Privacy Lab is committed to advancing the state of the art through collaborative research with academic, industry, and government partners. We bring specialized expertise in cloud security, privacy engineering, and compliance technologies.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
               <div className="bg-white p-6 rounded-lg shadow-sm">
-                <CheckCircle className="h-8 w-8 text-csp-teal mb-3" />
+                <CheckCircle className="h-8 w-8 text-feminine-primary mb-3" />
                 <h3 className="text-xl font-bold mb-2">Expertise</h3>
                 <p className="text-muted-foreground">
                   Access specialized knowledge and expertise in cloud security and privacy technologies.
                 </p>
               </div>
               <div className="bg-white p-6 rounded-lg shadow-sm">
-                <CheckCircle className="h-8 w-8 text-csp-teal mb-3" />
+                <CheckCircle className="h-8 w-8 text-feminine-primary mb-3" />
                 <h3 className="text-xl font-bold mb-2">Innovation</h3>
                 <p className="text-muted-foreground">
                   Develop new approaches and solutions to challenging security problems.
                 </p>
               </div>
               <div className="bg-white p-6 rounded-lg shadow-sm">
-                <CheckCircle className="h-8 w-8 text-csp-teal mb-3" />
+                <CheckCircle className="h-8 w-8 text-feminine-primary mb-3" />
                 <h3 className="text-xl font-bold mb-2">Impact</h3>
                 <p className="text-muted-foreground">
                   Create meaningful change in how cloud systems handle security and privacy.
@@ -146,7 +145,7 @@ const CollaborationsPage = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
             {collaborationTypes.map((type, index) => (
-              <Card key={index} className="border-2 hover:border-csp-teal transition-all hover:shadow-md h-full">
+              <Card key={index} className="border-2 hover:border-feminine-primary transition-all hover:shadow-md h-full">
                 <CardHeader>
                   <div className="mb-4">{type.icon}</div>
                   <CardTitle className="text-xl">{type.title}</CardTitle>
@@ -157,7 +156,7 @@ const CollaborationsPage = () => {
                   <ul className="space-y-2">
                     {type.benefits.map((benefit, idx) => (
                       <li key={idx} className="flex items-start">
-                        <CheckCircle className="h-5 w-5 text-csp-teal mr-2 flex-shrink-0 mt-0.5" />
+                        <CheckCircle className="h-5 w-5 text-feminine-primary mr-2 flex-shrink-0 mt-0.5" />
                         <span className="text-muted-foreground">{benefit}</span>
                       </li>
                     ))}
@@ -170,7 +169,7 @@ const CollaborationsPage = () => {
       </section>
 
       {/* Current Partners */}
-      <section className="py-12 bg-gradient-to-r from-csp-blue-dark to-csp-blue text-white">
+      <section className="py-12 bg-gradient-to-r from-feminine-primary to-feminine-primary-dark text-feminine-text-light">
         <div className="container mx-auto px-4">
           <SectionHeader
             title="Our Partners"
@@ -253,7 +252,7 @@ const CollaborationsPage = () => {
       </section>
 
       {/* Collaboration Proposal Form */}
-      <section className="py-12 bg-csp-gray-light">
+      <section className="py-12 bg-feminine-background-alt">
         <div className="container mx-auto px-4">
           <SectionHeader
             title="Submit a Collaboration Proposal"

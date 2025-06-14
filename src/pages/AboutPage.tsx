@@ -1,4 +1,3 @@
-
 import PageHeader from "@/components/PageHeader";
 import SectionHeader from "@/components/SectionHeader";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -53,31 +52,31 @@ const AboutPage = () => {
       />
 
       {/* Mission and Vision */}
-      <section className="py-12 bg-csp-gray-light">
+      <section className="py-12 bg-feminine-background-alt">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div>
               <div className="flex items-center mb-4">
-                <Target className="h-8 w-8 text-csp-teal mr-3" />
+                <Target className="h-8 w-8 text-feminine-primary mr-3" />
                 <h2 className="text-2xl font-bold">Our Mission</h2>
               </div>
-              <p className="mb-4 text-muted-foreground">
+              <p className="mb-4 text-feminine-primary">
                 The Cloud Security and Privacy Lab is dedicated to advancing the state of the art in cloud security, data privacy, and compliance technologies through innovative research and practical applications.
               </p>
-              <p className="text-muted-foreground">
+              <p className="text-feminine-primary">
                 We work at the intersection of cryptography, systems security, and privacy engineering to develop solutions that address real-world challenges faced by cloud providers, enterprises, and individuals.
               </p>
             </div>
             
             <div>
               <div className="flex items-center mb-4">
-                <Activity className="h-8 w-8 text-csp-teal mr-3" />
+                <Activity className="h-8 w-8 text-feminine-primary mr-3" />
                 <h2 className="text-2xl font-bold">Our Vision</h2>
               </div>
-              <p className="mb-4 text-muted-foreground">
+              <p className="mb-4 text-feminine-primary">
                 We envision a future where cloud technologies can be used with complete confidence, where privacy is preserved by design, and where security is seamlessly integrated into every aspect of cloud computing.
               </p>
-              <p className="text-muted-foreground">
+              <p className="text-feminine-primary">
                 Our goal is to bridge the gap between theoretical security models and practical implementations, creating technologies that are both highly secure and usable in real-world scenarios.
               </p>
             </div>
@@ -95,37 +94,37 @@ const AboutPage = () => {
           />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-            <Card className="bg-gradient-to-br from-csp-blue-dark to-csp-blue text-white border-0">
+            <Card className="bg-gradient-to-br from-feminine-primary to-feminine-primary-dark text-feminine-text-light border-0">
               <CardHeader>
                 <FileCheck className="h-8 w-8 mb-2" />
                 <CardTitle>Advance Security Models</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-white/80">
+                <p className="text-feminine-text-light/80">
                   Develop and refine theoretical security models that address the unique challenges of distributed and cloud computing environments.
                 </p>
               </CardContent>
             </Card>
 
-            <Card className="bg-gradient-to-br from-csp-blue-dark to-csp-blue text-white border-0">
+            <Card className="bg-gradient-to-br from-feminine-primary to-feminine-primary-dark text-feminine-text-light border-0">
               <CardHeader>
                 <DownloadCloud className="h-8 w-8 mb-2" />
                 <CardTitle>Build Practical Tools</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-white/80">
+                <p className="text-feminine-text-light/80">
                   Create usable security and privacy tools that can be readily deployed in real-world cloud environments by both providers and users.
                 </p>
               </CardContent>
             </Card>
 
-            <Card className="bg-gradient-to-br from-csp-blue-dark to-csp-blue text-white border-0">
+            <Card className="bg-gradient-to-br from-feminine-primary to-feminine-primary-dark text-feminine-text-light border-0">
               <CardHeader>
                 <GraduationCap className="h-8 w-8 mb-2" />
                 <CardTitle>Educate & Train</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-white/80">
+                <p className="text-feminine-text-light/80">
                   Train the next generation of security and privacy researchers through hands-on research experiences and educational initiatives.
                 </p>
               </CardContent>
@@ -135,7 +134,7 @@ const AboutPage = () => {
       </section>
       
       {/* Team Members */}
-      <section className="py-12 bg-csp-gray-light">
+      <section className="py-12 bg-feminine-background-alt">
         <div className="container mx-auto px-4">
           <SectionHeader
             title="Our Team"
@@ -155,9 +154,9 @@ const AboutPage = () => {
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-bold mb-1">{member.name}</h3>
-                  <p className="text-csp-teal font-medium mb-3">{member.role}</p>
+                  <p className="text-feminine-primary font-medium mb-3">{member.role}</p>
                   <Separator className="my-3" />
-                  <p className="text-sm text-muted-foreground">{member.bio}</p>
+                  <p className="text-sm text-feminine-primary">{member.bio}</p>
                 </div>
               </div>
             ))}
@@ -175,36 +174,36 @@ const AboutPage = () => {
 
           <div className="bg-white p-6 rounded-lg shadow-md mt-8">
             <div className="flex items-start mb-6">
-              <div className="bg-csp-blue-dark rounded-full p-3 mr-4">
+              <div className="bg-feminine-primary rounded-full p-3 mr-4">
                 <Briefcase className="h-6 w-6 text-white" />
               </div>
               <div>
                 <h3 className="text-xl font-bold mb-2">2020: Founding</h3>
-                <p className="text-muted-foreground">
+                <p className="text-feminine-primary">
                   The Cloud Security and Privacy Lab was established with an initial focus on secure cloud storage technologies. With funding from the National Science Foundation, the lab began its first research projects.
                 </p>
               </div>
             </div>
 
             <div className="flex items-start mb-6">
-              <div className="bg-csp-blue rounded-full p-3 mr-4">
+              <div className="bg-feminine-secondary rounded-full p-3 mr-4">
                 <Activity className="h-6 w-6 text-white" />
               </div>
               <div>
                 <h3 className="text-xl font-bold mb-2">2021: Expansion</h3>
-                <p className="text-muted-foreground">
+                <p className="text-feminine-primary">
                   The lab expanded its research scope to include privacy-preserving computation and secure multiparty analytics. New partnerships with industry leaders in cloud computing were established.
                 </p>
               </div>
             </div>
 
             <div className="flex items-start">
-              <div className="bg-csp-teal rounded-full p-3 mr-4">
+              <div className="bg-feminine-accent rounded-full p-3 mr-4">
                 <GraduationCap className="h-6 w-6 text-white" />
               </div>
               <div>
                 <h3 className="text-xl font-bold mb-2">2022 - Present: Growth</h3>
-                <p className="text-muted-foreground">
+                <p className="text-feminine-primary">
                   Today, CSP Lab is recognized as a leader in cloud security and privacy research. Our publications regularly appear in top security conferences, and our tools are used by researchers and practitioners worldwide.
                 </p>
               </div>

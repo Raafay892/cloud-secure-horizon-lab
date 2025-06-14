@@ -1,4 +1,3 @@
-
 import PageHeader from "@/components/PageHeader";
 import SectionHeader from "@/components/SectionHeader";
 import { Button } from "@/components/ui/button";
@@ -11,7 +10,7 @@ const researchAreas = [
   {
     id: "cloud-security",
     title: "Cloud Security",
-    icon: <Cloud className="h-8 w-8 text-csp-teal" />,
+    icon: <Cloud className="h-8 w-8 text-feminine-primary" />,
     description: "Developing novel security models and mechanisms for cloud infrastructure, with focus on multi-tenant environments and virtualization security.",
     projects: [
       {
@@ -34,7 +33,7 @@ const researchAreas = [
   {
     id: "data-privacy",
     title: "Data Privacy",
-    icon: <Lock className="h-8 w-8 text-csp-teal" />,
+    icon: <Lock className="h-8 w-8 text-feminine-primary" />,
     description: "Researching methods to protect sensitive data in cloud environments while maintaining utility and enabling analysis on protected data.",
     projects: [
       {
@@ -57,7 +56,7 @@ const researchAreas = [
   {
     id: "compliance",
     title: "Privacy Compliance",
-    icon: <ShieldCheck className="h-8 w-8 text-csp-teal" />,
+    icon: <ShieldCheck className="h-8 w-8 text-feminine-primary" />,
     description: "Creating frameworks and tools to help organizations meet evolving regulatory requirements like GDPR, CCPA, and industry-specific regulations.",
     projects: [
       {
@@ -80,7 +79,7 @@ const researchAreas = [
   {
     id: "identity",
     title: "Identity & Access Management",
-    icon: <UserCheck className="h-8 w-8 text-csp-teal" />,
+    icon: <UserCheck className="h-8 w-8 text-feminine-primary" />,
     description: "Researching advanced identity and access management solutions for cloud environments, focusing on zero trust architectures.",
     projects: [
       {
@@ -103,7 +102,7 @@ const researchAreas = [
   {
     id: "secure-storage",
     title: "Secure Storage",
-    icon: <Database className="h-8 w-8 text-csp-teal" />,
+    icon: <Database className="h-8 w-8 text-feminine-primary" />,
     description: "Developing secure storage systems and encryption techniques that protect data at rest while enabling efficient access and search.",
     projects: [
       {
@@ -126,7 +125,7 @@ const researchAreas = [
   {
     id: "cloud-networking",
     title: "Secure Cloud Networking",
-    icon: <Server className="h-8 w-8 text-csp-teal" />,
+    icon: <Server className="h-8 w-8 text-feminine-primary" />,
     description: "Researching secure network architectures and protocols for cloud environments, including software-defined networking security.",
     projects: [
       {
@@ -157,7 +156,7 @@ const ResearchPage = () => {
       />
 
       {/* Research Overview */}
-      <section className="py-12 bg-csp-gray-light">
+      <section className="py-12 bg-feminine-background-alt">
         <div className="container mx-auto px-4">
           <SectionHeader
             title="Research Focus Areas"
@@ -167,7 +166,7 @@ const ResearchPage = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
             {researchAreas.map((area, index) => (
-              <Card key={index} className="border-2 hover:border-csp-teal transition-all hover:shadow-md">
+              <Card key={index} className="border-2 hover:border-feminine-primary transition-all hover:shadow-md">
                 <CardHeader className="pb-2">
                   <div className="mb-2">{area.icon}</div>
                   <CardTitle>{area.title}</CardTitle>
@@ -236,7 +235,7 @@ const ResearchPage = () => {
       </section>
 
       {/* Research Infrastructure */}
-      <section className="py-12 bg-gradient-to-r from-csp-blue-dark to-csp-blue text-white">
+      <section className="py-12 bg-gradient-to-r from-feminine-primary to-feminine-primary-dark text-feminine-text-light">
         <div className="container mx-auto px-4">
           <SectionHeader
             title="Research Infrastructure"

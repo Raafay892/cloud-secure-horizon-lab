@@ -1,4 +1,3 @@
-
 import { cn } from "@/lib/utils";
 
 interface SectionHeaderProps {
@@ -23,12 +22,12 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
         className
       )}
     >
-      <h2 className="text-2xl md:text-3xl font-bold mb-3 relative inline-block font-montserrat">
+      <h2 className="text-2xl md:text-3xl font-bold mb-3 relative inline-block font-montserrat text-feminine-text-primary">
         {title}
-        <span className="absolute -bottom-1 left-0 w-14 h-1 bg-gradient-to-r from-csp-accent to-csp-accent/70 shadow-[0_0_10px_rgba(255,0,127,0.7)]"></span>
+        <span className="absolute -bottom-1 left-0 w-14 h-1 bg-gradient-to-r from-feminine-primary to-feminine-secondary shadow-[0_0_10px_rgba(155,77,202,0.4)]"></span>
       </h2>
       {subtitle && (
-        <p className="text-white/80 mt-4 max-w-3xl text-lg"
+        <p className="text-feminine-text-secondary mt-4 max-w-3xl text-lg"
            style={{ marginLeft: align === "center" ? "auto" : "", marginRight: align === "center" ? "auto" : "" }}>
           {subtitle}
         </p>

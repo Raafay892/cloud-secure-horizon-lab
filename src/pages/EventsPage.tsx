@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import PageHeader from "@/components/PageHeader";
 import SectionHeader from "@/components/SectionHeader";
@@ -234,14 +233,14 @@ const EventsPage = () => {
               </div>
               
               {/* Calendar Integration */}
-              <div className="mt-16 bg-csp-gray-light rounded-lg p-8 text-center">
-                <CalendarIcon className="h-12 w-12 mx-auto mb-4 text-csp-teal" />
+              <div className="mt-16 bg-feminine-background-alt rounded-lg p-8 text-center">
+                <CalendarIcon className="h-12 w-12 mx-auto mb-4 text-feminine-primary" />
                 <h3 className="text-2xl font-bold mb-2">Subscribe to Our Events Calendar</h3>
                 <p className="text-muted-foreground max-w-2xl mx-auto mb-6">
                   Never miss an event! Subscribe to our events calendar to stay updated with all our upcoming workshops, webinars, and conferences.
                 </p>
                 <div className="flex justify-center gap-4">
-                  <Button className="bg-csp-blue hover:bg-csp-blue-dark">
+                  <Button className="bg-feminine-primary hover:bg-feminine-primary-dark">
                     Google Calendar
                   </Button>
                   <Button>
@@ -292,10 +291,10 @@ const EventsPage = () => {
               </div>
               
               {/* Newsletter Signup */}
-              <div className="mt-16 bg-gradient-to-r from-csp-blue-dark to-csp-blue text-white rounded-lg p-8">
+              <div className="mt-16 bg-gradient-to-r from-feminine-primary to-feminine-primary-dark text-feminine-text-light rounded-lg p-8">
                 <div className="text-center max-w-2xl mx-auto">
                   <h3 className="text-2xl font-bold mb-4">Subscribe to Our Newsletter</h3>
-                  <p className="mb-6 text-white/80">
+                  <p className="mb-6 text-feminine-text-light/80">
                     Get the latest news, research updates, and event announcements delivered directly to your inbox.
                   </p>
                   <form className="space-y-4">
@@ -306,11 +305,11 @@ const EventsPage = () => {
                         className="px-4 py-3 rounded-md flex-grow text-foreground"
                         required
                       />
-                      <Button className="bg-csp-teal hover:bg-csp-teal/90 whitespace-nowrap">
+                      <Button className="bg-feminine-secondary hover:bg-feminine-secondary-dark whitespace-nowrap">
                         Subscribe Now
                       </Button>
                     </div>
-                    <p className="text-sm text-white/60">
+                    <p className="text-sm text-feminine-text-light/60">
                       We respect your privacy. Unsubscribe at any time.
                     </p>
                   </form>

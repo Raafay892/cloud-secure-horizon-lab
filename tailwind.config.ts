@@ -59,21 +59,52 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
+        feminine: {
+          primary: {
+            DEFAULT: '#9B4DCA',
+            light: '#B47EDE',
+            dark: '#7B2CBF',
+          },
+          secondary: {
+            DEFAULT: '#FF69B4',
+            light: '#FFB6C1',
+            dark: '#DB7093',
+          },
+          accent: {
+            DEFAULT: '#F8BBD0',
+            light: '#FCE4EC',
+            dark: '#F48FB1',
+          },
+          background: {
+            DEFAULT: '#FFFFFF',
+            alt: '#FDF2F8',
+            dark: '#2D1B69',
+          },
+          text: {
+            primary: '#4A4A4A',
+            secondary: '#666666',
+            light: '#FFFFFF',
+          },
+          additional: {
+            lavender: '#E6E6FA',
+            peach: '#FFDAB9',
+            mint: '#F5FFFA',
+            rose: '#FFE4E1',
+          }
+        },
         csp: {
-          'primary': '#1e005a',      // Deep purple (keep original)
-          'secondary': '#3d006f',    // Medium purple (keep original)
-          'tertiary': '#4a0082',     // Indigo (keep original)
-          'accent': '#ff007f',       // Neon pink (keep original)
-          'accent-subtle': '#d4008a', // Darker pink (keep original)
-          'cyan': '#00ffff',         // Aqua/cyan (keep original)
-          'cyan-subtle': '#00cccc',  // Darker cyan (keep original)
-          
-          // Improved text and background colors for better readability
-          'gray-dark': '#222222',    // Dark gray
-          'gray-medium': '#333333',  // Medium gray
-          'gray-light': '#8E9196',   // Neutral gray for body text
-          'text-primary': '#ffffff', // Pure white for headings
-          'text-secondary': '#cccccc', // Light gray for subheadings
+          'primary': '#1e005a',
+          'secondary': '#3d006f',
+          'tertiary': '#4a0082',
+          'accent': '#ff007f',
+          'accent-subtle': '#d4008a',
+          'cyan': '#00ffff',
+          'cyan-subtle': '#00cccc',
+          'gray-dark': '#222222',
+          'gray-medium': '#333333',
+          'gray-light': '#8E9196',
+          'text-primary': '#ffffff',
+          'text-secondary': '#cccccc',
         }
       },
 			borderRadius: {
@@ -121,10 +152,10 @@ export default {
 				},
         'glow': {
           '0%, 100%': {
-            boxShadow: '0 0 5px 2px rgba(0, 255, 255, 0.3), 0 0 10px rgba(0, 255, 255, 0.2)'
+            boxShadow: '0 0 5px 2px rgba(155, 77, 202, 0.3), 0 0 10px rgba(155, 77, 202, 0.2)'
           },
           '50%': {
-            boxShadow: '0 0 10px 3px rgba(0, 255, 255, 0.5), 0 0 15px rgba(0, 255, 255, 0.3)'
+            boxShadow: '0 0 10px 3px rgba(155, 77, 202, 0.5), 0 0 15px rgba(155, 77, 202, 0.3)'
           }
         },
         'float': {

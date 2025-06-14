@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -8,17 +7,17 @@ import { CheckCircle, FileText, Globe, Lock, Shield, Users } from "lucide-react"
 
 const research = [
   {
-    icon: <Shield className="h-10 w-10 text-csp-teal" />,
+    icon: <Shield className="h-10 w-10 text-feminine-primary" />,
     title: "Cloud Security",
     description: "Developing advanced methodologies for securing cloud infrastructure and services against sophisticated threats.",
   },
   {
-    icon: <Lock className="h-10 w-10 text-csp-teal" />,
+    icon: <Lock className="h-10 w-10 text-feminine-primary" />,
     title: "Data Privacy",
     description: "Researching innovative approaches to protect sensitive data while maintaining utility and compliance.",
   },
   {
-    icon: <CheckCircle className="h-10 w-10 text-csp-teal" />,
+    icon: <CheckCircle className="h-10 w-10 text-feminine-primary" />,
     title: "Privacy Compliance",
     description: "Creating frameworks and tools to help organizations meet evolving regulatory requirements.",
   },
@@ -54,7 +53,7 @@ const HomePage = () => {
       />
 
       {/* About Section */}
-      <section className="py-16 bg-csp-gray-light">
+      <section className="py-16 bg-feminine-background-alt">
         <div className="container mx-auto px-4">
           <SectionHeader
             title="About CSP Lab"
@@ -64,32 +63,32 @@ const HomePage = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
             <div className="flex flex-col items-center text-center">
-              <Globe className="h-12 w-12 text-csp-blue mb-4" />
+              <Globe className="h-12 w-12 text-feminine-primary mb-4" />
               <h3 className="text-xl font-bold mb-2">Our Mission</h3>
-              <p className="text-muted-foreground">
+              <p className="text-feminine-text-secondary">
                 To advance the state of the art in cloud security and privacy through innovative research and practical applications.
               </p>
             </div>
 
             <div className="flex flex-col items-center text-center">
-              <Users className="h-12 w-12 text-csp-blue mb-4" />
+              <Users className="h-12 w-12 text-feminine-primary mb-4" />
               <h3 className="text-xl font-bold mb-2">Our Team</h3>
-              <p className="text-muted-foreground">
+              <p className="text-feminine-text-secondary">
                 A diverse group of researchers, faculty, and students passionate about solving complex security challenges.
               </p>
             </div>
 
             <div className="flex flex-col items-center text-center">
-              <FileText className="h-12 w-12 text-csp-blue mb-4" />
+              <FileText className="h-12 w-12 text-feminine-primary mb-4" />
               <h3 className="text-xl font-bold mb-2">Our Work</h3>
-              <p className="text-muted-foreground">
+              <p className="text-feminine-text-secondary">
                 Cutting-edge research projects, publications, and practical tools that address real-world security problems.
               </p>
             </div>
           </div>
 
           <div className="mt-12 text-center">
-            <Button asChild size="lg">
+            <Button asChild size="lg" className="btn-feminine">
               <Link to="/about">Learn More About Us</Link>
             </Button>
           </div>
@@ -107,20 +106,20 @@ const HomePage = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
             {research.map((item, index) => (
-              <Card key={index} className="border-2 border-muted transition-all hover:border-csp-teal hover:shadow-md">
+              <Card key={index} className="card-feminine hover:border-feminine-primary transition-all">
                 <CardHeader className="pb-2">
                   <div className="mb-2">{item.icon}</div>
                   <CardTitle>{item.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground">{item.description}</p>
+                  <p className="text-feminine-text-secondary">{item.description}</p>
                 </CardContent>
               </Card>
             ))}
           </div>
 
           <div className="mt-12 text-center">
-            <Button asChild size="lg" variant="outline">
+            <Button asChild size="lg" className="primary-btn">
               <Link to="/research">Explore All Research Areas</Link>
             </Button>
           </div>
@@ -128,25 +127,25 @@ const HomePage = () => {
       </section>
 
       {/* Latest Publications */}
-      <section className="py-16 bg-gradient-to-r from-csp-blue-dark to-csp-blue text-white">
+      <section className="py-16 bg-gradient-to-r from-feminine-primary to-feminine-primary-dark text-feminine-text-light">
         <div className="container mx-auto px-4">
           <SectionHeader
             title="Latest Publications"
             subtitle="Our research leads to influential publications in top security and privacy venues."
             align="center"
-            className="text-white [&>p]:text-white/80"
+            className="text-feminine-text-light [&>p]:text-feminine-text-light/80"
           />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
             {latestPublications.map((pub, index) => (
-              <Card key={index} className="bg-white/10 backdrop-blur-sm border-0 text-white hover:bg-white/20 transition-colors">
+              <Card key={index} className="glass-card group transition-colors hover:bg-feminine-primary hover:border-feminine-primary">
                 <CardHeader>
-                  <CardTitle className="text-lg">{pub.title}</CardTitle>
-                  <CardDescription className="text-white/70">{pub.authors}</CardDescription>
+                  <CardTitle className="text-lg group-hover:text-white transition-colors">{pub.title}</CardTitle>
+                  <CardDescription className="text-feminine-primary/80 group-hover:text-white transition-colors">{pub.authors}</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-sm text-white/80 mb-4">{pub.conference}</p>
-                  <Button asChild variant="outline" className="w-full border-white text-white hover:bg-white hover:text-csp-blue-dark">
+                  <p className="text-sm text-feminine-primary/70 mb-4 group-hover:text-white transition-colors">{pub.conference}</p>
+                  <Button asChild variant="outline" className="w-full border-feminine-primary bg-white text-feminine-primary group-hover:bg-white/20 group-hover:text-white group-hover:border-white hover:bg-feminine-primary hover:text-white hover:border-feminine-primary">
                     <Link to={pub.link}>Read More</Link>
                   </Button>
                 </CardContent>
@@ -155,7 +154,7 @@ const HomePage = () => {
           </div>
 
           <div className="mt-12 text-center">
-            <Button asChild size="lg" className="bg-white text-csp-blue-dark hover:bg-white/90">
+            <Button asChild size="lg" className="bg-feminine-text-light text-feminine-primary hover:bg-feminine-text-light/90">
               <Link to="/publications">View All Publications</Link>
             </Button>
           </div>
@@ -163,17 +162,17 @@ const HomePage = () => {
       </section>
 
       {/* Collaboration CTA */}
-      <section className="py-20 bg-csp-gray-light">
+      <section className="py-20 bg-feminine-background-alt">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Interested in Collaborating?</h2>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-feminine-text-primary">Interested in Collaborating?</h2>
+          <p className="text-lg md:text-xl text-feminine-text-secondary max-w-3xl mx-auto mb-8">
             We're always looking for research partners, industry collaborators, and talented individuals to join our mission.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Button asChild size="lg">
+            <Button asChild size="lg" className="btn-feminine">
               <Link to="/collaborations">Collaboration Opportunities</Link>
             </Button>
-            <Button asChild variant="outline" size="lg">
+            <Button asChild variant="outline" size="lg" className="primary-btn">
               <Link to="/contact">Contact Us</Link>
             </Button>
           </div>

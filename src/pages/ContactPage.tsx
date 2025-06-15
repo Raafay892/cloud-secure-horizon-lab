@@ -64,7 +64,7 @@ const contactPeople = [
     role: "Research Associate",
     email: "aimen.farooq@csplab.org",
     phone: "+1 (555) 777-7777",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&auto=format&fit=crop&q=80",
+    image: "/lovable-uploads/16220698-31ff-45bb-a07f-a21a7f32ffe1.png",
     topics: ["Cloud Security"]
   },
 ];
@@ -198,7 +198,7 @@ const ContactPage = () => {
                     <img
                       src={person.image}
                       alt={person.name}
-                      className="w-12 h-12 rounded-full mr-3 object-cover"
+                      className="w-16 h-16 rounded-full object-cover object-center mr-3 bg-gray-100 border border-gray-200"
                     />
                     <div>
                       <CardTitle className="text-lg">{person.name}</CardTitle>

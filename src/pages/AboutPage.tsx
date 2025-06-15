@@ -44,10 +44,17 @@ const teamMembers = [
   {
     name: "Aimen Farooq",
     role: "Research Associate",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&auto=format&fit=crop&q=80",
+    image: "/lovable-uploads/16220698-31ff-45bb-a07f-a21a7f32ffe1.png",
     bio: "Supports various aspects of cloud security and privacy research.",
   },
 ];
+
+// Divide team by roles
+const principalInvestigators = teamMembers.filter(
+  (m) => m.role === "Principal Investigator" || m.role === "Co-Principal Investigator"
+);
+const researchAssistants = teamMembers.filter((m) => m.role === "Research Assistant");
+const researchAssociates = teamMembers.filter((m) => m.role === "Research Associate");
 
 const AboutPage = () => {
   return (
@@ -147,22 +154,71 @@ const AboutPage = () => {
             subtitle="Meet the researchers and faculty working to advance cloud security and privacy"
             align="center"
           />
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
-            {teamMembers.map((member, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="h-48 overflow-hidden">
-                  <img 
-                    src={member.image} 
+          {/* Row 1: PI and Co-PI */}
+          <div className="flex flex-col items-center md:flex-row md:justify-center gap-8 mt-8">
+            {principalInvestigators.map((member, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow w-full max-w-xs flex flex-col items-center"
+              >
+                <div className="w-40 h-40 overflow-hidden flex items-center justify-center bg-gray-100 mt-6">
+                  <img
+                    src={member.image}
                     alt={member.name}
-                    className="w-full h-full object-cover"
+                    className="w-40 h-40 rounded-full object-cover object-center"
                   />
                 </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold mb-1">{member.name}</h3>
-                  <p className="text-feminine-primary font-medium mb-3">{member.role}</p>
+                <div className="p-6 flex flex-col items-center">
+                  <h3 className="text-xl font-bold mb-1 text-center">{member.name}</h3>
+                  <p className="text-feminine-primary font-medium mb-3 text-center">{member.role}</p>
                   <Separator className="my-3" />
-                  <p className="text-sm text-feminine-primary">{member.bio}</p>
+                  <p className="text-sm text-feminine-primary text-center">{member.bio}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          {/* Row 2: Research Assistants */}
+          <div className="flex flex-col items-center md:flex-row md:justify-center gap-8 mt-12">
+            {researchAssistants.map((member, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow w-full max-w-xs flex flex-col items-center"
+              >
+                <div className="w-40 h-40 overflow-hidden flex items-center justify-center bg-gray-100 mt-6">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-40 h-40 rounded-full object-cover object-center"
+                  />
+                </div>
+                <div className="p-6 flex flex-col items-center">
+                  <h3 className="text-xl font-bold mb-1 text-center">{member.name}</h3>
+                  <p className="text-feminine-primary font-medium mb-3 text-center">{member.role}</p>
+                  <Separator className="my-3" />
+                  <p className="text-sm text-feminine-primary text-center">{member.bio}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          {/* Row 3: Research Associates */}
+          <div className="flex flex-col items-center md:flex-row md:justify-center gap-8 mt-12">
+            {researchAssociates.map((member, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow w-full max-w-xs flex flex-col items-center"
+              >
+                <div className="w-40 h-40 overflow-hidden flex items-center justify-center bg-gray-100 mt-6">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-40 h-40 rounded-full object-cover object-center"
+                  />
+                </div>
+                <div className="p-6 flex flex-col items-center">
+                  <h3 className="text-xl font-bold mb-1 text-center">{member.name}</h3>
+                  <p className="text-feminine-primary font-medium mb-3 text-center">{member.role}</p>
+                  <Separator className="my-3" />
+                  <p className="text-sm text-feminine-primary text-center">{member.bio}</p>
                 </div>
               </div>
             ))}

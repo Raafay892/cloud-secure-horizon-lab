@@ -16,7 +16,7 @@ const contactPersons = [
     role: "Principal Investigator",
     email: "shahzaib.tahir@csplab.org",
     phone: "+1 (555) 111-1111",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&auto=format&fit=crop&q=80",
+    image: "/lovable-uploads/a0df76a8-82c9-4076-bda9-809eacd9607a.png",
     topics: ["General Inquiries", "Cloud Security Research"]
   },
   {

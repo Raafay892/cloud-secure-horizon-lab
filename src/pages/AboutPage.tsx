@@ -8,7 +8,7 @@ const teamMembers = [
   {
     name: "Dr. Shahzaib Tahir",
     role: "Principal Investigator",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&auto=format&fit=crop&q=80",
+    image: "/lovable-uploads/a0df76a8-82c9-4076-bda9-809eacd9607a.png",
     bio: "Leads the CSP Lab with expertise in cloud security, searchable encryption, and privacy-preserving technologies.",
   },
   {

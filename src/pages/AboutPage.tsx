@@ -38,7 +38,7 @@ const teamMembers = [
   {
     name: "Muhammad Raafay Nouman",
     role: "Research Associate",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&auto=format&fit=crop&q=80",
+    image: "/lovable-uploads/4d1da732-7f45-4334-a63a-c0c5a842de2e.png",
     bio: "Contributes to cutting-edge privacy and security research.",
   },
   {

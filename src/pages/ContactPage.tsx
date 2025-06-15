@@ -56,7 +56,7 @@ const contactPeople = [
     role: "Research Associate",
     email: "raafay.nouman@csplab.org",
     phone: "+1 (555) 666-6666",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&auto=format&fit=crop&q=80",
+    image: "/lovable-uploads/4d1da732-7f45-4334-a63a-c0c5a842de2e.png",
     topics: ["Privacy Technology"]
   },
   {

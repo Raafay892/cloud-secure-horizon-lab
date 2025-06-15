@@ -32,7 +32,7 @@ const contactPeople = [
     role: "Research Assistant",
     email: "aiman.sultan@csplab.org",
     phone: "+1 (555) 333-3333",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&auto=format&fit=crop&q=80",
+    image: "/lovable-uploads/bbd9f9dc-3169-4a67-a043-c09a018f351e.png",
     topics: ["Research Projects"]
   },
   {

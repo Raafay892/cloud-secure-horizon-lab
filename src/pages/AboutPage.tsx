@@ -20,7 +20,7 @@ const teamMembers = [
   {
     name: "Aiman Sultan",
     role: "Research Assistant",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&auto=format&fit=crop&q=80",
+    image: "/lovable-uploads/bbd9f9dc-3169-4a67-a043-c09a018f351e.png",
     bio: "Supports various research projects in cloud security and privacy.",
   },
   {

@@ -1,7 +1,8 @@
+
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Shield, Lock } from "lucide-react";
+import { Menu, X, Lock } from "lucide-react";
 
 const navItems = [
   { name: "Home", path: "/" },
@@ -27,7 +28,11 @@ const Navbar = () => {
           <div className="flex items-center">
             <NavLink to="/" className="flex items-center space-x-2">
               <div className="flex items-center text-feminine-text-primary">
-                <Shield className="h-6 w-6 text-feminine-primary animate-glow mr-2" />
+                <img 
+                  src="/lovable-uploads/b763174b-1460-4f31-b17c-8377e00e453f.png" 
+                  alt="CSP Lab Logo" 
+                  className="h-8 w-8 mr-2"
+                />
                 <Lock className="h-5 w-5 text-feminine-secondary mr-2" />
                 <span className="text-xl font-bold font-montserrat tracking-tight">CSP Lab</span>
               </div>

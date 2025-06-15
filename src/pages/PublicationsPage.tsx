@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import PageHeader from "@/components/PageHeader";
 import SectionHeader from "@/components/SectionHeader";
@@ -5,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Search, Filter, ExternalLink, Download, Copy, CheckCircle } from "lucide-react";
+import { Search, Filter, ExternalLink, Download, Copy, CheckCircle, Quote } from "lucide-react";
 import { publications } from "@/data/publications";
 import { toast } from "sonner";
 
@@ -111,9 +112,17 @@ const PublicationsPage = () => {
                 <div className="flex justify-between items-start">
                   <div>
                     <CardTitle className="text-xl font-bold mb-2 text-feminine-text-primary">{pub.title}</CardTitle>
-                    <span className="bg-feminine-primary/20 text-feminine-primary px-3 py-1 rounded-pill text-sm font-medium border border-feminine-primary/30">
-                      {pub.type}
-                    </span>
+                    <div className="flex items-center gap-3 mb-2">
+                      <span className="bg-feminine-primary/20 text-feminine-primary px-3 py-1 rounded-pill text-sm font-medium border border-feminine-primary/30">
+                        {pub.type}
+                      </span>
+                      {pub.citations && (
+                        <div className="flex items-center gap-1 text-feminine-text-secondary">
+                          <Quote className="h-4 w-4" />
+                          <span className="text-sm">Cited by {pub.citations}</span>
+                        </div>
+                      )}
+                    </div>
                   </div>
                   <div className="text-feminine-primary font-medium">
                     {pub.year}
@@ -130,6 +139,14 @@ const PublicationsPage = () => {
                   <div>
                     <h4 className="font-medium mb-2 text-feminine-text-primary">Venue</h4>
                     <p className="text-feminine-text-secondary">{pub.venue}</p>
+                    {(pub.volume || pub.issue || pub.pages) && (
+                      <p className="text-feminine-text-secondary text-sm mt-1">
+                        {pub.volume && `Vol. ${pub.volume}`}
+                        {pub.issue && `, Issue ${pub.issue}`}
+                        {pub.pages && `, pp. ${pub.pages}`}
+                        {pub.publisher && ` - ${pub.publisher}`}
+                      </p>
+                    )}
                   </div>
 
                   {pub.abstract && (

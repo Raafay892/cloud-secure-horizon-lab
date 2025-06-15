@@ -1,4 +1,3 @@
-
 import PageHeader from "@/components/PageHeader";
 import SectionHeader from "@/components/SectionHeader";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -10,43 +9,43 @@ const teamMembers = [
     name: "Dr. Shahzaib Tahir",
     role: "Principal Investigator",
     image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&auto=format&fit=crop&q=80",
-    bio: "Dr. Tahir leads the CSP Lab as Principal Investigator with extensive experience in cloud security research, searchable encryption, and privacy-preserving technologies.",
+    bio: "Leads the CSP Lab with expertise in cloud security, searchable encryption, and privacy-preserving technologies.",
   },
   {
     name: "Dr. Hassan Tahir",
     role: "Co-Principal Investigator",
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&auto=format&fit=crop&q=80",
-    bio: "Dr. Hassan Tahir serves as Co-Principal Investigator, contributing expertise in blockchain technologies and privacy-preserving systems.",
+    bio: "Contributes expertise in blockchain technologies and privacy-preserving systems.",
   },
   {
     name: "Aiman Sultan",
     role: "Research Assistant",
     image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&auto=format&fit=crop&q=80",
-    bio: "Aiman works as a Research Assistant, supporting various cloud security and privacy research projects in the lab.",
+    bio: "Supports various research projects in cloud security and privacy.",
   },
   {
     name: "Tayyaba Anwar",
     role: "Research Assistant",
     image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&auto=format&fit=crop&q=80",
-    bio: "Tayyaba serves as a Research Assistant, contributing to ongoing research initiatives in cloud security and privacy technologies.",
+    bio: "Contributes to research initiatives in cloud security and privacy technologies.",
   },
   {
     name: "Syed Bilal Abbas",
     role: "Research Associate",
     image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&auto=format&fit=crop&q=80",
-    bio: "Syed Bilal Abbas works as a Research Associate, focusing on advanced cloud security research and implementation.",
+    bio: "Focuses on advanced cloud security research and implementation.",
   },
   {
     name: "Muhammad Raafay Nouman",
     role: "Research Associate",
     image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&auto=format&fit=crop&q=80",
-    bio: "Muhammad Raafay Nouman serves as a Research Associate, contributing to cutting-edge privacy and security research.",
+    bio: "Contributes to cutting-edge privacy and security research.",
   },
   {
     name: "Aimen Farooq",
     role: "Research Associate",
     image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&auto=format&fit=crop&q=80",
-    bio: "Aimen Farooq works as a Research Associate, supporting various aspects of cloud security and privacy research.",
+    bio: "Supports various aspects of cloud security and privacy research.",
   },
 ];
 
@@ -192,6 +191,15 @@ const AboutPage = () => {
                 <div className="flex items-center text-feminine-text-secondary text-sm">
                   <MapPin className="h-4 w-4 mr-1" />
                   <span>Military College of Signals, Khadim Hussain Road, Lalkurti</span>
+                </div>
+                <div className="mt-3 text-feminine-primary/80 text-sm">
+                  <strong>Founding Team:</strong>
+                  <ul className="list-disc list-inside ml-5">
+                    <li>Principal Investigator: Dr. Shahzaib Tahir</li>
+                    <li>Co-Principal Investigator: Dr. Hassan Tahir</li>
+                    <li>Research Assistants: Aiman Sultan, Tayyaba Anwar</li>
+                    <li>Research Associates: Syed Bilal Abbas, Muhammad Raafay Nouman, Aimen Farooq</li>
+                  </ul>
                 </div>
               </div>
             </div>

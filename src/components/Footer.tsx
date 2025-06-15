@@ -129,7 +129,7 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-start text-sm text-feminine-text-light/80">
                 <MapPin size={16} className="mr-2 mt-1 flex-shrink-0 text-feminine-secondary" />
-                <span>123 University Avenue, Research Building, Room 456</span>
+                <span>Military College of Signals, Khadim Hussain Road, Lalkurti</span>
               </li>
               <li className="flex items-center text-sm text-feminine-text-light/80">
                 <Phone size={16} className="mr-2 flex-shrink-0 text-feminine-secondary" />

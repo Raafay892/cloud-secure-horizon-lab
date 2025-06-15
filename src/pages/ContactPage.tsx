@@ -12,28 +12,60 @@ import { MapPin, Mail, Phone, Clock, Building, Users } from "lucide-react";
 // Sample team member contacts
 const contactPersons = [
   {
-    name: "Dr. Jane Smith",
-    role: "Lab Director",
-    email: "jsmith@csplab.org",
-    phone: "+1 (555) 123-4567",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&auto=format&fit=crop&q=80",
-    topics: ["General Inquiries", "Research Collaboration"]
-  },
-  {
-    name: "Dr. Michael Johnson",
-    role: "Senior Researcher",
-    email: "mjohnson@csplab.org",
-    phone: "+1 (555) 234-5678",
+    name: "Dr. Shahzaib Tahir",
+    role: "Principal Investigator",
+    email: "shahzaib.tahir@csplab.org",
+    phone: "+1 (555) 111-1111",
     image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&auto=format&fit=crop&q=80",
-    topics: ["Cloud Security Research", "Industry Partnerships"]
+    topics: ["General Inquiries", "Cloud Security Research"]
   },
   {
-    name: "Dr. Lisa Chen",
-    role: "Research Scientist",
-    email: "lchen@csplab.org",
-    phone: "+1 (555) 345-6789",
+    name: "Dr. Hassan Tahir",
+    role: "Co-Principal Investigator",
+    email: "hassan.tahir@csplab.org",
+    phone: "+1 (555) 222-2222",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&auto=format&fit=crop&q=80",
+    topics: ["Blockchain", "Research Collaboration"]
+  },
+  {
+    name: "Aiman Sultan",
+    role: "Research Assistant",
+    email: "aiman.sultan@csplab.org",
+    phone: "+1 (555) 333-3333",
+    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&auto=format&fit=crop&q=80",
+    topics: ["Research Projects"]
+  },
+  {
+    name: "Tayyaba Anwar",
+    role: "Research Assistant",
+    email: "tayyaba.anwar@csplab.org",
+    phone: "+1 (555) 444-4444",
     image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&h=200&auto=format&fit=crop&q=80",
-    topics: ["Privacy-Preserving Computation", "Academic Collaboration"]
+    topics: ["Research Projects"]
+  },
+  {
+    name: "Syed Bilal Abbas",
+    role: "Research Associate",
+    email: "bilal.abbas@csplab.org",
+    phone: "+1 (555) 555-5555",
+    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=200&h=200&auto=format&fit=crop&q=80",
+    topics: ["Security Implementation"]
+  },
+  {
+    name: "Muhammad Raafay Nouman",
+    role: "Research Associate",
+    email: "raafay.nouman@csplab.org",
+    phone: "+1 (555) 666-6666",
+    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&auto=format&fit=crop&q=80",
+    topics: ["Privacy Technology"]
+  },
+  {
+    name: "Aimen Farooq",
+    role: "Research Associate",
+    email: "aimen.farooq@csplab.org",
+    phone: "+1 (555) 777-7777",
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&auto=format&fit=crop&q=80",
+    topics: ["Cloud Security"]
   },
 ];
 
@@ -95,9 +127,8 @@ const ContactPage = () => {
                       <h3 className="font-semibold text-lg">Address</h3>
                       <p className="text-muted-foreground">
                         Cloud Security and Privacy Lab<br />
-                        123 University Avenue<br />
-                        Research Building, Room 456<br />
-                        City, State 12345
+                        Military College of Signals<br />
+                        Khadim Hussain Road, Lalkurti
                       </p>
                     </div>
                   </div>

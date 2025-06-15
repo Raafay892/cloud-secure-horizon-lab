@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import HeroSection from "@/components/HeroSection";
 import SectionHeader from "@/components/SectionHeader";
 import { CheckCircle, FileText, Globe, Lock, Shield, Users } from "lucide-react";
+import { publications } from "@/data/publications";
 
 const research = [
   {
@@ -23,26 +24,10 @@ const research = [
   },
 ];
 
-const latestPublications = [
-  {
-    title: "Enhanced Encryption for Distributed Cloud Storage",
-    authors: "J. Smith, A. Johnson, M. Williams",
-    conference: "International Conference on Cloud Security 2024",
-    link: "/publications",
-  },
-  {
-    title: "Privacy-Preserving Machine Learning in Multi-Cloud Environments",
-    authors: "R. Chen, L. Garcia, K. Thompson",
-    conference: "Journal of Cybersecurity, Vol. 15, Issue 3",
-    link: "/publications",
-  },
-  {
-    title: "Threat Modeling for Serverless Computing: A Comprehensive Approach",
-    authors: "T. Anderson, P. Rodriguez",
-    conference: "Cloud Privacy Workshop 2023",
-    link: "/publications",
-  },
-];
+// Get the 3 most recent publications (sorted by year descending)
+const latestPublications = [...publications]
+  .sort((a, b) => b.year - a.year)
+  .slice(0, 3);
 
 const HomePage = () => {
   return (
@@ -74,7 +59,7 @@ const HomePage = () => {
               <Users className="h-12 w-12 text-feminine-primary mb-4" />
               <h3 className="text-xl font-bold mb-2">Our Team</h3>
               <p className="text-feminine-text-secondary">
-                A diverse group of researchers, faculty, and students passionate about solving complex security challenges.
+                A collaborative team led by Dr. Shahzaib Tahir (Principal Investigator), Dr. Hassan Tahir (Co-Principal Investigator), Research Assistants: Aiman Sultan, Tayyaba Anwar, Research Associates: Syed Bilal Abbas, Muhammad Raafay Nouman, Aimen Farooq.
               </p>
             </div>
 
@@ -87,6 +72,9 @@ const HomePage = () => {
             </div>
           </div>
 
+          <div className="mt-8 text-center text-feminine-primary font-medium">
+            <span>Location: Military College of Signals, Khadim Hussain Road, Lalkurti</span>
+          </div>
           <div className="mt-12 text-center">
             <Button asChild size="lg" className="btn-feminine">
               <Link to="/about">Learn More About Us</Link>
@@ -141,12 +129,19 @@ const HomePage = () => {
               <Card key={index} className="glass-card group transition-colors hover:bg-feminine-primary hover:border-feminine-primary">
                 <CardHeader>
                   <CardTitle className="text-lg group-hover:text-white transition-colors">{pub.title}</CardTitle>
-                  <CardDescription className="text-feminine-primary/80 group-hover:text-white transition-colors">{pub.authors}</CardDescription>
+                  <CardDescription className="text-feminine-primary/80 group-hover:text-white transition-colors">
+                    {pub.authors.join(", ")}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-sm text-feminine-primary/70 mb-4 group-hover:text-white transition-colors">{pub.conference}</p>
+                  <p className="text-sm text-feminine-primary/70 mb-4 group-hover:text-white transition-colors">
+                    {pub.venue}{pub.year ? `, ${pub.year}` : ""}
+                  </p>
+                  {Boolean(pub.citations) && (
+                    <p className="text-xs mb-2 text-feminine-text-light/60">{`Cited by ${pub.citations}`}</p>
+                  )}
                   <Button asChild variant="outline" className="w-full border-feminine-primary bg-white text-feminine-primary group-hover:bg-white/20 group-hover:text-white group-hover:border-white hover:bg-feminine-primary hover:text-white hover:border-feminine-primary">
-                    <Link to={pub.link}>Read More</Link>
+                    <Link to="/publications">Read More</Link>
                   </Button>
                 </CardContent>
               </Card>

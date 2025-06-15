@@ -1,45 +1,52 @@
+
 import PageHeader from "@/components/PageHeader";
 import SectionHeader from "@/components/SectionHeader";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { Activity, Briefcase, DownloadCloud, FileCheck, GraduationCap, Target } from "lucide-react";
+import { Activity, Briefcase, DownloadCloud, FileCheck, GraduationCap, Target, MapPin } from "lucide-react";
 
 const teamMembers = [
   {
-    name: "Dr. Jane Smith",
-    role: "Lab Director",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&auto=format&fit=crop&q=80",
-    bio: "Dr. Smith leads the CSP Lab with over 15 years of experience in cloud security research. Her work focuses on secure multi-party computation and privacy-preserving analytics.",
-  },
-  {
-    name: "Dr. Michael Johnson",
-    role: "Senior Researcher",
+    name: "Dr. Shahzaib Tahir",
+    role: "Principal Investigator",
     image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&auto=format&fit=crop&q=80",
-    bio: "Dr. Johnson specializes in secure cloud architecture and threat modeling. He previously worked at leading cloud providers before joining academia.",
+    bio: "Dr. Tahir leads the CSP Lab as Principal Investigator with extensive experience in cloud security research, searchable encryption, and privacy-preserving technologies.",
   },
   {
-    name: "Dr. Lisa Chen",
-    role: "Research Scientist",
-    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&auto=format&fit=crop&q=80",
-    bio: "Dr. Chen's research focuses on privacy-preserving machine learning techniques and differential privacy in cloud environments.",
-  },
-  {
-    name: "Dr. Robert Taylor",
-    role: "Postdoctoral Researcher",
+    name: "Dr. Hassan Tahir",
+    role: "Co-Principal Investigator",
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&auto=format&fit=crop&q=80",
-    bio: "Dr. Taylor works on secure cloud storage systems and encrypted search. He earned his PhD from MIT with a focus on applied cryptography.",
+    bio: "Dr. Hassan Tahir serves as Co-Principal Investigator, contributing expertise in blockchain technologies and privacy-preserving systems.",
   },
   {
-    name: "Sarah Williams",
-    role: "PhD Candidate",
+    name: "Aiman Sultan",
+    role: "Research Assistant",
     image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&auto=format&fit=crop&q=80",
-    bio: "Sarah's doctoral research explores zero-knowledge proofs for cloud compliance verification. She has published in top security conferences.",
+    bio: "Aiman works as a Research Assistant, supporting various cloud security and privacy research projects in the lab.",
   },
   {
-    name: "Kevin Rodriguez",
-    role: "PhD Candidate",
+    name: "Tayyaba Anwar",
+    role: "Research Assistant",
+    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&auto=format&fit=crop&q=80",
+    bio: "Tayyaba serves as a Research Assistant, contributing to ongoing research initiatives in cloud security and privacy technologies.",
+  },
+  {
+    name: "Syed Bilal Abbas",
+    role: "Research Associate",
     image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&auto=format&fit=crop&q=80",
-    bio: "Kevin focuses on secure serverless computing and function-as-a-service security models. He previously worked as a security engineer.",
+    bio: "Syed Bilal Abbas works as a Research Associate, focusing on advanced cloud security research and implementation.",
+  },
+  {
+    name: "Muhammad Raafay Nouman",
+    role: "Research Associate",
+    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&auto=format&fit=crop&q=80",
+    bio: "Muhammad Raafay Nouman serves as a Research Associate, contributing to cutting-edge privacy and security research.",
+  },
+  {
+    name: "Aimen Farooq",
+    role: "Research Associate",
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&auto=format&fit=crop&q=80",
+    bio: "Aimen Farooq works as a Research Associate, supporting various aspects of cloud security and privacy research.",
   },
 ];
 
@@ -178,33 +185,25 @@ const AboutPage = () => {
                 <Briefcase className="h-6 w-6 text-white" />
               </div>
               <div>
-                <h3 className="text-xl font-bold mb-2">2020: Founding</h3>
-                <p className="text-feminine-primary">
-                  The Cloud Security and Privacy Lab was established with an initial focus on secure cloud storage technologies. With funding from the National Science Foundation, the lab began its first research projects.
+                <h3 className="text-xl font-bold mb-2">January 2025: Founding</h3>
+                <p className="text-feminine-primary mb-3">
+                  The Cloud Security and Privacy Lab was established in January 2025 with funding from the Higher Education Commission (HEC). Located at Military College of Signals, Khadim Hussain Road, Lalkurti, the lab began its mission to advance cloud security and privacy research.
                 </p>
-              </div>
-            </div>
-
-            <div className="flex items-start mb-6">
-              <div className="bg-feminine-secondary rounded-full p-3 mr-4">
-                <Activity className="h-6 w-6 text-white" />
-              </div>
-              <div>
-                <h3 className="text-xl font-bold mb-2">2021: Expansion</h3>
-                <p className="text-feminine-primary">
-                  The lab expanded its research scope to include privacy-preserving computation and secure multiparty analytics. New partnerships with industry leaders in cloud computing were established.
-                </p>
+                <div className="flex items-center text-feminine-text-secondary text-sm">
+                  <MapPin className="h-4 w-4 mr-1" />
+                  <span>Military College of Signals, Khadim Hussain Road, Lalkurti</span>
+                </div>
               </div>
             </div>
 
             <div className="flex items-start">
-              <div className="bg-feminine-accent rounded-full p-3 mr-4">
+              <div className="bg-feminine-secondary rounded-full p-3 mr-4">
                 <GraduationCap className="h-6 w-6 text-white" />
               </div>
               <div>
-                <h3 className="text-xl font-bold mb-2">2022 - Present: Growth</h3>
+                <h3 className="text-xl font-bold mb-2">2025 - Present: Building Excellence</h3>
                 <p className="text-feminine-primary">
-                  Today, CSP Lab is recognized as a leader in cloud security and privacy research. Our publications regularly appear in top security conferences, and our tools are used by researchers and practitioners worldwide.
+                  Starting with a focused team of dedicated researchers, CSP Lab is building its foundation in cloud security and privacy research. Led by Dr. Shahzaib Tahir as Principal Investigator and Dr. Hassan Tahir as Co-Principal Investigator, the lab is establishing itself as a center of excellence in the field.
                 </p>
               </div>
             </div>

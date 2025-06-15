@@ -14,7 +14,7 @@ const teamMembers = [
   {
     name: "Dr. Hassan Tahir",
     role: "Co-Principal Investigator",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&auto=format&fit=crop&q=80",
+    image: "/lovable-uploads/3a4b7d7d-c183-4213-aace-95d1d1311827.png",
     bio: "Contributes expertise in blockchain technologies and privacy-preserving systems.",
   },
   {

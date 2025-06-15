@@ -10,7 +10,7 @@ import { useToast } from "@/hooks/use-toast";
 import { MapPin, Mail, Phone, Clock, Building, Users } from "lucide-react";
 
 // Sample team member contacts
-const contactPersons = [
+const contactPeople = [
   {
     name: "Dr. Shahzaib Tahir",
     role: "Principal Investigator",
@@ -24,8 +24,8 @@ const contactPersons = [
     role: "Co-Principal Investigator",
     email: "hassan.tahir@csplab.org",
     phone: "+1 (555) 222-2222",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&auto=format&fit=crop&q=80",
-    topics: ["Blockchain", "Research Collaboration"]
+    image: "/lovable-uploads/3a4b7d7d-c183-4213-aace-95d1d1311827.png",
+    topics: ["Blockchain & Privacy Systems"]
   },
   {
     name: "Aiman Sultan",
@@ -191,7 +191,7 @@ const ContactPage = () => {
           <h2 className="text-2xl font-bold mb-8 text-center">Get in Touch with Our Team Members</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {contactPersons.map((person, index) => (
+            {contactPeople.map((person, index) => (
               <Card key={index} className="hover:shadow-md transition-shadow">
                 <CardHeader className="pb-2">
                   <div className="flex items-center mb-3">
@@ -297,7 +297,7 @@ const ContactPage = () => {
                       onChange={handleChange}
                     >
                       <option value="">General Inquiry</option>
-                      {contactPersons.map((person, index) => (
+                      {contactPeople.map((person, index) => (
                         <option key={index} value={person.name}>
                           {person.name} - {person.role}
                         </option>

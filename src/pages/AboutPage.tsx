@@ -32,7 +32,7 @@ const teamMembers = [
   {
     name: "Syed Bilal Abbas",
     role: "Research Associate",
-    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&auto=format&fit=crop&q=80",
+    image: "/lovable-uploads/676c82b5-d859-4caa-9c98-700326e3c338.png",
     bio: "Focuses on advanced cloud security research and implementation.",
   },
   {

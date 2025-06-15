@@ -48,7 +48,7 @@ const contactPeople = [
     role: "Research Associate",
     email: "bilal.abbas@csplab.org",
     phone: "+1 (555) 555-5555",
-    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=200&h=200&auto=format&fit=crop&q=80",
+    image: "/lovable-uploads/676c82b5-d859-4caa-9c98-700326e3c338.png",
     topics: ["Security Implementation"]
   },
   {

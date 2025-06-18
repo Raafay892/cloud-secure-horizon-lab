@@ -1,3 +1,4 @@
+
 import PageHeader from "@/components/PageHeader";
 import SectionHeader from "@/components/SectionHeader";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -44,7 +45,7 @@ const teamMembers = [
   {
     name: "Aimen Farooq",
     role: "Research Associate",
-    image: "/lovable-uploads/16220698-31ff-45bb-a07f-a21a7f32ffe1.png",
+    image: "/lovable-uploads/28bda88e-4b33-4eda-819d-59ba6f065423.png",
     bio: "Supports various aspects of cloud security and privacy research.",
   },
 ];

@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import PageHeader from "@/components/PageHeader";
 import { Button } from "@/components/ui/button";
@@ -64,7 +65,7 @@ const contactPeople = [
     role: "Research Associate",
     email: "aimen.farooq@csplab.org",
     phone: "+1 (555) 777-7777",
-    image: "/lovable-uploads/16220698-31ff-45bb-a07f-a21a7f32ffe1.png",
+    image: "/lovable-uploads/28bda88e-4b33-4eda-819d-59ba6f065423.png",
     topics: ["Cloud Security"]
   },
 ];

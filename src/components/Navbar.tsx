@@ -9,7 +9,6 @@ const navItems = [
   { name: "About", path: "/about" },
   { name: "Research", path: "/research" },
   { name: "Publications", path: "/publications" },
-  { name: "Events & News", path: "/events" },
   { name: "Collaborations", path: "/collaborations" },
   { name: "Contact", path: "/contact" }
 ];
@@ -26,15 +25,12 @@ const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <NavLink to="/" className="flex items-center space-x-2">
-              <div className="flex items-center text-feminine-text-primary">
-                <img 
-                  src="/lovable-uploads/b763174b-1460-4f31-b17c-8377e00e453f.png" 
-                  alt="CSP Lab Logo" 
-                  className="h-12 w-12 mr-2"
-                />
-                <span className="text-xl font-bold font-montserrat tracking-tight">CSP Lab</span>
-              </div>
+            <NavLink to="/" className="flex items-center">
+              <img 
+                src="/lovable-uploads/b763174b-1460-4f31-b17c-8377e00e453f.png" 
+                alt="CSP Lab Logo" 
+                className="h-12 w-12"
+              />
             </NavLink>
           </div>
 

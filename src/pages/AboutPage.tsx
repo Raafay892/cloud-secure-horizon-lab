@@ -52,7 +52,7 @@ const teamMembers = [
 
 // Divide team by roles
 const principalInvestigators = teamMembers.filter(
-  (m) => m.role === "Principal Investigator" || m.role === "Co-Principal Investigator"
+  (m) => m.role.includes("Principal Investigator")
 );
 const researchAssistants = teamMembers.filter((m) => m.role === "Research Assistant");
 const researchAssociates = teamMembers.filter((m) => m.role === "Research Associate");

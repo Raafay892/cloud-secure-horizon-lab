@@ -29,7 +29,7 @@ const Navbar = () => {
               <img 
                 src="/lovable-uploads/b763174b-1460-4f31-b17c-8377e00e453f.png" 
                 alt="CSP Lab Logo" 
-                className="h-12 w-12"
+                className="h-16 w-16"
               />
             </NavLink>
           </div>

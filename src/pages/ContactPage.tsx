@@ -14,11 +14,11 @@ import { MapPin, Mail, Phone, Clock, Building, Users } from "lucide-react";
 const contactPeople = [
   {
     name: "Dr. Shahzaib Tahir",
-    role: "Principal Investigator",
-    email: "shahzaib.tahir@csplab.org",
-    phone: "+1 (555) 111-1111",
+    role: "Principal Investigator & Head of Department",
+    email: "shahzaib.tahir@mcs.edu.pk",
+    phone: "+92 333 5726101",
     image: "/lovable-uploads/a0df76a8-82c9-4076-bda9-809eacd9607a.png",
-    topics: ["General Inquiries", "Cloud Security Research"]
+    topics: ["General Inquiries", "Cloud Security Research", "Searchable Encryption"]
   },
   {
     name: "Dr. Hassan Tahir",

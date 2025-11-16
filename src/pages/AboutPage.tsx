@@ -8,9 +8,9 @@ import { Activity, Briefcase, DownloadCloud, FileCheck, GraduationCap, Target, M
 const teamMembers = [
   {
     name: "Dr. Shahzaib Tahir",
-    role: "Principal Investigator",
+    role: "Principal Investigator & Head of Department",
     image: "/lovable-uploads/a0df76a8-82c9-4076-bda9-809eacd9607a.png",
-    bio: "Leads the CSP Lab with expertise in cloud security, searchable encryption, and privacy-preserving technologies.",
+    bio: "Associate Professor and Head of Department at MCS, NUST. HEC Approved PhD Supervisor with expertise in cloud security, searchable encryption, and privacy-preserving technologies. Holds a PhD in Information Engineering from City, University of London. Recipient of multiple grants including HEC-TDF (13.78M PKR) and NCCS (13.984M PKR). Holder of US and UK patents on client-server security systems.",
   },
   {
     name: "Dr. Hassan Tahir",

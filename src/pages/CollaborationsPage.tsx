@@ -1,336 +1,214 @@
+import { useState } from "react";
+import { Building2, Check, GraduationCap, Microscope, Users } from "lucide-react";
 import PageHeader from "@/components/PageHeader";
 import SectionHeader from "@/components/SectionHeader";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Separator } from "@/components/ui/separator";
 import { Textarea } from "@/components/ui/textarea";
-import { CheckCircle, FileSymlink, Handshake, Landmark, Laptop, School, Users } from "lucide-react";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { buildMailto } from "@/lib/mailto";
+import { site } from "@/data/site";
 
-// Sample partner organizations
-const partners = [
-  {
-    name: "National Science Foundation",
-    logo: "https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&w=200&h=100&q=80",
-    category: "government",
-  },
-  {
-    name: "Tech Security Institute",
-    logo: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=200&h=100&q=80",
-    category: "academic",
-  },
-  {
-    name: "CloudTech Solutions",
-    logo: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=200&h=100&q=80",
-    category: "industry",
-  },
-  {
-    name: "University Research Alliance",
-    logo: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=200&h=100&q=80",
-    category: "academic",
-  },
-  {
-    name: "SecureCloud Inc.",
-    logo: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=200&h=100&q=80",
-    category: "industry",
-  },
-  {
-    name: "Department of Energy",
-    logo: "https://images.unsplash.com/photo-1535191042502-e6a9a3d407e7?auto=format&fit=crop&w=200&h=100&q=80",
-    category: "government",
-  },
-];
-
-// Sample collaboration types
 const collaborationTypes = [
   {
-    title: "Research Partnerships",
-    icon: <Laptop className="h-10 w-10 text-feminine-primary" />,
-    description: "Collaborate with our team on cutting-edge research projects in cloud security and privacy.",
+    title: "Research partnerships",
+    icon: Microscope,
+    description: "Work with our team on joint research in applied cryptography and cloud privacy.",
     benefits: [
-      "Access to specialized expertise in cloud security and privacy",
-      "Joint publications in top-tier conferences and journals",
-      "Shared intellectual property based on collaboration agreements",
-      "Regular meetings and progress updates",
+      "Access to expertise in searchable and homomorphic encryption",
+      "Joint publications in peer-reviewed venues",
+      "IP arrangements set out in a collaboration agreement",
     ],
   },
   {
-    title: "Industry Collaborations",
-    icon: <Landmark className="h-10 w-10 text-feminine-primary" />,
-    description: "Partner with us to solve real-world security and privacy challenges in cloud environments.",
+    title: "Industry collaborations",
+    icon: Building2,
+    description: "Bring us a concrete security or privacy problem from your cloud environment.",
     benefits: [
-      "Solutions to specific technical challenges in your organization",
-      "Access to prototype tools and technologies",
-      "Knowledge transfer through workshops and training sessions",
-      "Opportunity to influence research directions",
+      "Solutions to specific technical challenges",
+      "Early access to prototype tools",
+      "Workshops and knowledge transfer for your team",
     ],
   },
   {
-    title: "Academic Partnerships",
-    icon: <School className="h-10 w-10 text-feminine-primary" />,
-    description: "Join forces with other academic institutions for collaborative research initiatives.",
+    title: "Academic partnerships",
+    icon: GraduationCap,
+    description: "Partner with us on grants, exchanges and co-supervised student research.",
     benefits: [
-      "Joint grant applications and research funding opportunities",
+      "Joint grant applications",
       "Student and faculty exchanges",
-      "Shared access to specialized equipment and resources",
-      "Collaborative teaching and curriculum development",
+      "Co-supervision of MS and PhD theses",
     ],
   },
   {
-    title: "Community Projects",
-    icon: <Users className="h-10 w-10 text-feminine-primary" />,
-    description: "Participate in open-source and community-driven initiatives advancing cloud security.",
+    title: "Students & community",
+    icon: Users,
+    description: "Students interested in cryptography and security research are welcome to reach out.",
     benefits: [
-      "Contribute to open-source security tools and frameworks",
-      "Participate in community events and workshops",
-      "Network with other security professionals and researchers",
-      "Gain visibility in the security community",
+      "Final-year and MS thesis projects",
+      "Research assistant openings when funded",
+      "Seminars and reading groups",
     ],
   },
 ];
 
+const steps = [
+  { title: "Reach out", body: "Send a short note describing your idea, problem or interest." },
+  { title: "Scope", body: "We meet to agree on goals, timeline and how the work will be shared." },
+  { title: "Collaborate", body: "We run the work together, with regular check-ins and shared results." },
+];
+
+const emptyForm = { name: "", organization: "", email: "", type: "", title: "", description: "", timeline: "" };
+
 const CollaborationsPage = () => {
+  const [form, setForm] = useState(emptyForm);
+
+  const update = (field: keyof typeof emptyForm) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+    setForm((prev) => ({ ...prev, [field]: e.target.value }));
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    window.location.href = buildMailto(site.email, `Collaboration proposal: ${form.title}`, {
+      Name: form.name,
+      Organization: form.organization,
+      Email: form.email,
+      "Collaboration type": form.type,
+      "Expected timeline": form.timeline,
+      Description: form.description,
+    });
+  };
+
   return (
     <div>
       <PageHeader
-        title="Collaborations"
-        subtitle="Explore opportunities to partner with CSP Lab on research and innovation"
+        eyebrow="Collaborations"
+        title="Partner with CSP Lab"
+        subtitle="We work with academic, industry and government partners who need privacy and security to hold up in practice."
       />
 
-      {/* Collaboration Overview */}
-      <section className="py-12 bg-feminine-background-alt">
+      {/* Types */}
+      <section className="section">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <Handshake className="h-16 w-16 mx-auto mb-6 text-feminine-primary" />
-            <h2 className="text-3xl font-bold mb-4">Why Collaborate With Us?</h2>
-            <p className="text-lg text-muted-foreground mb-8">
-              The Cloud Security and Privacy Lab is committed to advancing the state of the art through collaborative research with academic, industry, and government partners. We bring specialized expertise in cloud security, privacy engineering, and compliance technologies.
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
-              <div className="bg-white p-6 rounded-lg shadow-sm">
-                <CheckCircle className="h-8 w-8 text-feminine-primary mb-3" />
-                <h3 className="text-xl font-bold mb-2">Expertise</h3>
-                <p className="text-muted-foreground">
-                  Access specialized knowledge and expertise in cloud security and privacy technologies.
-                </p>
+          <SectionHeader eyebrow="Opportunities" title="Ways to work with us" />
+          <div className="grid gap-6 md:grid-cols-2">
+            {collaborationTypes.map((type) => (
+              <div key={type.title} className="rounded-2xl border border-brand-line p-7">
+                <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-primary-soft text-brand-primary">
+                  <type.icon className="h-5 w-5" />
+                </span>
+                <h3 className="mt-5 text-xl font-semibold">{type.title}</h3>
+                <p className="mt-2 text-brand-text-secondary">{type.description}</p>
+                <ul className="mt-5 space-y-2.5 border-t border-brand-line pt-5">
+                  {type.benefits.map((benefit) => (
+                    <li key={benefit} className="flex items-start gap-2.5 text-[15px]">
+                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" />
+                      {benefit}
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <div className="bg-white p-6 rounded-lg shadow-sm">
-                <CheckCircle className="h-8 w-8 text-feminine-primary mb-3" />
-                <h3 className="text-xl font-bold mb-2">Innovation</h3>
-                <p className="text-muted-foreground">
-                  Develop new approaches and solutions to challenging security problems.
-                </p>
-              </div>
-              <div className="bg-white p-6 rounded-lg shadow-sm">
-                <CheckCircle className="h-8 w-8 text-feminine-primary mb-3" />
-                <h3 className="text-xl font-bold mb-2">Impact</h3>
-                <p className="text-muted-foreground">
-                  Create meaningful change in how cloud systems handle security and privacy.
-                </p>
-              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Process */}
+      <section className="section border-y border-brand-line bg-brand-background-alt">
+        <div className="container mx-auto px-4">
+          <SectionHeader eyebrow="Process" title="How it works" />
+          <ol className="grid gap-6 md:grid-cols-3">
+            {steps.map((step, i) => (
+              <li key={step.title} className="rounded-2xl border border-brand-line bg-white p-7">
+                <span className="font-mono text-sm text-brand-primary">Step {i + 1}</span>
+                <h3 className="mt-3 text-lg font-semibold">{step.title}</h3>
+                <p className="mt-2 text-[15px] leading-relaxed text-brand-text-secondary">{step.body}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* Proposal */}
+      <section id="proposal" className="section scroll-mt-20">
+        <div className="container mx-auto px-4">
+          <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
+            <div>
+              <p className="eyebrow">Proposal</p>
+              <h2 className="mt-3 font-serif text-3xl font-semibold md:text-4xl">Submit a collaboration proposal</h2>
+              <p className="mt-4 text-lg leading-relaxed text-brand-text-secondary">
+                Tell us about your idea. Submitting opens your email app with the proposal filled in, addressed to{" "}
+                <a href={`mailto:${site.email}`} className="font-medium text-brand-primary hover:underline">
+                  {site.email}
+                </a>
+                .
+              </p>
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Collaboration Types */}
-      <section className="py-12">
-        <div className="container mx-auto px-4">
-          <SectionHeader
-            title="Collaboration Opportunities"
-            subtitle="Explore different ways to collaborate with our research lab"
-            align="center"
-          />
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
-            {collaborationTypes.map((type, index) => (
-              <Card key={index} className="border-2 hover:border-feminine-primary transition-all hover:shadow-md h-full">
-                <CardHeader>
-                  <div className="mb-4">{type.icon}</div>
-                  <CardTitle className="text-xl">{type.title}</CardTitle>
-                  <CardDescription className="text-base">{type.description}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <h4 className="font-semibold mb-2">Benefits:</h4>
-                  <ul className="space-y-2">
-                    {type.benefits.map((benefit, idx) => (
-                      <li key={idx} className="flex items-start">
-                        <CheckCircle className="h-5 w-5 text-feminine-primary mr-2 flex-shrink-0 mt-0.5" />
-                        <span className="text-muted-foreground">{benefit}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Current Partners */}
-      <section className="py-12 bg-gradient-to-r from-feminine-primary to-feminine-primary-dark text-feminine-text-light">
-        <div className="container mx-auto px-4">
-          <SectionHeader
-            title="Our Partners"
-            subtitle="Organizations we currently collaborate with on research projects"
-            align="center"
-            className="text-white [&>p]:text-white/80"
-          />
-
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mt-12">
-            {partners.map((partner, index) => (
-              <div
-                key={index}
-                className="bg-white/10 backdrop-blur-sm p-6 rounded-lg flex flex-col items-center justify-center text-center hover:bg-white/20 transition-colors"
-              >
-                <img
-                  src={partner.logo}
-                  alt={partner.name}
-                  className="h-16 object-contain mb-4"
+            <form onSubmit={handleSubmit} className="space-y-5 rounded-2xl border border-brand-line p-6 md:p-8">
+              <div className="grid gap-5 md:grid-cols-2">
+                <div className="space-y-2">
+                  <Label htmlFor="name">Name</Label>
+                  <Input id="name" value={form.name} onChange={update("name")} required />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="organization">Organization</Label>
+                  <Input id="organization" value={form.organization} onChange={update("organization")} required />
+                </div>
+              </div>
+              <div className="grid gap-5 md:grid-cols-2">
+                <div className="space-y-2">
+                  <Label htmlFor="email">Email</Label>
+                  <Input id="email" type="email" value={form.email} onChange={update("email")} required />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="collaborationType">Collaboration type</Label>
+                  <Select value={form.type} onValueChange={(type) => setForm((prev) => ({ ...prev, type }))}>
+                    <SelectTrigger id="collaborationType">
+                      <SelectValue placeholder="Select a type" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {collaborationTypes.map((t) => (
+                        <SelectItem key={t.title} value={t.title}>
+                          {t.title}
+                        </SelectItem>
+                      ))}
+                      <SelectItem value="Other">Other</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="projectTitle">Project title</Label>
+                <Input id="projectTitle" value={form.title} onChange={update("title")} required />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="projectDescription">Description</Label>
+                <Textarea
+                  id="projectDescription"
+                  placeholder="Your idea, goals and expected outcomes"
+                  rows={5}
+                  value={form.description}
+                  onChange={update("description")}
+                  required
                 />
-                <h3 className="text-lg font-medium">{partner.name}</h3>
-                <span className="text-sm text-white/70 capitalize">{partner.category}</span>
               </div>
-            ))}
+              <div className="space-y-2">
+                <Label htmlFor="timeline">Expected timeline</Label>
+                <Input
+                  id="timeline"
+                  placeholder="e.g. 6 months"
+                  value={form.timeline}
+                  onChange={update("timeline")}
+                />
+              </div>
+              <div className="flex justify-end pt-2">
+                <Button type="submit" size="lg">
+                  Send proposal
+                </Button>
+              </div>
+            </form>
           </div>
-        </div>
-      </section>
-
-      {/* Success Stories */}
-      <section className="py-12">
-        <div className="container mx-auto px-4">
-          <SectionHeader
-            title="Collaboration Success Stories"
-            subtitle="Learn about the impact of our research collaborations"
-          />
-
-          <div className="space-y-8 mt-8">
-            <Card className="overflow-hidden">
-              <div className="flex flex-col md:flex-row">
-                <div className="md:w-1/3 h-64 md:h-auto">
-                  <img
-                    src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=80"
-                    alt="Cloud Security Architecture"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="md:w-2/3 p-6">
-                  <h3 className="text-2xl font-bold mb-2">Cloud Security Architecture with CloudTech Solutions</h3>
-                  <p className="text-muted-foreground mb-4">
-                    Our collaboration with CloudTech Solutions resulted in a novel security architecture for multi-tenant cloud environments that reduced security incidents by 40% while improving performance.
-                  </p>
-                  <Button asChild>
-                    <a href="#">Read Case Study <FileSymlink className="ml-2 h-4 w-4" /></a>
-                  </Button>
-                </div>
-              </div>
-            </Card>
-
-            <Card className="overflow-hidden">
-              <div className="flex flex-col md:flex-row">
-                <div className="md:w-1/3 h-64 md:h-auto">
-                  <img
-                    src="https://images.unsplash.com/photo-1535191042502-e6a9a3d407e7?auto=format&fit=crop&w=900&q=80"
-                    alt="Privacy Framework"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="md:w-2/3 p-6">
-                  <h3 className="text-2xl font-bold mb-2">Privacy Framework with Department of Energy</h3>
-                  <p className="text-muted-foreground mb-4">
-                    Our collaborative project with the Department of Energy created a comprehensive privacy framework for handling sensitive data in distributed computing environments.
-                  </p>
-                  <Button asChild>
-                    <a href="#">Read Case Study <FileSymlink className="ml-2 h-4 w-4" /></a>
-                  </Button>
-                </div>
-              </div>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Collaboration Proposal Form */}
-      <section className="py-12 bg-feminine-background-alt">
-        <div className="container mx-auto px-4">
-          <SectionHeader
-            title="Submit a Collaboration Proposal"
-            subtitle="Interested in partnering with us? Submit your proposal using the form below"
-            align="center"
-          />
-
-          <Card className="max-w-3xl mx-auto mt-8">
-            <CardContent className="pt-6">
-              <form className="space-y-6">
-                <div className="space-y-4">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="name">Name</Label>
-                      <Input id="name" placeholder="Your Name" required />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="organization">Organization</Label>
-                      <Input id="organization" placeholder="Your Organization" required />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="email">Email</Label>
-                      <Input id="email" type="email" placeholder="your.email@example.com" required />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="phone">Phone (Optional)</Label>
-                      <Input id="phone" placeholder="Your Phone Number" />
-                    </div>
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="collaborationType">Collaboration Type</Label>
-                    <select
-                      id="collaborationType"
-                      className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                      required
-                    >
-                      <option value="" disabled selected>Select Collaboration Type</option>
-                      <option value="research">Research Partnership</option>
-                      <option value="industry">Industry Collaboration</option>
-                      <option value="academic">Academic Partnership</option>
-                      <option value="community">Community Project</option>
-                      <option value="other">Other</option>
-                    </select>
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="projectTitle">Project Title</Label>
-                    <Input id="projectTitle" placeholder="Title of Your Proposed Project" required />
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="projectDescription">Project Description</Label>
-                    <Textarea
-                      id="projectDescription"
-                      placeholder="Describe your collaboration idea, goals, and expected outcomes..."
-                      rows={5}
-                      required
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="timeline">Expected Timeline</Label>
-                    <Input id="timeline" placeholder="e.g., 6 months, 1 year, etc." required />
-                  </div>
-                </div>
-
-                <Separator />
-
-                <div className="flex justify-end">
-                  <Button type="submit" size="lg">Submit Proposal</Button>
-                </div>
-              </form>
-            </CardContent>
-          </Card>
         </div>
       </section>
     </div>

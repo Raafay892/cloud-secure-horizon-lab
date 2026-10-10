@@ -1,278 +1,171 @@
-
 import PageHeader from "@/components/PageHeader";
 import SectionHeader from "@/components/SectionHeader";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
-import { Activity, Briefcase, DownloadCloud, FileCheck, GraduationCap, Target, MapPin } from "lucide-react";
+import MemberAvatar from "@/components/MemberAvatar";
+import { team, teamGroups } from "@/data/team";
+import { site } from "@/data/site";
+import { FlaskConical, GraduationCap, ShieldCheck } from "lucide-react";
 
-const teamMembers = [
+const objectives = [
   {
-    name: "Dr. Shahzaib Tahir",
-    role: "Principal Investigator & Head of Department",
-    image: "/lovable-uploads/a0df76a8-82c9-4076-bda9-809eacd9607a.png",
-    bio: "Associate Professor at MCS, NUST with expertise in cloud security, searchable encryption, and privacy-preserving technologies.",
+    icon: ShieldCheck,
+    title: "Advance security models",
+    description:
+      "Develop and refine security models that capture the realities of distributed and cloud computing, including malicious and honest-but-curious servers.",
   },
   {
-    name: "Dr. Hassan Tahir",
-    role: "Co-Principal Investigator",
-    image: "/lovable-uploads/3a4b7d7d-c183-4213-aace-95d1d1311827.png",
-    bio: "Contributes expertise in blockchain technologies and privacy-preserving systems.",
+    icon: FlaskConical,
+    title: "Build practical tools",
+    description:
+      "Turn schemes into implementations that cloud providers and their users can actually deploy, with measured performance.",
   },
   {
-    name: "Aiman Sultan",
-    role: "Research Assistant",
-    image: "/lovable-uploads/bbd9f9dc-3169-4a67-a043-c09a018f351e.png",
-    bio: "Supports various research projects in cloud security and privacy.",
-  },
-  {
-    name: "Tayyaba Anwar",
-    role: "Research Assistant",
-    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&auto=format&fit=crop&q=80",
-    bio: "Contributes to research initiatives in cloud security and privacy technologies.",
-  },
-  {
-    name: "Syed Bilal Abbas",
-    role: "Research Associate",
-    image: "/lovable-uploads/676c82b5-d859-4caa-9c98-700326e3c338.png",
-    bio: "Focuses on advanced cloud security research and implementation.",
-  },
-  {
-    name: "Muhammad Raafay Nouman",
-    role: "Research Associate",
-    image: "/lovable-uploads/4d1da732-7f45-4334-a63a-c0c5a842de2e.png",
-    bio: "Contributes to cutting-edge privacy and security research.",
-  },
-  {
-    name: "Aimen Farooq",
-    role: "Research Associate",
-    image: "/lovable-uploads/28bda88e-4b33-4eda-819d-59ba6f065423.png",
-    bio: "Supports various aspects of cloud security and privacy research.",
+    icon: GraduationCap,
+    title: "Educate and train",
+    description:
+      "Train the next generation of security and privacy researchers through hands-on research at MCS, NUST.",
   },
 ];
 
-// Divide team by roles
-const principalInvestigators = teamMembers.filter(
-  (m) => m.role.includes("Principal Investigator")
-);
-const researchAssistants = teamMembers.filter((m) => m.role === "Research Assistant");
-const researchAssociates = teamMembers.filter((m) => m.role === "Research Associate");
+const timeline = [
+  {
+    date: site.founded,
+    title: "Lab founded",
+    body: `CSP Lab was established at the ${site.institution} with funding from the ${site.funder}, led by Dr. Shahzaib Tahir (PI) and Dr. Hassan Tahir (Co-PI).`,
+  },
+  {
+    date: "2025 – present",
+    title: "Building the group",
+    body: "A focused team of research assistants and associates is extending the PIs' published work on searchable encryption, homomorphic encryption and blockchain-based privacy.",
+  },
+];
 
 const AboutPage = () => {
   return (
     <div>
       <PageHeader
-        title="About CSP Lab"
-        subtitle="Meet our team and learn about our mission to advance cloud security and privacy research"
+        eyebrow="About"
+        title="A research group for practical cloud privacy"
+        subtitle="We work at the intersection of cryptography, systems security and privacy engineering."
       />
 
-      {/* Mission and Vision */}
-      <section className="py-12 bg-feminine-background-alt">
+      {/* Mission & vision */}
+      <section className="section">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <div className="grid gap-12 md:grid-cols-2 md:gap-16">
             <div>
-              <div className="flex items-center mb-4">
-                <Target className="h-8 w-8 text-feminine-primary mr-3" />
-                <h2 className="text-2xl font-bold">Our Mission</h2>
-              </div>
-              <p className="mb-4 text-feminine-primary">
-                The Cloud Security and Privacy Lab is dedicated to advancing the state of the art in cloud security, data privacy, and compliance technologies through innovative research and practical applications.
+              <p className="eyebrow">Mission</p>
+              <p className="mt-4 font-serif text-2xl leading-snug text-brand-text-primary">
+                To advance the state of the art in cloud security, data privacy and compliance through rigorous
+                research and practical applications.
               </p>
-              <p className="text-feminine-primary">
-                We work at the intersection of cryptography, systems security, and privacy engineering to develop solutions that address real-world challenges faced by cloud providers, enterprises, and individuals.
+              <p className="mt-5 leading-relaxed text-brand-text-secondary">
+                We develop solutions to real problems faced by cloud providers, enterprises and individuals:
+                how to outsource data and computation without giving up control of it.
               </p>
             </div>
-            
             <div>
-              <div className="flex items-center mb-4">
-                <Activity className="h-8 w-8 text-feminine-primary mr-3" />
-                <h2 className="text-2xl font-bold">Our Vision</h2>
-              </div>
-              <p className="mb-4 text-feminine-primary">
-                We envision a future where cloud technologies can be used with complete confidence, where privacy is preserved by design, and where security is seamlessly integrated into every aspect of cloud computing.
+              <p className="eyebrow">Vision</p>
+              <p className="mt-4 font-serif text-2xl leading-snug text-brand-text-primary">
+                Cloud technology that people can use with confidence, where privacy is preserved by design.
               </p>
-              <p className="text-feminine-primary">
-                Our goal is to bridge the gap between theoretical security models and practical implementations, creating technologies that are both highly secure and usable in real-world scenarios.
+              <p className="mt-5 leading-relaxed text-brand-text-secondary">
+                Our goal is to close the gap between theoretical security models and working implementations,
+                producing technology that is both strongly secure and usable.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Research Objectives */}
-      <section className="py-12">
+      {/* Objectives */}
+      <section className="section border-y border-brand-line bg-brand-background-alt">
         <div className="container mx-auto px-4">
-          <SectionHeader
-            title="Research Objectives"
-            subtitle="Our research is guided by several key objectives that drive our work forward"
-            align="center"
-          />
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-            <Card className="bg-gradient-to-br from-feminine-primary to-feminine-primary-dark text-feminine-text-light border-0">
-              <CardHeader>
-                <FileCheck className="h-8 w-8 mb-2" />
-                <CardTitle>Advance Security Models</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-feminine-text-light/80">
-                  Develop and refine theoretical security models that address the unique challenges of distributed and cloud computing environments.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-gradient-to-br from-feminine-primary to-feminine-primary-dark text-feminine-text-light border-0">
-              <CardHeader>
-                <DownloadCloud className="h-8 w-8 mb-2" />
-                <CardTitle>Build Practical Tools</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-feminine-text-light/80">
-                  Create usable security and privacy tools that can be readily deployed in real-world cloud environments by both providers and users.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-gradient-to-br from-feminine-primary to-feminine-primary-dark text-feminine-text-light border-0">
-              <CardHeader>
-                <GraduationCap className="h-8 w-8 mb-2" />
-                <CardTitle>Educate & Train</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-feminine-text-light/80">
-                  Train the next generation of security and privacy researchers through hands-on research experiences and educational initiatives.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-      
-      {/* Team Members */}
-      <section className="py-12 bg-feminine-background-alt">
-        <div className="container mx-auto px-4">
-          <SectionHeader
-            title="Our Team"
-            subtitle="Meet the researchers and faculty working to advance cloud security and privacy"
-            align="center"
-          />
-          {/* Row 1: PI and Co-PI */}
-          <div className="flex flex-col items-center md:flex-row md:justify-center gap-8 mt-8">
-            {principalInvestigators.map((member, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow w-full max-w-xs flex flex-col items-center"
-              >
-                <div className="w-40 h-40 overflow-hidden flex items-center justify-center bg-gray-100 mt-6">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-40 h-40 rounded-full object-cover object-center"
-                  />
+          <SectionHeader eyebrow="Objectives" title="What guides our work" />
+          <div className="grid gap-6 md:grid-cols-3">
+            {objectives.map((item, i) => (
+              <div key={item.title} className="rounded-2xl border border-brand-line bg-white p-7">
+                <div className="flex items-center justify-between">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-primary-soft text-brand-primary">
+                    <item.icon className="h-5 w-5" />
+                  </span>
+                  <span className="font-mono text-sm text-brand-text-secondary/60">0{i + 1}</span>
                 </div>
-                <div className="p-6 flex flex-col items-center">
-                  <h3 className="text-xl font-bold mb-1 text-center">{member.name}</h3>
-                  <p className="text-feminine-primary font-medium mb-3 text-center">{member.role}</p>
-                  <Separator className="my-3" />
-                  <p className="text-sm text-feminine-primary text-center">{member.bio}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-          {/* Row 2: Research Assistants */}
-          <div className="flex flex-col items-center md:flex-row md:justify-center gap-8 mt-12">
-            {researchAssistants.map((member, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow w-full max-w-xs flex flex-col items-center"
-              >
-                <div className="w-40 h-40 overflow-hidden flex items-center justify-center bg-gray-100 mt-6">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-40 h-40 rounded-full object-cover object-center"
-                  />
-                </div>
-                <div className="p-6 flex flex-col items-center">
-                  <h3 className="text-xl font-bold mb-1 text-center">{member.name}</h3>
-                  <p className="text-feminine-primary font-medium mb-3 text-center">{member.role}</p>
-                  <Separator className="my-3" />
-                  <p className="text-sm text-feminine-primary text-center">{member.bio}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-          {/* Row 3: Research Associates */}
-          <div className="flex flex-col items-center md:flex-row md:justify-center gap-8 mt-12">
-            {researchAssociates.map((member, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow w-full max-w-xs flex flex-col items-center"
-              >
-                <div className="w-40 h-40 overflow-hidden flex items-center justify-center bg-gray-100 mt-6">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-40 h-40 rounded-full object-cover object-center"
-                  />
-                </div>
-                <div className="p-6 flex flex-col items-center">
-                  <h3 className="text-xl font-bold mb-1 text-center">{member.name}</h3>
-                  <p className="text-feminine-primary font-medium mb-3 text-center">{member.role}</p>
-                  <Separator className="my-3" />
-                  <p className="text-sm text-feminine-primary text-center">{member.bio}</p>
-                </div>
+                <h3 className="mt-5 text-lg font-semibold">{item.title}</h3>
+                <p className="mt-2 text-[15px] leading-relaxed text-brand-text-secondary">{item.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Lab History */}
-      <section className="py-12">
+      {/* Team */}
+      <section id="team" className="section scroll-mt-20">
         <div className="container mx-auto px-4">
           <SectionHeader
-            title="Our History"
-            subtitle="The journey of CSP Lab from its founding to its current position as a leader in cloud security research"
+            eyebrow="People"
+            title="Our team"
+            subtitle="The faculty and researchers working on cloud security and privacy at CSP Lab."
           />
 
-          <div className="bg-white p-6 rounded-lg shadow-md mt-8">
-            <div className="flex items-start mb-6">
-              <div className="bg-feminine-primary rounded-full p-3 mr-4">
-                <Briefcase className="h-6 w-6 text-white" />
-              </div>
-              <div>
-                <h3 className="text-xl font-bold mb-2">January 2025: Founding</h3>
-                <p className="text-feminine-primary mb-3">
-                  The Cloud Security and Privacy Lab was established in January 2025 with funding from the Higher Education Commission (HEC). Located at Military College of Signals, Khadim Hussain Road, Lalkurti, the lab began its mission to advance cloud security and privacy research.
-                </p>
-                <div className="flex items-center text-feminine-text-secondary text-sm">
-                  <MapPin className="h-4 w-4 mr-1" />
-                  <span>Military College of Signals, Khadim Hussain Road, Lalkurti</span>
+          <div className="space-y-14">
+            {teamGroups.map((group) => {
+              const members = team.filter((m) => m.group === group);
+              const lead = group === "Investigators";
+              return (
+                <div key={group}>
+                  <h3 className="mb-6 border-b border-brand-line pb-3 font-mono text-xs uppercase tracking-[0.14em] text-brand-text-secondary">
+                    {group}
+                  </h3>
+                  <div className={lead ? "grid gap-6 md:grid-cols-2" : "grid gap-6 sm:grid-cols-2 lg:grid-cols-3"}>
+                    {members.map((member) => (
+                      <div
+                        key={member.name}
+                        className={
+                          lead
+                            ? "flex flex-col gap-6 rounded-2xl border border-brand-line p-6 sm:flex-row sm:items-start"
+                            : "flex items-start gap-4 rounded-2xl border border-brand-line p-5"
+                        }
+                      >
+                        <MemberAvatar
+                          member={member}
+                          className={lead ? "h-28 w-28 shrink-0 text-3xl" : "h-16 w-16 shrink-0 text-lg"}
+                        />
+                        <div className="min-w-0">
+                          <p className={lead ? "font-serif text-xl font-semibold" : "font-semibold"}>{member.name}</p>
+                          <p className="mt-0.5 text-sm font-medium text-brand-primary">{member.role}</p>
+                          <p className="mt-3 text-sm leading-relaxed text-brand-text-secondary">{member.bio}</p>
+                          <div className="mt-3 flex flex-wrap gap-1.5">
+                            {member.focus.map((f) => (
+                              <span key={f} className="tag">
+                                {f}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-                <div className="mt-3 text-feminine-primary/80 text-sm">
-                  <strong>Founding Team:</strong>
-                  <ul className="list-disc list-inside ml-5">
-                    <li>Principal Investigator: Dr. Shahzaib Tahir</li>
-                    <li>Co-Principal Investigator: Dr. Hassan Tahir</li>
-                    <li>Research Assistants: Aiman Sultan, Tayyaba Anwar</li>
-                    <li>Research Associates: Syed Bilal Abbas, Muhammad Raafay Nouman, Aimen Farooq</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <div className="flex items-start">
-              <div className="bg-feminine-secondary rounded-full p-3 mr-4">
-                <GraduationCap className="h-6 w-6 text-white" />
-              </div>
-              <div>
-                <h3 className="text-xl font-bold mb-2">2025 - Present: Building Excellence</h3>
-                <p className="text-feminine-primary">
-                  Starting with a focused team of dedicated researchers, CSP Lab is building its foundation in cloud security and privacy research. Led by Dr. Shahzaib Tahir as Principal Investigator and Dr. Hassan Tahir as Co-Principal Investigator, the lab is establishing itself as a center of excellence in the field.
-                </p>
-              </div>
-            </div>
+              );
+            })}
           </div>
+        </div>
+      </section>
+
+      {/* History */}
+      <section className="section border-t border-brand-line bg-brand-background-alt">
+        <div className="container mx-auto px-4">
+          <SectionHeader eyebrow="History" title="Our story so far" />
+          <ol className="relative max-w-3xl border-l border-brand-line">
+            {timeline.map((item) => (
+              <li key={item.title} className="relative pb-10 pl-8 last:pb-0">
+                <span className="absolute -left-[7px] top-1.5 h-3.5 w-3.5 rounded-full border-2 border-brand-primary bg-white" />
+                <p className="font-mono text-xs uppercase tracking-[0.14em] text-brand-primary">{item.date}</p>
+                <h3 className="mt-2 text-xl font-semibold">{item.title}</h3>
+                <p className="mt-2 leading-relaxed text-brand-text-secondary">{item.body}</p>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
     </div>

@@ -1,376 +1,181 @@
-
 import { useState } from "react";
+import { Building, Mail, MapPin, Phone } from "lucide-react";
 import PageHeader from "@/components/PageHeader";
+import MemberAvatar from "@/components/MemberAvatar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
 import { Textarea } from "@/components/ui/textarea";
-import { useToast } from "@/hooks/use-toast";
-import { MapPin, Mail, Phone, Clock, Building, Users } from "lucide-react";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { buildMailto } from "@/lib/mailto";
+import { team } from "@/data/team";
+import { site } from "@/data/site";
 
-// Sample team member contacts
-const contactPeople = [
-  {
-    name: "Dr. Shahzaib Tahir",
-    role: "Principal Investigator & Head of Department",
-    email: "shahzaib.tahir@mcs.edu.pk",
-    phone: "+92 333 5726101",
-    image: "/lovable-uploads/a0df76a8-82c9-4076-bda9-809eacd9607a.png",
-    topics: ["General Inquiries", "Cloud Security Research", "Searchable Encryption"]
-  },
-  {
-    name: "Dr. Hassan Tahir",
-    role: "Co-Principal Investigator",
-    email: "hassan.tahir@csplab.org",
-    phone: "+1 (555) 222-2222",
-    image: "/lovable-uploads/3a4b7d7d-c183-4213-aace-95d1d1311827.png",
-    topics: ["Blockchain & Privacy Systems"]
-  },
-  {
-    name: "Aiman Sultan",
-    role: "Research Assistant",
-    email: "aiman.sultan@csplab.org",
-    phone: "+1 (555) 333-3333",
-    image: "/lovable-uploads/bbd9f9dc-3169-4a67-a043-c09a018f351e.png",
-    topics: ["Research Projects"]
-  },
-  {
-    name: "Tayyaba Anwar",
-    role: "Research Assistant",
-    email: "tayyaba.anwar@csplab.org",
-    phone: "+1 (555) 444-4444",
-    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&h=200&auto=format&fit=crop&q=80",
-    topics: ["Research Projects"]
-  },
-  {
-    name: "Syed Bilal Abbas",
-    role: "Research Associate",
-    email: "bilal.abbas@csplab.org",
-    phone: "+1 (555) 555-5555",
-    image: "/lovable-uploads/676c82b5-d859-4caa-9c98-700326e3c338.png",
-    topics: ["Security Implementation"]
-  },
-  {
-    name: "Muhammad Raafay Nouman",
-    role: "Research Associate",
-    email: "raafay.nouman@csplab.org",
-    phone: "+1 (555) 666-6666",
-    image: "/lovable-uploads/4d1da732-7f45-4334-a63a-c0c5a842de2e.png",
-    topics: ["Privacy Technology"]
-  },
-  {
-    name: "Aimen Farooq",
-    role: "Research Associate",
-    email: "aimen.farooq@csplab.org",
-    phone: "+1 (555) 777-7777",
-    image: "/lovable-uploads/28bda88e-4b33-4eda-819d-59ba6f065423.png",
-    topics: ["Cloud Security"]
-  },
-];
+const GENERAL = "General inquiry";
+const emptyForm = { name: "", email: "", subject: "", message: "", contactPerson: GENERAL };
 
 const ContactPage = () => {
-  const { toast } = useToast();
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-    contactPerson: "",
-  });
+  const [form, setForm] = useState(emptyForm);
 
-  const handleChange = (e) => {
-    const { id, value } = e.target;
-    setFormData((prev) => ({ ...prev, [id]: value }));
-  };
+  const update = (field: keyof typeof emptyForm) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+    setForm((prev) => ({ ...prev, [field]: e.target.value }));
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    
-    // Show success toast
-    toast({
-      title: "Message sent!",
-      description: "We will get back to you as soon as possible.",
-      duration: 5000,
-    });
-    
-    // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      subject: "",
-      message: "",
-      contactPerson: "",
+    window.location.href = buildMailto(site.email, form.subject, {
+      From: `${form.name} <${form.email}>`,
+      "For the attention of": form.contactPerson,
+      Message: form.message,
     });
   };
+
+  const details = [
+    { icon: MapPin, label: "Address", value: site.address.join("\n") },
+    { icon: Mail, label: "Email", value: site.email, href: `mailto:${site.email}` },
+    { icon: Phone, label: "Phone", value: site.phone, href: `tel:${site.phone.replace(/\s/g, "")}` },
+  ];
 
   return (
     <div>
       <PageHeader
-        title="Contact Us"
-        subtitle="Get in touch with our team for inquiries, collaborations, or general information"
+        eyebrow="Contact"
+        title="Get in touch"
+        subtitle="Questions about our research, collaboration ideas or student opportunities: we'd like to hear from you."
       />
 
-      {/* Contact Information */}
-      <section className="py-12 bg-feminine-background-alt">
+      <section className="section">
         <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-white p-8 rounded-lg shadow-sm">
-                <h2 className="text-2xl font-bold mb-6">Contact Information</h2>
-                
-                <div className="space-y-6">
-                  <div className="flex items-start">
-                    <MapPin className="h-6 w-6 text-feminine-primary mr-4 mt-0.5" />
+          <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+            {/* Details */}
+            <div>
+              <dl className="space-y-7">
+                {details.map((item) => (
+                  <div key={item.label} className="flex items-start gap-4">
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-primary-soft text-brand-primary">
+                      <item.icon className="h-5 w-5" />
+                    </span>
                     <div>
-                      <h3 className="font-semibold text-lg">Address</h3>
-                      <p className="text-muted-foreground">
-                        Cloud Security and Privacy Lab<br />
-                        Military College of Signals<br />
-                        Khadim Hussain Road, Lalkurti
-                      </p>
+                      <dt className="font-mono text-xs uppercase tracking-[0.14em] text-brand-text-secondary">{item.label}</dt>
+                      <dd className="mt-1 whitespace-pre-line text-[15px] leading-relaxed">
+                        {item.href ? (
+                          <a href={item.href} className="hover:text-brand-primary">
+                            {item.value}
+                          </a>
+                        ) : (
+                          item.value
+                        )}
+                      </dd>
                     </div>
                   </div>
-                  
-                  <div className="flex items-start">
-                    <Mail className="h-6 w-6 text-feminine-primary mr-4 mt-0.5" />
-                    <div>
-                      <h3 className="font-semibold text-lg">Email</h3>
-                      <p className="text-muted-foreground">
-                        <a href="mailto:contact@csplab.org" className="hover:text-feminine-primary transition-colors">
-                          contact@csplab.org
-                        </a>
-                      </p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start">
-                    <Phone className="h-6 w-6 text-feminine-primary mr-4 mt-0.5" />
-                    <div>
-                      <h3 className="font-semibold text-lg">Phone</h3>
-                      <p className="text-muted-foreground">
-                        <a href="tel:+15551234567" className="hover:text-feminine-primary transition-colors">
-                          +1 (555) 123-4567
-                        </a>
-                      </p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start">
-                    <Clock className="h-6 w-6 text-feminine-primary mr-4 mt-0.5" />
-                    <div>
-                      <h3 className="font-semibold text-lg">Hours</h3>
-                      <p className="text-muted-foreground">
-                        Monday - Friday: 9:00 AM - 5:00 PM<br />
-                        Saturday - Sunday: Closed
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                ))}
+              </dl>
 
-              <div>
+              <div className="mt-10 overflow-hidden rounded-2xl border border-brand-line">
                 <iframe
-                  title="Lab Location"
-                  src="https://www.google.com/maps?q=33.579122563742416,73.06385774178233&hl=es;z=15&output=embed"
-                  className="w-full h-full min-h-[300px] rounded-lg shadow-sm"
+                  title="Lab location"
+                  src={site.mapEmbed}
+                  className="h-72 w-full"
                   style={{ border: 0 }}
-                  allowFullScreen={false}
                   loading="lazy"
-                ></iframe>
+                />
               </div>
             </div>
+
+            {/* Form */}
+            <form onSubmit={handleSubmit} className="space-y-5 rounded-2xl border border-brand-line p-6 md:p-8">
+              <div>
+                <h2 className="font-serif text-2xl font-semibold">Send a message</h2>
+                <p className="mt-1.5 text-sm text-brand-text-secondary">
+                  This opens your email app with the message ready to send.
+                </p>
+              </div>
+              <div className="grid gap-5 md:grid-cols-2">
+                <div className="space-y-2">
+                  <Label htmlFor="name">Name</Label>
+                  <Input id="name" value={form.name} onChange={update("name")} required />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="email">Email</Label>
+                  <Input id="email" type="email" value={form.email} onChange={update("email")} required />
+                </div>
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="subject">Subject</Label>
+                <Input id="subject" value={form.subject} onChange={update("subject")} required />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="contactPerson">Who is this for?</Label>
+                <Select
+                  value={form.contactPerson}
+                  onValueChange={(contactPerson) => setForm((prev) => ({ ...prev, contactPerson }))}
+                >
+                  <SelectTrigger id="contactPerson">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value={GENERAL}>{GENERAL}</SelectItem>
+                    {team.map((person) => (
+                      <SelectItem key={person.name} value={person.name}>
+                        {person.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="message">Message</Label>
+                <Textarea id="message" rows={6} value={form.message} onChange={update("message")} required />
+              </div>
+              <div className="flex justify-end pt-2">
+                <Button type="submit" size="lg">
+                  Send message
+                </Button>
+              </div>
+            </form>
           </div>
         </div>
       </section>
 
-      {/* Contact Team */}
-      <section className="py-12">
+      {/* People */}
+      <section className="section border-t border-brand-line bg-brand-background-alt">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl font-bold mb-8 text-center">Get in Touch with Our Team Members</h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {contactPeople.map((person, index) => (
-              <Card key={index} className="hover:shadow-md transition-shadow">
-                <CardHeader className="pb-2">
-                  <div className="flex items-center mb-3">
-                    <img
-                      src={person.image}
-                      alt={person.name}
-                      className="w-16 h-16 rounded-full object-cover object-center mr-3 bg-gray-100 border border-gray-200"
-                    />
-                    <div>
-                      <CardTitle className="text-lg">{person.name}</CardTitle>
-                      <CardDescription>{person.role}</CardDescription>
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-3">
-                    <div className="flex items-center text-sm">
-                      <Mail className="h-4 w-4 text-muted-foreground mr-2" />
-                      <a href={`mailto:${person.email}`} className="text-feminine-primary hover:underline">
-                        {person.email}
-                      </a>
-                    </div>
-                    <div className="flex items-center text-sm">
-                      <Phone className="h-4 w-4 text-muted-foreground mr-2" />
-                      <a href={`tel:${person.phone.replace(/\D/g, '')}`} className="text-feminine-primary hover:underline">
-                        {person.phone}
-                      </a>
-                    </div>
-                    <div className="flex items-start text-sm">
-                      <Users className="h-4 w-4 text-muted-foreground mr-2 mt-1" />
-                      <div>
-                        <span className="text-muted-foreground">Topics:</span>
-                        <ul className="list-disc list-inside ml-1">
-                          {person.topics.map((topic, idx) => (
-                            <li key={idx} className="text-muted-foreground">{topic}</li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+          <p className="eyebrow">People</p>
+          <h2 className="mt-3 font-serif text-3xl font-semibold">Who to ask about what</h2>
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {team.map((person) => (
+              <div key={person.name} className="flex items-start gap-4 rounded-2xl border border-brand-line bg-white p-5">
+                <MemberAvatar member={person} className="h-14 w-14 shrink-0 text-base" />
+                <div className="min-w-0">
+                  <p className="font-semibold">{person.name}</p>
+                  <p className="text-sm text-brand-text-secondary">{person.role}</p>
+                  <p className="mt-2 text-sm text-brand-primary">{person.focus.join(" · ")}</p>
+                  {person.email && (
+                    <a
+                      href={`mailto:${person.email}`}
+                      className="mt-2 block truncate text-sm text-brand-text-secondary hover:text-brand-primary"
+                    >
+                      {person.email}
+                    </a>
+                  )}
+                </div>
+              </div>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* Contact Form */}
-      <section className="py-12 bg-gradient-to-r from-feminine-primary to-feminine-primary-dark text-feminine-text-light">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto">
-            <div className="text-center mb-8">
-              <h2 className="text-2xl font-bold mb-2">Send Us a Message</h2>
-              <p className="text-feminine-text-light/80">
-                Have a question or want to collaborate? Fill out the form below and we'll get back to you.
-              </p>
+          <div className="mt-12 flex flex-col gap-4 rounded-2xl border border-brand-line bg-white p-6 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex items-start gap-4">
+              <Building className="mt-0.5 h-6 w-6 shrink-0 text-brand-primary" />
+              <div>
+                <p className="font-semibold">Visiting the lab</p>
+                <p className="mt-1 text-sm text-brand-text-secondary">
+                  We welcome visitors from academia, industry and government. Please get in touch at least two weeks
+                  ahead with names, affiliations, preferred dates and the purpose of your visit.
+                </p>
+              </div>
             </div>
-            
-            <Card>
-              <CardContent className="pt-6">
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="name">Your Name</Label>
-                      <Input
-                        id="name"
-                        placeholder="Enter your name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="email">Your Email</Label>
-                      <Input
-                        id="email"
-                        type="email"
-                        placeholder="Enter your email address"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                      />
-                    </div>
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <Label htmlFor="subject">Subject</Label>
-                    <Input
-                      id="subject"
-                      placeholder="What is your message about?"
-                      value={formData.subject}
-                      onChange={handleChange}
-                      required
-                    />
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <Label htmlFor="contactPerson">Who would you like to contact? (Optional)</Label>
-                    <select
-                      id="contactPerson"
-                      className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                      value={formData.contactPerson}
-                      onChange={handleChange}
-                    >
-                      <option value="">General Inquiry</option>
-                      {contactPeople.map((person, index) => (
-                        <option key={index} value={person.name}>
-                          {person.name} - {person.role}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <Label htmlFor="message">Your Message</Label>
-                    <Textarea
-                      id="message"
-                      placeholder="Please provide details about your inquiry or message..."
-                      rows={6}
-                      value={formData.message}
-                      onChange={handleChange}
-                      required
-                    />
-                  </div>
-                  
-                  <Separator />
-                  
-                  <div className="flex justify-end">
-                    <Button type="submit" size="lg" className="bg-feminine-secondary hover:bg-feminine-secondary-dark">
-                      Send Message
-                    </Button>
-                  </div>
-                </form>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Lab Visits */}
-      <section className="py-12">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto">
-            <div className="text-center mb-8">
-              <Building className="h-12 w-12 mx-auto mb-4 text-feminine-primary" />
-              <h2 className="text-2xl font-bold mb-2">Lab Visits</h2>
-              <p className="text-muted-foreground">
-                Interested in visiting our lab facilities? We welcome visitors from academia, industry, and government.
-              </p>
-            </div>
-            
-            <Card>
-              <CardContent className="pt-6">
-                <div className="space-y-4">
-                  <p>
-                    The CSP Lab regularly hosts visitors for tours, demonstrations, and research discussions. 
-                    To schedule a visit, please contact us at least two weeks in advance with the following information:
-                  </p>
-                  
-                  <ul className="list-disc list-inside text-muted-foreground space-y-1 ml-4">
-                    <li>Names and affiliations of all visitors</li>
-                    <li>Preferred dates and times</li>
-                    <li>Purpose of the visit</li>
-                    <li>Specific research areas or technologies of interest</li>
-                  </ul>
-                  
-                  <p className="font-medium mt-4">
-                    Please note that some research areas and facilities may have restricted access due to security and confidentiality requirements.
-                  </p>
-                  
-                  <div className="flex justify-center mt-4">
-                    <Button asChild>
-                      <a href="mailto:visits@csplab.org">Request a Visit</a>
-                    </Button>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+            <Button asChild variant="outline" className="shrink-0">
+              <a href={`mailto:${site.email}?subject=${encodeURIComponent("Lab visit request")}`}>Request a visit</a>
+            </Button>
           </div>
         </div>
       </section>

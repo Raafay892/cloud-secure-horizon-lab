@@ -1,37 +1,37 @@
 import { cn } from "@/lib/utils";
 
 interface SectionHeaderProps {
+  eyebrow?: string;
   title: string;
   subtitle?: string;
-  align?: "left" | "center" | "right";
+  align?: "left" | "center";
   className?: string;
+  action?: React.ReactNode;
 }
 
 const SectionHeader: React.FC<SectionHeaderProps> = ({
+  eyebrow,
   title,
   subtitle,
   align = "left",
   className,
+  action,
 }) => {
   return (
     <div
       className={cn(
-        "mb-10",
-        align === "center" && "text-center",
-        align === "right" && "text-right",
+        "mb-10 md:mb-12",
+        align === "center" && "mx-auto max-w-2xl text-center",
+        action && "flex flex-col gap-6 md:flex-row md:items-end md:justify-between",
         className
       )}
     >
-      <h2 className="text-2xl md:text-3xl font-bold mb-3 relative inline-block font-montserrat text-feminine-text-primary">
-        {title}
-        <span className="absolute -bottom-1 left-0 w-14 h-1 bg-gradient-to-r from-feminine-primary to-feminine-secondary shadow-[0_0_10px_rgba(155,77,202,0.4)]"></span>
-      </h2>
-      {subtitle && (
-        <p className="text-feminine-text-secondary mt-4 max-w-3xl text-lg"
-           style={{ marginLeft: align === "center" ? "auto" : "", marginRight: align === "center" ? "auto" : "" }}>
-          {subtitle}
-        </p>
-      )}
+      <div className={cn(align === "left" && "max-w-2xl")}>
+        {eyebrow && <p className="eyebrow">{eyebrow}</p>}
+        <h2 className="mt-3 font-serif text-3xl font-semibold leading-tight md:text-4xl">{title}</h2>
+        {subtitle && <p className="mt-4 text-lg leading-relaxed text-brand-text-secondary">{subtitle}</p>}
+      </div>
+      {action}
     </div>
   );
 };

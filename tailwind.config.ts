@@ -12,8 +12,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        montserrat: ['Montserrat', 'sans-serif'],
-        roboto: ['Roboto', 'sans-serif'],
+        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        serif: ['"Source Serif 4"', 'Georgia', 'serif'],
+        mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
       },
       colors: {
 				border: 'hsl(var(--border))',
@@ -59,59 +60,40 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-        feminine: {
+        brand: {
           primary: {
-            DEFAULT: '#9B4DCA',
-            light: '#B47EDE',
-            dark: '#7B2CBF',
+            DEFAULT: '#6B21A8',
+            light: '#9D5BD2',
+            dark: '#4A1772',
+            soft: '#F4ECFB',
           },
           secondary: {
-            DEFAULT: '#FF69B4',
-            light: '#FFB6C1',
-            dark: '#DB7093',
+            DEFAULT: '#B5179E',
+            light: '#E9B8E0',
+            dark: '#8A1178',
           },
           accent: {
-            DEFAULT: '#F8BBD0',
-            light: '#FCE4EC',
-            dark: '#F48FB1',
+            DEFAULT: '#B5179E',
+            light: '#FBEFF8',
+            dark: '#8A1178',
           },
           background: {
             DEFAULT: '#FFFFFF',
-            alt: '#FDF2F8',
-            dark: '#2D1B69',
+            alt: '#F8F7FA',
+            dark: '#150D1F',
           },
           text: {
-            primary: '#4A4A4A',
-            secondary: '#666666',
+            primary: '#1B1523',
+            secondary: '#5A5466',
             light: '#FFFFFF',
           },
-          additional: {
-            lavender: '#E6E6FA',
-            peach: '#FFDAB9',
-            mint: '#F5FFFA',
-            rose: '#FFE4E1',
-          }
+          line: '#E8E4EE',
         },
-        csp: {
-          'primary': '#1e005a',
-          'secondary': '#3d006f',
-          'tertiary': '#4a0082',
-          'accent': '#ff007f',
-          'accent-subtle': '#d4008a',
-          'cyan': '#00ffff',
-          'cyan-subtle': '#00cccc',
-          'gray-dark': '#222222',
-          'gray-medium': '#333333',
-          'gray-light': '#8E9196',
-          'text-primary': '#ffffff',
-          'text-secondary': '#cccccc',
-        }
       },
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)',
-        'pill': '9999px',
 			},
 			keyframes: {
 				'accordion-down': {
@@ -150,22 +132,6 @@ export default {
 						transform: 'translateY(10px)'
 					}
 				},
-        'glow': {
-          '0%, 100%': {
-            boxShadow: '0 0 5px 2px rgba(155, 77, 202, 0.3), 0 0 10px rgba(155, 77, 202, 0.2)'
-          },
-          '50%': {
-            boxShadow: '0 0 10px 3px rgba(155, 77, 202, 0.5), 0 0 15px rgba(155, 77, 202, 0.3)'
-          }
-        },
-        'float': {
-          '0%, 100%': {
-            transform: 'translateY(0px)'
-          },
-          '50%': {
-            transform: 'translateY(-10px)'
-          }
-        }
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',

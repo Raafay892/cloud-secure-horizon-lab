@@ -135,7 +135,7 @@ const CollaborationsPage = () => {
           <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
             <div>
               <p className="eyebrow">Proposal</p>
-              <h2 className="mt-3 font-serif text-3xl font-semibold md:text-4xl">Submit a collaboration proposal</h2>
+              <h2 className="mt-3 font-display text-3xl font-semibold md:text-4xl">Submit a collaboration proposal</h2>
               <p className="mt-4 text-lg leading-relaxed text-brand-text-secondary">
                 Tell us about your idea. Submitting opens your email app with the proposal filled in, addressed to{" "}
                 <a href={`mailto:${site.email}`} className="font-medium text-brand-primary hover:underline">

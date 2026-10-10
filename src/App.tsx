@@ -10,6 +10,7 @@ import ResearchPage from "./pages/ResearchPage";
 import PublicationsPage from "./pages/PublicationsPage";
 import CollaborationsPage from "./pages/CollaborationsPage";
 import ContactPage from "./pages/ContactPage";
+import NuevoCryptPage from "./pages/NuevoCryptPage";
 import NotFound from "./pages/NotFound";
 import Layout from "./components/Layout";
 import { useState } from "react";
@@ -27,6 +28,7 @@ const App = () => {
           <Routes>
             <Route element={<Layout />}>
               <Route path="/" element={<HomePage />} />
+              <Route path="/nuevocrypt" element={<NuevoCryptPage />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/research" element={<ResearchPage />} />
               <Route path="/publications" element={<PublicationsPage />} />

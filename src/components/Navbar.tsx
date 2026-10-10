@@ -7,6 +7,7 @@ import { site } from "@/data/site";
 
 const navItems = [
   { name: "Home", path: "/" },
+  { name: "NuevoCrypt", path: "/nuevocrypt" },
   { name: "About", path: "/about" },
   { name: "Research", path: "/research" },
   { name: "Publications", path: "/publications" },
@@ -39,16 +40,9 @@ const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex h-20 items-center justify-between gap-6">
           <Link to="/" className="flex items-center gap-3" aria-label={`${site.shortName} home`}>
-            {/* The logo file has wide transparent padding; crop to the artwork */}
-            <span className="block h-[60px] w-[152px] shrink-0 overflow-hidden">
-              <img
-                src="/lovable-uploads/b763174b-1460-4f31-b17c-8377e00e453f.png"
-                alt="CSP Lab Logo"
-                className="block h-auto w-[180px] max-w-none -ml-[11px] -mt-[48px]"
-              />
-            </span>
-            <span className="hidden sm:flex flex-col leading-tight border-l border-brand-line pl-3">
-              <span className="font-serif text-[17px] font-semibold text-brand-text-primary">{site.name}</span>
+            <img src="/brand/nuevocrypt-logo.png" alt="NuevoCrypt logo" className="h-[58px] w-auto shrink-0" />
+            <span className="hidden xl:flex flex-col leading-tight border-l border-brand-line pl-3">
+              <span className="font-display text-[17px] font-semibold text-brand-text-primary">{site.name}</span>
               <span className="text-xs text-brand-text-secondary">{site.institution}</span>
             </span>
           </Link>

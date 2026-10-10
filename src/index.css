@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Saira+Semi+Condensed:wght@500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -7,43 +7,43 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 270 21% 11%;
+    --foreground: 275 46% 10%;
 
     --card: 0 0% 100%;
-    --card-foreground: 270 21% 11%;
+    --card-foreground: 275 46% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 270 21% 11%;
+    --popover-foreground: 275 46% 10%;
 
-    --primary: 277 67% 39%;
+    --primary: 292 75% 41%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 276 64% 95%;
-    --secondary-foreground: 277 67% 39%;
+    --secondary: 294 83% 95%;
+    --secondary-foreground: 292 75% 41%;
 
-    --muted: 270 14% 97%;
-    --muted-foreground: 265 9% 37%;
+    --muted: 288 38% 97%;
+    --muted-foreground: 275 12% 36%;
 
-    --accent: 276 64% 95%;
-    --accent-foreground: 277 67% 39%;
+    --accent: 294 83% 95%;
+    --accent-foreground: 292 75% 41%;
 
     --destructive: 0 72% 46%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 266 20% 92%;
-    --input: 266 20% 88%;
-    --ring: 277 67% 39%;
+    --border: 286 32% 92%;
+    --input: 286 32% 86%;
+    --ring: 292 75% 41%;
 
     --radius: 0.75rem;
 
     --sidebar-background: 0 0% 100%;
-    --sidebar-foreground: 270 21% 11%;
-    --sidebar-primary: 277 67% 39%;
+    --sidebar-foreground: 275 46% 10%;
+    --sidebar-primary: 292 75% 41%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 276 64% 95%;
-    --sidebar-accent-foreground: 277 67% 39%;
-    --sidebar-border: 266 20% 92%;
-    --sidebar-ring: 277 67% 39%;
+    --sidebar-accent: 294 83% 95%;
+    --sidebar-accent-foreground: 292 75% 41%;
+    --sidebar-border: 286 32% 92%;
+    --sidebar-ring: 292 75% 41%;
   }
 }
 
@@ -65,7 +65,7 @@
 
   h1, h2, h3, h4, h5, h6 {
     @apply text-brand-text-primary;
-    letter-spacing: -0.015em;
+    letter-spacing: -0.01em;
   }
 
   ::selection {
@@ -82,6 +82,45 @@
   .eyebrow::before {
     content: "";
     @apply h-1.5 w-1.5 rounded-full bg-brand-secondary;
+  }
+
+  /* Magenta-to-violet gradient from the NuevoCrypt brochure */
+  .text-gradient {
+    @apply bg-gradient-to-r from-[#F04CE8] to-[#B26BFF] bg-clip-text text-transparent;
+  }
+
+  .bg-brand-gradient {
+    background-image: linear-gradient(100deg, #E11FD8 0%, #A31AB8 45%, #6E1180 100%);
+  }
+
+  /* Short magenta rule used under headings */
+  .rule {
+    @apply block h-1 w-14 rounded-full bg-brand-secondary;
+  }
+
+  /* Soft vignette so photographic art melts into dark sections */
+  .fade-edges {
+    -webkit-mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 55%, transparent 100%);
+    mask-image: radial-gradient(ellipse 50% 50% at 50% 50%, #000 55%, transparent 100%);
+  }
+
+  /* Arrow-shaped tiles, as in the brochure's pilot strip */
+  .chevron {
+    @apply rounded-2xl;
+  }
+
+  @media (min-width: 768px) {
+    .chevron {
+      border-radius: 0;
+      padding-left: 2rem;
+      padding-right: 1.5rem;
+      clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 50%, calc(100% - 20px) 100%, 0 100%, 20px 50%);
+    }
+
+    .chevron:first-child {
+      padding-left: 1.25rem;
+      clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 50%, calc(100% - 20px) 100%, 0 100%);
+    }
   }
 
   .section {

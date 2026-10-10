@@ -54,7 +54,7 @@ const AboutPage = () => {
           <div className="grid gap-12 md:grid-cols-2 md:gap-16">
             <div>
               <p className="eyebrow">Mission</p>
-              <p className="mt-4 font-serif text-2xl leading-snug text-brand-text-primary">
+              <p className="mt-4 font-display text-2xl leading-snug text-brand-text-primary">
                 To advance the state of the art in cloud security, data privacy and compliance through rigorous
                 research and practical applications.
               </p>
@@ -65,7 +65,7 @@ const AboutPage = () => {
             </div>
             <div>
               <p className="eyebrow">Vision</p>
-              <p className="mt-4 font-serif text-2xl leading-snug text-brand-text-primary">
+              <p className="mt-4 font-display text-2xl leading-snug text-brand-text-primary">
                 Cloud technology that people can use with confidence, where privacy is preserved by design.
               </p>
               <p className="mt-5 leading-relaxed text-brand-text-secondary">
@@ -131,7 +131,7 @@ const AboutPage = () => {
                           className={lead ? "h-28 w-28 shrink-0 text-3xl" : "h-16 w-16 shrink-0 text-lg"}
                         />
                         <div className="min-w-0">
-                          <p className={lead ? "font-serif text-xl font-semibold" : "font-semibold"}>{member.name}</p>
+                          <p className={lead ? "font-display text-xl font-semibold" : "font-semibold"}>{member.name}</p>
                           <p className="mt-0.5 text-sm font-medium text-brand-primary">{member.role}</p>
                           <p className="mt-3 text-sm leading-relaxed text-brand-text-secondary">{member.bio}</p>
                           <div className="mt-3 flex flex-wrap gap-1.5">

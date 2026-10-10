@@ -17,7 +17,7 @@ const MemberAvatar: React.FC<MemberAvatarProps> = ({ member, className }) =>
   ) : (
     <div
       className={cn(
-        "flex items-center justify-center rounded-full bg-brand-primary-soft font-serif font-semibold text-brand-primary",
+        "flex items-center justify-center rounded-full bg-brand-primary-soft font-display font-semibold text-brand-primary",
         className
       )}
       aria-label={member.name}

@@ -71,7 +71,7 @@ const ResearchPage = () => {
                     {String(i + 1).padStart(2, "0")} / {String(researchAreas.length).padStart(2, "0")}
                   </span>
                 </div>
-                <h2 className="mt-5 font-serif text-3xl font-semibold">{area.title}</h2>
+                <h2 className="mt-5 font-display text-3xl font-semibold">{area.title}</h2>
                 <p className="mt-4 text-lg leading-relaxed text-brand-text-secondary">{area.summary}</p>
                 <ul className="mt-6 space-y-2.5">
                   {area.questions.map((q) => (
@@ -120,7 +120,7 @@ const ResearchPage = () => {
 
       <section className="section">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="font-serif text-3xl font-semibold">Interested in one of these areas?</h2>
+          <h2 className="font-display text-3xl font-semibold">Interested in one of these areas?</h2>
           <p className="mx-auto mt-3 max-w-xl text-lg text-brand-text-secondary">
             We're open to joint projects, visiting researchers and student theses.
           </p>

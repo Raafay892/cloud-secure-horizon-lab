@@ -28,7 +28,7 @@ const Footer = () => {
       <div className="container mx-auto px-4 pt-16 pb-10">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-12">
           <div className="md:col-span-5">
-            <p className="font-serif text-2xl font-semibold text-white">{site.name}</p>
+            <p className="font-display text-2xl font-semibold text-white">{site.name}</p>
             <p className="mt-3 max-w-sm text-sm leading-relaxed">
               Applied cryptography research for the cloud: searchable and homomorphic encryption,
               privacy-preserving AI, and trustworthy decentralised systems.

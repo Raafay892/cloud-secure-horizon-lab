@@ -13,7 +13,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        serif: ['"Source Serif 4"', 'Georgia', 'serif'],
+        display: ['"Saira Semi Condensed"', 'Inter', 'ui-sans-serif', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
       },
       colors: {
@@ -62,32 +62,32 @@ export default {
 				},
         brand: {
           primary: {
-            DEFAULT: '#6B21A8',
-            light: '#9D5BD2',
-            dark: '#4A1772',
-            soft: '#F4ECFB',
+            DEFAULT: '#A31AB8',
+            light: '#E35BF0',
+            dark: '#6E1180',
+            soft: '#FBEAFD',
           },
           secondary: {
-            DEFAULT: '#B5179E',
-            light: '#E9B8E0',
-            dark: '#8A1178',
+            DEFAULT: '#E11FD8',
+            light: '#F7B5F3',
+            dark: '#B0109F',
           },
           accent: {
-            DEFAULT: '#B5179E',
-            light: '#FBEFF8',
-            dark: '#8A1178',
+            DEFAULT: '#7B2CBF',
+            light: '#EFE4FA',
+            dark: '#4C1D80',
           },
           background: {
             DEFAULT: '#FFFFFF',
-            alt: '#F8F7FA',
-            dark: '#150D1F',
+            alt: '#FAF6FB',
+            dark: '#12071E',
           },
           text: {
-            primary: '#1B1523',
-            secondary: '#5A5466',
+            primary: '#1C0E26',
+            secondary: '#5E5167',
             light: '#FFFFFF',
           },
-          line: '#E8E4EE',
+          line: '#EEE4F1',
         },
       },
 			borderRadius: {

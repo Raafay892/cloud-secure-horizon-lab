@@ -3,7 +3,7 @@ export const site = {
   shortName: "CSP Lab",
   institution: "Military College of Signals, NUST",
   address: ["Military College of Signals", "Khadim Hussain Road, Lalkurti", "Rawalpindi, Pakistan"],
-  email: "shahzaib.tahir@mcs.edu.pk",
+  email: "nuevocrypt@gmail.com",
   phone: "+92 333 5726101",
   founded: "January 2025",
   funder: "Higher Education Commission (HEC), Pakistan",

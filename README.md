@@ -1,73 +1,41 @@
-# Welcome to your Lovable project
+# NuevoCrypt · Cloud Security & Privacy Lab
 
-## Project info
+Website for **NuevoCrypt** and the **Cloud Security & Privacy (CSP) Lab** at the Military College of Signals, NUST.
+Live at [www.neuvocrypt.com](https://www.neuvocrypt.com).
 
-**URL**: https://lovable.dev/projects/324e4749-3e69-47a4-8c08-e8986ed2832e
+## Tech stack
 
-## How can I edit this code?
+- [Vite](https://vitejs.dev/) + React + TypeScript
+- [Tailwind CSS](https://tailwindcss.com/) with [shadcn/ui](https://ui.shadcn.com/) components
+- React Router for client-side routing
+- Hosted on [Vercel](https://vercel.com/)
 
-There are several ways of editing your application.
+## Local development
 
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/324e4749-3e69-47a4-8c08-e8986ed2832e) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+Requires Node.js 18+.
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+npm install
+npm run dev      # http://localhost:8080
+npm run build    # production build in dist/
+npm run preview  # serve the production build
 ```
 
-**Edit a file directly in GitHub**
+## Editing content
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Most content lives in plain data files, so text changes rarely need component edits:
 
-**Use GitHub Codespaces**
+| What | File |
+| --- | --- |
+| Lab name, address, contact email and phone | `src/data/site.ts` |
+| NuevoCrypt copy, selling points, workflow, partners | `src/data/nuevocrypt.ts` |
+| Team members and photos | `src/data/team.ts` (photos in `public/images/`) |
+| Research areas | `src/data/research.ts` |
+| Publications | `src/data/publications.ts` |
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Brand assets (logos, partner logos, hero art, brochure) are in `public/brand/`.
 
-## What technologies are used for this project?
+## Deployment
 
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/324e4749-3e69-47a4-8c08-e8986ed2832e) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Pushing to `main` deploys to Vercel. `vercel.json` rewrites every route to `index.html` so that
+deep links such as `/research` work when opened directly.

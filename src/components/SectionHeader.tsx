@@ -28,7 +28,7 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
     >
       <div className={cn(align === "left" && "max-w-2xl")}>
         {eyebrow && <p className="eyebrow">{eyebrow}</p>}
-        <h2 className="mt-3 font-serif text-3xl font-semibold leading-tight md:text-4xl">{title}</h2>
+        <h2 className="mt-3 font-display text-3xl font-semibold leading-tight md:text-4xl">{title}</h2>
         {subtitle && <p className="mt-4 text-lg leading-relaxed text-brand-text-secondary">{subtitle}</p>}
       </div>
       {action}

@@ -84,7 +84,7 @@ const ContactPage = () => {
             {/* Form */}
             <form onSubmit={handleSubmit} className="space-y-5 rounded-2xl border border-brand-line p-6 md:p-8">
               <div>
-                <h2 className="font-serif text-2xl font-semibold">Send a message</h2>
+                <h2 className="font-display text-2xl font-semibold">Send a message</h2>
                 <p className="mt-1.5 text-sm text-brand-text-secondary">
                   This opens your email app with the message ready to send.
                 </p>
@@ -140,7 +140,7 @@ const ContactPage = () => {
       <section className="section border-t border-brand-line bg-brand-background-alt">
         <div className="container mx-auto px-4">
           <p className="eyebrow">People</p>
-          <h2 className="mt-3 font-serif text-3xl font-semibold">Who to ask about what</h2>
+          <h2 className="mt-3 font-display text-3xl font-semibold">Who to ask about what</h2>
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {team.map((person) => (
               <div key={person.name} className="flex items-start gap-4 rounded-2xl border border-brand-line bg-white p-5">

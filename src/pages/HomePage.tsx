@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, ArrowUpRight, MapPin } from "lucide-react";
+import { ArrowRight, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import SectionHeader from "@/components/SectionHeader";
 import PublicationRow from "@/components/PublicationRow";
@@ -8,6 +8,8 @@ import { publications } from "@/data/publications";
 import { researchAreas } from "@/data/research";
 import { team } from "@/data/team";
 import { site } from "@/data/site";
+import { nuevocrypt, sellingPoints } from "@/data/nuevocrypt";
+import { EngagementBand, PartnerStrip, WorkflowSteps } from "@/components/NuevoCryptBlocks";
 
 const latestPublications = [...publications].sort((a, b) => b.year - a.year).slice(0, 4);
 const totalCitations = publications.reduce((sum, pub) => sum + (pub.citations ?? 0), 0);
@@ -36,45 +38,35 @@ const HomePage = () => {
         />
 
         <div className="container relative mx-auto px-4 pt-20 pb-16 md:pt-28 md:pb-24">
-          <div className="grid items-center gap-14 lg:grid-cols-[1.15fr_0.85fr]">
+          <div className="grid items-center gap-12 lg:grid-cols-[1fr_1fr]">
             <div>
-              <p className="eyebrow !text-brand-primary-light">{site.institution}</p>
-              <h1 className="mt-5 font-serif text-[2.6rem] font-semibold leading-[1.05] text-white sm:text-5xl lg:text-6xl">
-                Making the cloud safe for sensitive data.
+              <p className="eyebrow !text-brand-primary-light">NuevoCrypt · {site.shortName}, {site.institution}</p>
+              <h1 className="mt-5 font-display text-[2.7rem] font-bold uppercase leading-[1.02] text-white sm:text-6xl lg:text-[4.25rem]">
+                {nuevocrypt.tagline[0]}
+                <br />
+                <span className="text-gradient">{nuevocrypt.tagline[1]}</span> {nuevocrypt.tagline[2]}
               </h1>
-              <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/70">
-                The Cloud Security &amp; Privacy Lab designs cryptographic systems that let people store,
-                search and compute on data they don't want anyone else to see, including the cloud provider.
-              </p>
+              <span className="rule mt-7" />
+              <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/75">{nuevocrypt.summary}</p>
               <div className="mt-9 flex flex-wrap gap-3">
-                <Button asChild size="lg" variant="inverse">
-                  <Link to="/research">
-                    Explore our research <ArrowRight />
+                <Button asChild size="lg" className="bg-brand-gradient hover:opacity-90">
+                  <Link to="/nuevocrypt">
+                    Explore NuevoCrypt <ArrowRight />
                   </Link>
                 </Button>
                 <Button asChild size="lg" variant="outline-inverse">
-                  <Link to="/publications">Publications</Link>
+                  <Link to="/collaborations#proposal">Request a pilot</Link>
                 </Button>
               </div>
             </div>
 
-            {/* Research snapshot */}
-            <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur-sm">
-              <p className="font-mono text-xs uppercase tracking-[0.14em] text-white/50">What we work on</p>
-              <ul className="mt-4 divide-y divide-white/10">
-                {researchAreas.slice(0, 5).map((area) => (
-                  <li key={area.id}>
-                    <Link
-                      to={`/research#${area.id}`}
-                      className="group flex items-center gap-4 py-3.5 text-white/85 hover:text-white"
-                    >
-                      <area.icon className="h-5 w-5 shrink-0 text-brand-primary-light" />
-                      <span className="flex-1 font-medium">{area.title}</span>
-                      <ArrowUpRight className="h-4 w-4 text-white/30 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-white/70" />
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+            <div className="relative">
+              <div className="absolute inset-8 rounded-full bg-brand-secondary/30 blur-[90px]" aria-hidden />
+              <img
+                src="/brand/hero-cloud.jpg"
+                alt="A cloud secured with a padlock, linked to encrypted documents, images and audio"
+                className="relative w-full fade-edges"
+              />
             </div>
           </div>
 
@@ -82,12 +74,63 @@ const HomePage = () => {
             {stats.map((stat) => (
               <div key={stat.label} className="bg-brand-background-dark/90 px-6 py-5">
                 <dt className="text-sm text-white/55">{stat.label}</dt>
-                <dd className="mt-1 font-serif text-3xl font-semibold text-white">{stat.value}</dd>
+                <dd className="mt-1 font-display text-3xl font-semibold text-white">{stat.value}</dd>
               </div>
             ))}
           </dl>
         </div>
       </section>
+
+      {/* NuevoCrypt highlight */}
+      <section className="section">
+        <div className="container mx-auto px-4">
+          <div className="mx-auto max-w-4xl text-center">
+            <p className="eyebrow">Our platform</p>
+            <h2 className="mt-4 font-display text-3xl font-semibold leading-tight md:text-5xl">
+              &ldquo;Assuring Cloud Confidence <span className="text-brand-primary">Through Searchable Encryption</span>&rdquo;
+            </h2>
+            <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-brand-text-secondary">
+              {nuevocrypt.description}
+            </p>
+          </div>
+
+          <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+            {sellingPoints.map((usp) => (
+              <div key={usp.title} className="rounded-2xl border border-brand-line bg-gradient-to-b from-brand-primary-soft/70 to-white p-6">
+                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-brand-primary shadow-sm ring-1 ring-brand-line">
+                  <usp.icon className="h-5 w-5" />
+                </span>
+                <h3 className="mt-5 font-display text-xl font-semibold text-brand-primary">{usp.title}</h3>
+                <p className="mt-2 text-[15px] leading-relaxed text-brand-text-secondary">{usp.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* How it works */}
+      <section className="relative overflow-hidden bg-brand-background-dark text-white">
+        <div className="absolute -top-32 right-0 h-96 w-96 rounded-full bg-brand-primary/40 blur-[130px]" aria-hidden />
+        <div className="container relative mx-auto px-4 py-16 md:py-20">
+          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+            <div>
+              <p className="eyebrow !text-brand-primary-light">Process</p>
+              <h2 className="mt-3 font-display text-3xl font-semibold uppercase text-white md:text-4xl">
+                How NuevoCrypt works
+              </h2>
+              <p className="mt-3 text-lg text-white/70">Data remains encrypted throughout the search process.</p>
+            </div>
+            <Button asChild variant="outline-inverse">
+              <Link to="/nuevocrypt">
+                Full overview <ArrowRight />
+              </Link>
+            </Button>
+          </div>
+          <WorkflowSteps className="mt-10" />
+        </div>
+      </section>
+
+      <PartnerStrip className="border-t-0" />
 
       {/* About */}
       <section className="section">
@@ -95,7 +138,7 @@ const HomePage = () => {
           <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
             <div>
               <p className="eyebrow">About the lab</p>
-              <h2 className="mt-3 font-serif text-3xl font-semibold leading-tight md:text-4xl">
+              <h2 className="mt-3 font-display text-3xl font-semibold leading-tight md:text-4xl">
                 Provable security that holds up in real deployments.
               </h2>
             </div>
@@ -210,29 +253,7 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="section">
-        <div className="container mx-auto px-4">
-          <div className="relative overflow-hidden rounded-3xl bg-brand-primary px-8 py-14 text-center md:px-16">
-            <div className="absolute inset-0 grid-backdrop opacity-60" aria-hidden />
-            <div className="relative mx-auto max-w-2xl">
-              <h2 className="font-serif text-3xl font-semibold text-white md:text-4xl">Work with us</h2>
-              <p className="mt-4 text-lg text-white/80">
-                We welcome research partners, industry collaborators and students who want to build
-                privacy-preserving systems.
-              </p>
-              <div className="mt-8 flex flex-wrap justify-center gap-3">
-                <Button asChild size="lg" variant="inverse">
-                  <Link to="/collaborations">Collaboration opportunities</Link>
-                </Button>
-                <Button asChild size="lg" variant="outline-inverse">
-                  <Link to="/contact">Get in touch</Link>
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <EngagementBand />
     </div>
   );
 };

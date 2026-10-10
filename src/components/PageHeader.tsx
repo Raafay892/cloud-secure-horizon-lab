@@ -19,7 +19,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({ eyebrow, title, subtitle, class
       <div className="container relative mx-auto px-4 py-16 md:py-20">
         <div className="max-w-3xl">
           {eyebrow && <p className="eyebrow !text-brand-primary-light">{eyebrow}</p>}
-          <h1 className="mt-4 font-serif text-4xl font-semibold leading-[1.1] text-white md:text-5xl">{title}</h1>
+          <h1 className="mt-4 font-display text-4xl font-semibold leading-[1.1] text-white md:text-5xl">{title}</h1>
           {subtitle && <p className="mt-5 text-lg leading-relaxed text-white/70">{subtitle}</p>}
           {children}
         </div>

@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Building2, Check, GraduationCap, Microscope, Users } from "lucide-react";
+import { Building2, Check, CheckCircle2, GraduationCap, Loader2, Microscope, Users } from "lucide-react";
+import { toast } from "sonner";
 import PageHeader from "@/components/PageHeader";
 import SectionHeader from "@/components/SectionHeader";
 import { Button } from "@/components/ui/button";
@@ -7,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { buildMailto } from "@/lib/mailto";
+import { submitForm } from "@/lib/submitForm";
 import { site } from "@/data/site";
 
 const collaborationTypes = [
@@ -63,20 +64,39 @@ const emptyForm = { name: "", organization: "", email: "", type: "", title: "", 
 
 const CollaborationsPage = () => {
   const [form, setForm] = useState(emptyForm);
+  const [honeypot, setHoneypot] = useState("");
+  const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
 
   const update = (field: keyof typeof emptyForm) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
     setForm((prev) => ({ ...prev, [field]: e.target.value }));
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    window.location.href = buildMailto(site.email, `Collaboration proposal: ${form.title}`, {
-      Name: form.name,
-      Organization: form.organization,
-      Email: form.email,
-      "Collaboration type": form.type,
-      "Expected timeline": form.timeline,
-      Description: form.description,
-    });
+    setStatus("sending");
+    try {
+      await submitForm({
+        subject: `Collaboration proposal: ${form.title}`,
+        replyTo: form.email,
+        honeypot,
+        fields: {
+          Name: form.name,
+          Organization: form.organization,
+          Email: form.email,
+          "Collaboration type": form.type || "Not specified",
+          "Project title": form.title,
+          "Expected timeline": form.timeline || "Not specified",
+          Description: form.description,
+        },
+      });
+      setForm(emptyForm);
+      setStatus("sent");
+    } catch (err) {
+      setStatus("idle");
+      toast.error("Your proposal wasn't sent", {
+        description: `${(err as Error).message} You can also email us at ${site.email}.`,
+        duration: 10000,
+      });
+    }
   };
 
   return (
@@ -137,7 +157,7 @@ const CollaborationsPage = () => {
               <p className="eyebrow">Proposal</p>
               <h2 className="mt-3 font-display text-3xl font-semibold md:text-4xl">Submit a collaboration proposal</h2>
               <p className="mt-4 text-lg leading-relaxed text-brand-text-secondary">
-                Tell us about your idea. Submitting opens your email app with the proposal filled in, addressed to{" "}
+                Tell us about your idea and we'll get back to you. You can also write to us directly at{" "}
                 <a href={`mailto:${site.email}`} className="font-medium text-brand-primary hover:underline">
                   {site.email}
                 </a>
@@ -145,69 +165,94 @@ const CollaborationsPage = () => {
               </p>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-5 rounded-2xl border border-brand-line p-6 md:p-8">
-              <div className="grid gap-5 md:grid-cols-2">
-                <div className="space-y-2">
-                  <Label htmlFor="name">Name</Label>
-                  <Input id="name" value={form.name} onChange={update("name")} required />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="organization">Organization</Label>
-                  <Input id="organization" value={form.organization} onChange={update("organization")} required />
-                </div>
-              </div>
-              <div className="grid gap-5 md:grid-cols-2">
-                <div className="space-y-2">
-                  <Label htmlFor="email">Email</Label>
-                  <Input id="email" type="email" value={form.email} onChange={update("email")} required />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="collaborationType">Collaboration type</Label>
-                  <Select value={form.type} onValueChange={(type) => setForm((prev) => ({ ...prev, type }))}>
-                    <SelectTrigger id="collaborationType">
-                      <SelectValue placeholder="Select a type" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {collaborationTypes.map((t) => (
-                        <SelectItem key={t.title} value={t.title}>
-                          {t.title}
-                        </SelectItem>
-                      ))}
-                      <SelectItem value="Other">Other</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="projectTitle">Project title</Label>
-                <Input id="projectTitle" value={form.title} onChange={update("title")} required />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="projectDescription">Description</Label>
-                <Textarea
-                  id="projectDescription"
-                  placeholder="Your idea, goals and expected outcomes"
-                  rows={5}
-                  value={form.description}
-                  onChange={update("description")}
-                  required
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="timeline">Expected timeline</Label>
-                <Input
-                  id="timeline"
-                  placeholder="e.g. 6 months"
-                  value={form.timeline}
-                  onChange={update("timeline")}
-                />
-              </div>
-              <div className="flex justify-end pt-2">
-                <Button type="submit" size="lg">
-                  Send proposal
+            {status === "sent" ? (
+              <div className="flex flex-col items-center justify-center rounded-2xl border border-brand-line p-10 text-center">
+                <CheckCircle2 className="h-12 w-12 text-brand-primary" />
+                <h2 className="mt-4 font-display text-2xl font-semibold">Proposal received</h2>
+                <p className="mt-2 max-w-sm text-brand-text-secondary">
+                  Thank you. We'll review your proposal and reply to the email you provided.
+                </p>
+                <Button variant="outline" className="mt-6" onClick={() => setStatus("idle")}>
+                  Submit another proposal
                 </Button>
               </div>
-            </form>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-5 rounded-2xl border border-brand-line p-6 md:p-8">
+                {/* Honeypot: hidden from people, tempting to bots */}
+                <input
+                  type="text"
+                  name="_honey"
+                  value={honeypot}
+                  onChange={(e) => setHoneypot(e.target.value)}
+                  tabIndex={-1}
+                  autoComplete="off"
+                  className="hidden"
+                  aria-hidden
+                />
+                <div className="grid gap-5 md:grid-cols-2">
+                  <div className="space-y-2">
+                    <Label htmlFor="name">Name</Label>
+                    <Input id="name" value={form.name} onChange={update("name")} required />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="organization">Organization</Label>
+                    <Input id="organization" value={form.organization} onChange={update("organization")} required />
+                  </div>
+                </div>
+                <div className="grid gap-5 md:grid-cols-2">
+                  <div className="space-y-2">
+                    <Label htmlFor="email">Email</Label>
+                    <Input id="email" type="email" value={form.email} onChange={update("email")} required />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="collaborationType">Collaboration type</Label>
+                    <Select value={form.type} onValueChange={(type) => setForm((prev) => ({ ...prev, type }))}>
+                      <SelectTrigger id="collaborationType">
+                        <SelectValue placeholder="Select a type" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {collaborationTypes.map((t) => (
+                          <SelectItem key={t.title} value={t.title}>
+                            {t.title}
+                          </SelectItem>
+                        ))}
+                        <SelectItem value="Other">Other</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="projectTitle">Project title</Label>
+                  <Input id="projectTitle" value={form.title} onChange={update("title")} required />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="projectDescription">Description</Label>
+                  <Textarea
+                    id="projectDescription"
+                    placeholder="Your idea, goals and expected outcomes"
+                    rows={5}
+                    value={form.description}
+                    onChange={update("description")}
+                    required
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="timeline">Expected timeline</Label>
+                  <Input
+                    id="timeline"
+                    placeholder="e.g. 6 months"
+                    value={form.timeline}
+                    onChange={update("timeline")}
+                  />
+                </div>
+                <div className="flex justify-end pt-2">
+                  <Button type="submit" size="lg" disabled={status === "sending"}>
+                    {status === "sending" && <Loader2 className="animate-spin" />}
+                    {status === "sending" ? "Sending…" : "Send proposal"}
+                  </Button>
+                </div>
+              </form>
+            )}
           </div>
         </div>
       </section>

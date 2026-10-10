@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Building, Mail, MapPin, Phone } from "lucide-react";
+import { Building, CheckCircle2, Loader2, Mail, MapPin, Phone } from "lucide-react";
+import { toast } from "sonner";
 import PageHeader from "@/components/PageHeader";
 import MemberAvatar from "@/components/MemberAvatar";
 import { Button } from "@/components/ui/button";
@@ -7,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { buildMailto } from "@/lib/mailto";
+import { submitForm } from "@/lib/submitForm";
 import { team } from "@/data/team";
 import { site } from "@/data/site";
 
@@ -16,17 +17,37 @@ const emptyForm = { name: "", email: "", subject: "", message: "", contactPerson
 
 const ContactPage = () => {
   const [form, setForm] = useState(emptyForm);
+  const [honeypot, setHoneypot] = useState("");
+  const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
 
   const update = (field: keyof typeof emptyForm) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
     setForm((prev) => ({ ...prev, [field]: e.target.value }));
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    window.location.href = buildMailto(site.email, form.subject, {
-      From: `${form.name} <${form.email}>`,
-      "For the attention of": form.contactPerson,
-      Message: form.message,
-    });
+    setStatus("sending");
+    try {
+      await submitForm({
+        subject: `Website contact: ${form.subject}`,
+        replyTo: form.email,
+        honeypot,
+        fields: {
+          Name: form.name,
+          Email: form.email,
+          "For the attention of": form.contactPerson,
+          Subject: form.subject,
+          Message: form.message,
+        },
+      });
+      setForm(emptyForm);
+      setStatus("sent");
+    } catch (err) {
+      setStatus("idle");
+      toast.error("Your message wasn't sent", {
+        description: `${(err as Error).message} You can also email us at ${site.email}.`,
+        duration: 10000,
+      });
+    }
   };
 
   const details = [
@@ -82,56 +103,81 @@ const ContactPage = () => {
             </div>
 
             {/* Form */}
-            <form onSubmit={handleSubmit} className="space-y-5 rounded-2xl border border-brand-line p-6 md:p-8">
-              <div>
-                <h2 className="font-display text-2xl font-semibold">Send a message</h2>
-                <p className="mt-1.5 text-sm text-brand-text-secondary">
-                  This opens your email app with the message ready to send.
+            {status === "sent" ? (
+              <div className="flex flex-col items-center justify-center rounded-2xl border border-brand-line p-10 text-center">
+                <CheckCircle2 className="h-12 w-12 text-brand-primary" />
+                <h2 className="mt-4 font-display text-2xl font-semibold">Message sent</h2>
+                <p className="mt-2 max-w-sm text-brand-text-secondary">
+                  Thanks for getting in touch. We've received your message and will reply to the email you provided.
                 </p>
-              </div>
-              <div className="grid gap-5 md:grid-cols-2">
-                <div className="space-y-2">
-                  <Label htmlFor="name">Name</Label>
-                  <Input id="name" value={form.name} onChange={update("name")} required />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="email">Email</Label>
-                  <Input id="email" type="email" value={form.email} onChange={update("email")} required />
-                </div>
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="subject">Subject</Label>
-                <Input id="subject" value={form.subject} onChange={update("subject")} required />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="contactPerson">Who is this for?</Label>
-                <Select
-                  value={form.contactPerson}
-                  onValueChange={(contactPerson) => setForm((prev) => ({ ...prev, contactPerson }))}
-                >
-                  <SelectTrigger id="contactPerson">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value={GENERAL}>{GENERAL}</SelectItem>
-                    {team.map((person) => (
-                      <SelectItem key={person.name} value={person.name}>
-                        {person.name}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="message">Message</Label>
-                <Textarea id="message" rows={6} value={form.message} onChange={update("message")} required />
-              </div>
-              <div className="flex justify-end pt-2">
-                <Button type="submit" size="lg">
-                  Send message
+                <Button variant="outline" className="mt-6" onClick={() => setStatus("idle")}>
+                  Send another message
                 </Button>
               </div>
-            </form>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-5 rounded-2xl border border-brand-line p-6 md:p-8">
+                <div>
+                  <h2 className="font-display text-2xl font-semibold">Send a message</h2>
+                  <p className="mt-1.5 text-sm text-brand-text-secondary">
+                    We usually reply within a few working days.
+                  </p>
+                </div>
+                {/* Honeypot: hidden from people, tempting to bots */}
+                <input
+                  type="text"
+                  name="_honey"
+                  value={honeypot}
+                  onChange={(e) => setHoneypot(e.target.value)}
+                  tabIndex={-1}
+                  autoComplete="off"
+                  className="hidden"
+                  aria-hidden
+                />
+                <div className="grid gap-5 md:grid-cols-2">
+                  <div className="space-y-2">
+                    <Label htmlFor="name">Name</Label>
+                    <Input id="name" value={form.name} onChange={update("name")} required />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="email">Email</Label>
+                    <Input id="email" type="email" value={form.email} onChange={update("email")} required />
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="subject">Subject</Label>
+                  <Input id="subject" value={form.subject} onChange={update("subject")} required />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="contactPerson">Who is this for?</Label>
+                  <Select
+                    value={form.contactPerson}
+                    onValueChange={(contactPerson) => setForm((prev) => ({ ...prev, contactPerson }))}
+                  >
+                    <SelectTrigger id="contactPerson">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value={GENERAL}>{GENERAL}</SelectItem>
+                      {team.map((person) => (
+                        <SelectItem key={person.name} value={person.name}>
+                          {person.name}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="message">Message</Label>
+                  <Textarea id="message" rows={6} value={form.message} onChange={update("message")} required />
+                </div>
+                <div className="flex justify-end pt-2">
+                  <Button type="submit" size="lg" disabled={status === "sending"}>
+                    {status === "sending" && <Loader2 className="animate-spin" />}
+                    {status === "sending" ? "Sending…" : "Send message"}
+                  </Button>
+                </div>
+              </form>
+            )}
           </div>
         </div>
       </section>

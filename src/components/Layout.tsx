@@ -19,8 +19,26 @@ const useScrollRestoration = () => {
   }, [pathname, hash]);
 };
 
+const SITE_URL = "https://nuevocrypt.com";
+
+// Point search engines at the nuevocrypt.com address of the current page.
+const useCanonicalUrl = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    let link = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+    if (!link) {
+      link = document.createElement("link");
+      link.rel = "canonical";
+      document.head.appendChild(link);
+    }
+    link.href = `${SITE_URL}${pathname === "/" ? "/" : pathname.replace(/\/$/, "")}`;
+  }, [pathname]);
+};
+
 const Layout = () => {
   useScrollRestoration();
+  useCanonicalUrl();
 
   return (
     <div className="flex min-h-screen flex-col">

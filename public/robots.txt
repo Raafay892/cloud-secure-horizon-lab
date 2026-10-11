@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.neuvocrypt.com/sitemap.xml
+Sitemap: https://nuevocrypt.com/sitemap.xml

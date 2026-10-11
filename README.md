@@ -1,7 +1,7 @@
 # NuevoCrypt · Cloud Security & Privacy Lab
 
 Website for **NuevoCrypt** and the **Cloud Security & Privacy (CSP) Lab** at the Military College of Signals, NUST.
-Live at [www.neuvocrypt.com](https://www.neuvocrypt.com).
+Live at [nuevocrypt.com](https://nuevocrypt.com).
 
 ## Tech stack
 
